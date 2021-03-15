@@ -135,10 +135,15 @@
 
     <ImageButton
         android:id="@+id/imageButton6"
-        android:layout_width="137dp"
-        android:layout_height="131dp"
-        app:srcCompat="@drawable/ic_cat_1"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="91dp" />
+        android:layout_width="84dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="92dp"
+        android:background="#FFFFFF"
+        android:scaleType="fitEnd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_cat_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
