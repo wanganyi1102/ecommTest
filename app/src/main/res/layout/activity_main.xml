@@ -26,10 +26,10 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="81dp"
+        android:layout_width="79dp"
         android:layout_height="66dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:srcCompat="@drawable/ic_baseline_person_24" />
@@ -135,15 +135,10 @@
 
     <ImageButton
         android:id="@+id/imageButton6"
-        android:layout_width="84dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="92dp"
-        android:background="#FFFFFF"
-        android:scaleType="fitEnd"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_cat_1" />
+        android:layout_width="137dp"
+        android:layout_height="131dp"
+        app:srcCompat="@drawable/ic_cat_1"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="91dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
