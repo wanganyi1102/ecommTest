@@ -133,4 +133,12 @@
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:srcCompat="@drawable/mango" />
 
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="137dp"
+        android:layout_height="131dp"
+        app:srcCompat="@drawable/ic_cat_1"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="91dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
