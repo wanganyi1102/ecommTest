@@ -29,15 +29,15 @@ public class RegisterUI extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_u_i);
+        setContentView(R.layout.register_ui);
 
-//        mEmail = findViewById(R.id.EmailInput);
-//        mPhone = findViewById(R.id.PhoneInput);
+        mEmail = findViewById(R.id.EmailInput);
+        mPhone = findViewById(R.id.PhoneInput);
         mEmailPhone = findViewById(R.id.phoneEmailEditText);
-        mPassword = findViewById(R.id.enterPasswordEditText);
-        mConfirmPass = findViewById(R.id.confirmPasswordEditText);
+        mPassword = findViewById(R.id.Password);
+        mConfirmPass = findViewById(R.id.confirmPassword);
         RegisterBtn = findViewById(R.id.RegisterBtn);
-//        mLoginBtn = findViewById(R.id.RegtoLogin);
+        mLoginBtn = findViewById(R.id.RegtoLogin);
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -49,12 +49,12 @@ public class RegisterUI extends AppCompatActivity {
         RegisterBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String email = mEmailPhone.getText().toString().trim(); //currently only works on Email
+                String email = mEmail.getText().toString().trim(); //currently only works on Email
                 String password = mPassword.getText().toString().trim();
                 String confirmPass = mConfirmPass.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)){
-                    mEmailPhone.setError("Email is Required.");
+                    mEmail.setError("Email is Required.");
                     return;
                 }
 
