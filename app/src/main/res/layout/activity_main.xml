@@ -8,11 +8,11 @@
 
     <SearchView
         android:id="@+id/searchBar"
-        android:layout_width="332dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="315dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,7 +63,7 @@
         android:id="@+id/Categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="20dp"
         android:text="Categories"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
@@ -81,7 +81,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toEndOf="@+id/Categories"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
+        app:layout_constraintVertical_bias="0.761" />
 
     <TextView
         android:id="@+id/seeMoreTrendingsTextView"
@@ -142,9 +143,7 @@
         android:id="@+id/mensClothesBtn"
         android:layout_width="102dp"
         android:layout_height="92dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="128dp"
         app:layout_constraintStart_toEndOf="@+id/womensClothesBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cat_2" />
@@ -153,9 +152,9 @@
         android:id="@+id/womensClothesBtn"
         android:layout_width="109dp"
         android:layout_height="93dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="128dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cat_1" />
@@ -164,9 +163,7 @@
         android:id="@+id/sportsBtn"
         android:layout_width="94dp"
         android:layout_height="91dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="128dp"
         app:layout_constraintStart_toEndOf="@+id/mensClothesBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cat_3" />
@@ -175,9 +172,9 @@
         android:id="@+id/foodBtn"
         android:layout_width="100dp"
         android:layout_height="91dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="128dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toEndOf="@+id/sportsBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cat_4" />
@@ -221,11 +218,8 @@
         android:id="@+id/toysBtn"
         android:layout_width="99dp"
         android:layout_height="88dp"
-        android:layout_marginBottom="168dp"
-        app:layout_constraintBottom_toTopOf="@+id/seeMoreTrendingsTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodBtn"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_cat_8" />
+        app:srcCompat="@drawable/ic_cat_8"
+        tools:layout_editor_absoluteX="308dp"
+        tools:layout_editor_absoluteY="221dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
