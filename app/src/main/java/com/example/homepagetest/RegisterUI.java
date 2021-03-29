@@ -33,7 +33,7 @@ public class RegisterUI extends AppCompatActivity {
 
         mEmail = findViewById(R.id.EmailInput);
         mPhone = findViewById(R.id.PhoneInput);
-        mEmailPhone = findViewById(R.id.phoneEmailEditText);
+        //mEmailPhone = findViewById(R.id.phoneEmailEditText);
         mPassword = findViewById(R.id.Password);
         mConfirmPass = findViewById(R.id.confirmPassword);
         RegisterBtn = findViewById(R.id.RegisterBtn);
