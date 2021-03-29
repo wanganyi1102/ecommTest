@@ -1,0 +1,81 @@
+package com.example.homepagetest;
+import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.*;
+import org.junit.*;
+
+import java.util.List;
+
+public class webCrawl {
+
+    @Test
+    public void testLazadaSearch() throws InterruptedException {
+        // Optional. If not specified, WebDriver searches the PATH for chromedriver.
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println(System.getProperty("os.name"));
+
+        //add path to chromedriver
+        String OS = System.getProperty("os.name").toLowerCase();
+        if (OS.indexOf("mac") >= 0) {
+            System.setProperty("webdriver.chrome.driver", "src/main/java/com/example/homepagetest/chromedriver");
+        } else if (OS.indexOf("win") >= 0){
+            System.setProperty("webdriver.chrome.driver", "src/main/java/com/example/homepagetest/chromedriver.exe");
+        }
+
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("disable-extensions","--disable-popup-blocking","headless");  //delete headless to see/open chrome browser
+        WebDriver driver = new ChromeDriver(options);
+//         WebDriver driver = new ChromeDriver();
+        driver.get("https://www.lazada.sg");
+//        Thread.sleep(5000);  // Let the user actually see something!
+
+        // String content = driver.getPageSource(); // Read page content
+        // System.out.println(content);  // Print the page content
+
+
+        //find searchbar and send query
+        WebElement searchBox = driver.findElement(By.name("q"));
+        searchBox.sendKeys("chicken");
+        searchBox.submit();
+
+
+        // Thread.sleep(5000);  // Let the user actually see something!
+        List<WebElement> item_titles = driver.findElements(By.className("c16H9d"));
+        List<WebElement> item_prices = driver.findElements(By.className("c13VH6"));
+        List<WebElement> item_urls = driver.findElements(By.className("c16H9d"));
+
+        String [] titles_list =new String[item_titles.size()];
+        String [] prices_list =new String[item_prices.size()];
+        String [] urls_list = new String[item_urls.size()];
+
+        int i=0, j=0,k=0;
+        for(WebElement a: item_titles) {    //convert to string []
+            titles_list[i]=a.getText();
+            i++;
+        }
+
+        for(WebElement a: item_prices) {    //convert to string []
+            prices_list[j]=a.getText();
+            j++;
+        }
+
+        for(WebElement a: item_titles) {    //convert to string []
+//            urls_list[k]=a.getAttribute("href");
+            urls_list[k]=a.findElement(By.cssSelector("a")).getAttribute("href");
+            k++;
+        }
+
+        driver.quit();
+
+        System.out.println("\n\n\n\n**********************");
+//        System.out.println(item_titles.size());
+//        System.out.println(item_prices.size());
+//        System.out.println(urls_list.length);
+//        System.out.println(item_urls.size());
+        for(int m=0; m<item_titles.size(); m++){
+            System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
+        }
+    }
+}
