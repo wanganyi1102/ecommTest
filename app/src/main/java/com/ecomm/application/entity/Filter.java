@@ -1,4 +1,4 @@
-package com.example.homepagetest;
+package com.ecomm.application.entity;
 
 import java.util.ArrayList;
 import java.util.Collections;

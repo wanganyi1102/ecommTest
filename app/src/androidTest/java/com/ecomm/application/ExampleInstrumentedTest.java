@@ -1,4 +1,4 @@
-package com.example.homepagetest;
+package com.ecomm.application;
 
 import android.content.Context;
 

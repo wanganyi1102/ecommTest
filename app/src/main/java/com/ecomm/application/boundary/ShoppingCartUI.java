@@ -1,8 +1,10 @@
-package com.example.homepagetest;
+package com.ecomm.application.boundary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.ecomm.application.R;
 
 public class ShoppingCartUI extends AppCompatActivity {
 

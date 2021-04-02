@@ -1,4 +1,4 @@
-package com.example.homepagetest;
+package com.ecomm.application.boundary;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ecomm.application.R;
+import com.ecomm.application.control.Register;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,11 +40,12 @@ public class RegisterUI extends AppCompatActivity {
         mConfirmPass = findViewById(R.id.confirmPassword);
         RegisterBtn = findViewById(R.id.RegisterBtn);
         mLoginBtn = findViewById(R.id.RegtoLogin);
+
         mAuth = FirebaseAuth.getInstance();
 
 
         if (mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),HomePageUI.class));
+            startActivity(new Intent(getApplicationContext(), HomePageUI.class));
             finish();
         }
 

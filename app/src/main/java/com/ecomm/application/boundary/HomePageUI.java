@@ -1,12 +1,13 @@
-package com.example.homepagetest;
+package com.ecomm.application.boundary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.ecomm.application.R;
 
 public class HomePageUI extends AppCompatActivity {
 

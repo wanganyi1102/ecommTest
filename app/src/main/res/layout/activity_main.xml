@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePageUI">
+    tools:context=".boundary.HomePageUI">
 
     <SearchView
         android:id="@+id/searchBar"
@@ -218,8 +218,9 @@
         android:id="@+id/toysBtn"
         android:layout_width="99dp"
         android:layout_height="88dp"
-        app:srcCompat="@drawable/ic_cat_8"
-        tools:layout_editor_absoluteX="308dp"
-        tools:layout_editor_absoluteY="221dp" />
+        android:layout_marginTop="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodBtn"
+        app:srcCompat="@drawable/ic_cat_8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,11 @@
-package com.example.homepagetest;
+package com.ecomm.application;
+
+import com.ecomm.application.entity.Product;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.*;
-import org.junit.*;
 
 import java.net.MalformedURLException;
 import java.net.URI;

@@ -1,4 +1,4 @@
-package com.example.homepagetest;
+package com.ecomm.application.entity;
 
 import java.net.URL;
 import java.util.Comparator;

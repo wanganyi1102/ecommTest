@@ -1,4 +1,8 @@
-package com.example.homepagetest;
+package com.ecomm.application.control;
+
+import com.ecomm.application.entity.Filter;
+import com.ecomm.application.entity.Product;
+import com.ecomm.application.webCrawl;
 
 import org.junit.Test;
 

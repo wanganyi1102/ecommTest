@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         multiDexEnabled true
-        applicationId "com.example.homepagetest"
+        applicationId "com.ecomm.application"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
