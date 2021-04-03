@@ -46,7 +46,7 @@ public class webCrawl {
 
         //find searchbar and send query
         WebElement searchBox = driver.findElement(By.name("q"));
-        searchBox.sendKeys("chicken");
+        searchBox.sendKeys("milo");
         searchBox.submit();
 
 
