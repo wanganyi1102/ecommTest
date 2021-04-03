@@ -2,6 +2,7 @@ package com.ecomm.application;
 
 import com.ecomm.application.entity.Product;
 
+import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +17,9 @@ import java.util.List;
 
 public class webCrawl {
 
-    public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+    @Test
+//    public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+    public void testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
         // Optional. If not specified, WebDriver searches the PATH for chromedriver.
         System.out.println(System.getProperty("user.dir"));
         System.out.println(System.getProperty("os.name"));
@@ -24,7 +27,7 @@ public class webCrawl {
         //add path to chromedriver
         String OS = System.getProperty("os.name").toLowerCase();
         if (OS.indexOf("mac") >= 0) {
-            System.setProperty("webdriver.chrome.driver", "src/main/java/com/example/homepagetest/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "src/main/java/com/ecomm/application/chromedriver");
         } else if (OS.indexOf("win") >= 0){
             System.setProperty("webdriver.chrome.driver", "C:\\Users\\Anyi\\WebCrawl\\src\\chromedriver.exe"); //change path
         }
@@ -91,7 +94,7 @@ public class webCrawl {
             productList.add(p);
             //System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }
-        return productList;
+//        return productList;
 
     }
 
