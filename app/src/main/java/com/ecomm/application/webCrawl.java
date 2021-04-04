@@ -18,8 +18,8 @@ import java.util.List;
 public class webCrawl {
 
     @Test
-//    public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
-    public void testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+    public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+//    public void testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
         // Optional. If not specified, WebDriver searches the PATH for chromedriver.
         System.out.println(System.getProperty("user.dir"));
         System.out.println(System.getProperty("os.name"));
@@ -90,11 +90,11 @@ public class webCrawl {
             float price = Float.parseFloat(prices_list[m].substring(1));
             URI uri = new URI(urls_list[m]);
             URL url = uri.toURL();
-            Product p = new Product(titles_list[m], price, url);
+            Product p = new Product(titles_list[m], price, url, "Shopee");
             productList.add(p);
             //System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }
-//        return productList;
+        return productList;
 
     }
 
@@ -111,7 +111,6 @@ public class webCrawl {
             System.setProperty("webdriver.chrome.driver", "C:\\Users\\Anyi\\WebCrawl\\src\\chromedriver.exe"); //change path
         }
 
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-extensions","--disable-popup-blocking","headless");  //delete headless to see/open chrome browser
         WebDriver driver = new ChromeDriver(options);
@@ -125,9 +124,8 @@ public class webCrawl {
 
         //find searchbar and send query
         WebElement searchBox = driver.findElement(By.name("keyword"));
-        searchBox.sendKeys("chicken");
+        searchBox.sendKeys("milo");
         searchBox.submit();
-
 
         // Thread.sleep(5000);  // Let the user actually see something!
         List<WebElement> item_titles = driver.findElements(By.className("sbj"));
@@ -178,7 +176,7 @@ public class webCrawl {
             // convert string to url
             URI uri = new URI(urls_list[m]);
             URL url = uri.toURL();
-            Product p = new Product(titles_list[m], price, url);
+            Product p = new Product(titles_list[m], price, url, "Qoo10");
             productList.add(p);
             //System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }

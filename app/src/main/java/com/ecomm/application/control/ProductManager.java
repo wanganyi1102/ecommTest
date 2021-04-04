@@ -16,8 +16,12 @@ public class ProductManager {
     private Filter filter = new Filter();
 
     @Test
+    //combines products crawlled from websites into one arraylist
     public void combineWebsites() throws InterruptedException, MalformedURLException, URISyntaxException {
         this.productList = wc.testQoo10Search();
+        for(Product p : wc.testLazadaSearch()){
+            this.productList.add(p);
+        }
         //following lines are added for testing
         this.productList = filter.sortByPrice(this.productList, true);
         for(int i = 0; i<this.productList.size(); i++){
@@ -25,9 +29,9 @@ public class ProductManager {
         }
     }
 
-    public void sortByPrice(){
-        this.productList = filter.sortByPrice(productList, true);
-    }
+//    public void sortByPrice(){
+//        this.productList = filter.sortByPrice(productList, true);
+//    }
 
     public ArrayList<Product> getProductList(){
         for(int i = 0; i<productList.size(); i++){

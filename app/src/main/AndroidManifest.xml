@@ -9,16 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomePageTest">
-        <activity android:name="com.ecomm.application.boundary.RegisterUI"></activity>
-        <activity android:name="com.ecomm.application.boundary.ShoppingCartUI" />
-        <activity android:name="com.ecomm.application.boundary.LoginUI">
+        <activity android:name=".boundary.FilterUI"></activity>
+        <activity android:name=".boundary.RegisterUI" />
+        <activity android:name=".boundary.ShoppingCartUI" />
+        <activity android:name=".boundary.LoginUI"> //app starts from this UI
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.ecomm.application.boundary.HomePageUI" />
+        <activity android:name=".boundary.HomePageUI" />
     </application>
 
 </manifest>
