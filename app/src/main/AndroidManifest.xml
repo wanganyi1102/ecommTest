@@ -12,7 +12,7 @@
         <activity
             android:name=".SearchResults"
             android:label="@string/title_activity_search_results"
-            android:theme="@style/Theme.HomePageTest.NoActionBar"></activity>
+            android:theme="@style/Theme.HomePageTest.NoActionBar" />
         <activity
             android:name=".boundary.SearchResultsUI"
             android:label="@string/title_activity_search_results_u_i"
