@@ -17,9 +17,9 @@ import java.util.List;
 
 public class webCrawl {
 
-    @Test
-    public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
-//    public void testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+    //@Test
+    //public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+    public void testLazadaSearch(String searchTerm) throws InterruptedException, URISyntaxException, MalformedURLException {
         // Optional. If not specified, WebDriver searches the PATH for chromedriver.
         System.out.println(System.getProperty("user.dir"));
         System.out.println(System.getProperty("os.name"));
@@ -34,7 +34,7 @@ public class webCrawl {
 
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-extensions","--disable-popup-blocking","headless");  //delete headless to see/open chrome browser
+        options.addArguments("disable-extensions","--disable-popup-blocking", "headless");  //delete headless to see/open chrome browser
         WebDriver driver = new ChromeDriver(options);
 //         WebDriver driver = new ChromeDriver();
         driver.get("https://www.lazada.sg");
@@ -46,7 +46,7 @@ public class webCrawl {
 
         //find searchbar and send query
         WebElement searchBox = driver.findElement(By.name("q"));
-        searchBox.sendKeys("milo");
+        searchBox.sendKeys(searchTerm);
         searchBox.submit();
 
 
@@ -92,11 +92,12 @@ public class webCrawl {
             URL url = uri.toURL();
             Product p = new Product(titles_list[m], price, url, "Shopee");
             productList.add(p);
-            //System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
+            System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }
-        return productList;
+        //return productList;
 
     }
+
 
     public ArrayList<Product> testQoo10Search() throws InterruptedException, URISyntaxException, MalformedURLException {
         // Optional. If not specified, WebDriver searches the PATH for chromedriver.
@@ -106,7 +107,7 @@ public class webCrawl {
         //add path to chromedriver
         String OS = System.getProperty("os.name").toLowerCase();
         if (OS.indexOf("mac") >= 0) {
-            System.setProperty("webdriver.chrome.driver", "src/main/java/com/example/homepagetest/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "src/main/java/com/ecomm.application/entity/chromedriver");
         } else if (OS.indexOf("win") >= 0){
             System.setProperty("webdriver.chrome.driver", "C:\\Users\\Anyi\\WebCrawl\\src\\chromedriver.exe"); //change path
         }
