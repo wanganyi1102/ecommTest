@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HomePageTest">
         <activity android:name=".boundary.SearchResultsUI"></activity>
-        <activity android:name=".boundary.ShoppingCartUI$ListOfProducts" />
         <activity android:name=".boundary.FilterUI" />
         <activity android:name=".boundary.RegisterUI" />
         <activity android:name=".boundary.ShoppingCartUI" />
