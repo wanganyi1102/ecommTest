@@ -1,15 +1,21 @@
 package com.ecomm.application.boundary;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ecomm.application.R;
+import com.example.homepagetest.ShoppingCart;
+
+import org.w3c.dom.Text;
 
 public class ShoppingCartUI extends AppCompatActivity {
 
@@ -27,5 +33,8 @@ public class ShoppingCartUI extends AppCompatActivity {
                 startActivity(backHomeIntent);
             }
         });
+
+
+
     }
 }
