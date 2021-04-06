@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="@string/total"
+                android:text="total"
                 android:textSize="20sp"></TextView>
 
             <TextView
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/_0_rs"
+                android:text="0 rs"
                 android:textSize="20sp"></TextView>
 
         </LinearLayout>
@@ -58,7 +58,7 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
             android:onClick="insertOrder"
-            android:text="@string/check_out"
+            android:text="check out"
             android:textColor="@android:color/white"></Button>
 
         <androidx.appcompat.widget.Toolbar
@@ -80,7 +80,7 @@
             android:layout_marginRight="360dp"
             android:layout_marginBottom="8dp"
             android:background="#00FFFFFF"
-            android:contentDescription="@string/go_back_home"
+            android:contentDescription="go_back_home"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/arrow" />
 
@@ -99,7 +99,7 @@
             android:layout_marginEnd="132dp"
             android:layout_marginRight="132dp"
             android:layout_marginBottom="689dp"
-            android:text="@string/shopping_cart"
+            android:text="shopping cart"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
