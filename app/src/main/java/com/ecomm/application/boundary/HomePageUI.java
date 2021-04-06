@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.ecomm.application.R;
@@ -41,6 +42,24 @@ public class HomePageUI extends AppCompatActivity {
             public void onClick(View v) {
                 Intent filterIntent = new Intent(getApplicationContext(), FilterUI.class);
                 startActivity(filterIntent);
+            }
+        });
+
+        SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
+        SearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if(query.isEmpty()){
+                    System.out.println("Please enter search item");
+                }
+                Intent filterIntent = new Intent(getApplicationContext(), FilterUI.class);
+                startActivity(filterIntent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
 
