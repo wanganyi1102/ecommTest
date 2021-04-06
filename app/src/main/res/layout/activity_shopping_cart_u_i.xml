@@ -67,7 +67,7 @@
             android:theme="?attr/actionBarTheme" />
 
         <ImageButton
-            android:id="@+id/backBtn"
+            android:id="@+id/backToHome"
             android:layout_width="40dp"
             android:layout_height="37dp"
             android:layout_above="@+id/layout_total"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/backBtn"
+        android:id="@+id/backToHome"
         android:layout_width="75dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
