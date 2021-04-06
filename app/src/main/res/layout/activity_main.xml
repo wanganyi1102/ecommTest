@@ -123,13 +123,13 @@
         android:layout_height="175dp"
         android:layout_marginBottom="92dp"
         app:layout_constraintBottom_toBottomOf="@+id/cartBtn"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/mangoImageView"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:srcCompat="@drawable/phone" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/mangoImageView"
         android:layout_width="103dp"
         android:layout_height="174dp"
         android:layout_marginEnd="92dp"
@@ -207,7 +207,7 @@
         android:layout_height="88dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/mangoImageView"
         app:layout_constraintEnd_toStartOf="@+id/toysBtn"
         app:layout_constraintStart_toEndOf="@+id/computerBtn"
         app:layout_constraintTop_toBottomOf="@+id/sportsBtn"

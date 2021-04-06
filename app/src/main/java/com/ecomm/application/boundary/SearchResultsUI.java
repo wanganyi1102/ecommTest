@@ -13,6 +13,8 @@ import android.view.View;
 
 import com.ecomm.application.R;
 
+import java.util.ArrayList;
+
 public class SearchResultsUI extends AppCompatActivity {
 
     @Override
