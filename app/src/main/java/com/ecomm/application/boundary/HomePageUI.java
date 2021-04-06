@@ -52,8 +52,8 @@ public class HomePageUI extends AppCompatActivity {
                 if(query.isEmpty()){
                     System.out.println("Please enter search item");
                 }
-                Intent filterIntent = new Intent(getApplicationContext(), FilterUI.class);
-                startActivity(filterIntent);
+                Intent searchIntent = new Intent(getApplicationContext(), SearchResultsUI.class);
+                startActivity(searchIntent);
                 return false;
             }
 
