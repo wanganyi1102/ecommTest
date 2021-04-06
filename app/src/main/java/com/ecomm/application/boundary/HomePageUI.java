@@ -4,54 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.ecomm.application.R;
-import com.ecomm.application.webCrawl;
 
 import org.w3c.dom.Text;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-
 public class HomePageUI extends AppCompatActivity {
-
-    EditText mSearchTerm;
-    Button LoginBtn;
-    webCrawl crawler = new webCrawl();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        mSearchTerm = findViewById(R.id.searchBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //get search term that was keyed in
-        String searchTerm = mSearchTerm.getText().toString().trim();
-
-        if (TextUtils.isEmpty(searchTerm)) {
-            mSearchTerm.setError("Enter search term.");
-            return;
-        }
-
-        try {
-            crawler.testLazadaSearch(searchTerm);
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-
 
         //get intent passed from loginUI
         if (getIntent().hasExtra("com.example.ACCOUNT")){
@@ -78,6 +45,24 @@ public class HomePageUI extends AppCompatActivity {
             }
         });
 
-    }
+        // opens new page after clicking search
+        SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
+        SearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if(query.isEmpty()){
+                    System.out.println("Please enter search item");
+                }
+                Intent filterIntent = new Intent(getApplicationContext(), SearchUI.class);
+                startActivity(filterIntent);
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+    }
 }
