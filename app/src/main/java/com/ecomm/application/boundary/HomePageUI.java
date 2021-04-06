@@ -45,7 +45,6 @@ public class HomePageUI extends AppCompatActivity {
             }
         });
 
-        // opens new page after clicking search
         SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
         SearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -53,8 +52,8 @@ public class HomePageUI extends AppCompatActivity {
                 if(query.isEmpty()){
                     System.out.println("Please enter search item");
                 }
-                Intent filterIntent = new Intent(getApplicationContext(), SearchUI.class);
-                startActivity(filterIntent);
+                Intent searchIntent = new Intent(getApplicationContext(), SearchResultsUI.class);
+                startActivity(searchIntent);
                 return false;
             }
 
