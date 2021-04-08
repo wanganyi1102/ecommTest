@@ -10,15 +10,15 @@
         android:id="@+id/searchBar"
         android:layout_width="315dp"
         android:layout_height="45dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/cartBtn"
-        android:layout_width="98dp"
+        android:layout_width="102dp"
         android:layout_height="59dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
@@ -28,10 +28,8 @@
 
     <ImageButton
         android:id="@+id/profileBtn"
-        android:layout_width="100dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
+        android:layout_width="102dp"
+        android:layout_height="59dp"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cartBtn"
@@ -39,77 +37,83 @@
 
     <ImageButton
         android:id="@+id/settingsBtn"
-        android:layout_width="102dp"
-        android:layout_height="56dp"
+        android:layout_width="103dp"
+        android:layout_height="59dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/profileBtn"
         app:srcCompat="@drawable/ic_baseline_settings_24" />
 
     <ImageButton
         android:id="@+id/homeBtn"
-        android:layout_width="105dp"
-        android:layout_height="61dp"
+        android:layout_width="103dp"
+        android:layout_height="59dp"
         android:layout_marginTop="31dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_baseline_home_24" />
 
     <TextView
         android:id="@+id/Categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="140dp"
         android:text="Categories"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/seeMoreCategoriesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginLeft="172dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:text="See More >>"
-        app:layout_constraintBottom_toTopOf="@+id/foodBtn"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/Categories"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar"
-        app:layout_constraintVertical_bias="0.761" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/seeMoreTrendingsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:text="See More >>"
-        app:layout_constraintBottom_toTopOf="@+id/settingsBtn"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toysBtn" />
 
     <TextView
         android:id="@+id/Trending"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="40dp"
         android:text="Trending"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/seeMoreTrendingsTextView"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeLivingBtn" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="103dp"
-        android:layout_height="177dp"
+        android:layout_width="134dp"
+        android:layout_height="196dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginBottom="92dp"
@@ -119,21 +123,21 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="101dp"
-        android:layout_height="175dp"
+        android:layout_width="134dp"
+        android:layout_height="196dp"
         android:layout_marginBottom="92dp"
         app:layout_constraintBottom_toBottomOf="@+id/cartBtn"
         app:layout_constraintEnd_toStartOf="@+id/mangoImageView"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:srcCompat="@drawable/phone" />
 
     <ImageView
         android:id="@+id/mangoImageView"
-        android:layout_width="103dp"
-        android:layout_height="174dp"
-        android:layout_marginEnd="92dp"
-        android:layout_marginRight="92dp"
+        android:layout_width="134dp"
+        android:layout_height="196dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:layout_marginBottom="92dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -142,86 +146,76 @@
     <ImageView
         android:id="@+id/mensClothesBtn"
         android:layout_width="102dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="128dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="180dp"
         app:layout_constraintStart_toEndOf="@+id/womensClothesBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cat_2" />
 
     <ImageView
         android:id="@+id/womensClothesBtn"
-        android:layout_width="109dp"
+        android:layout_width="103dp"
         android:layout_height="93dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="180dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cat_1" />
 
     <ImageView
         android:id="@+id/sportsBtn"
-        android:layout_width="94dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="128dp"
+        android:layout_width="102dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="180dp"
         app:layout_constraintStart_toEndOf="@+id/mensClothesBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cat_3" />
 
     <ImageView
         android:id="@+id/foodBtn"
-        android:layout_width="100dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="128dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        android:layout_width="103dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="180dp"
         app:layout_constraintStart_toEndOf="@+id/sportsBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cat_4" />
 
     <ImageView
-        android:id="@+id/homeLivingBtn"
-        android:layout_width="103dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/womensClothesBtn"
-        app:srcCompat="@drawable/ic_cat_5" />
+        android:id="@+id/healthBtn"
+        android:layout_width="102dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@+id/computerBtn"
+        app:layout_constraintTop_toBottomOf="@+id/sportsBtn"
+        app:srcCompat="@drawable/ic_cat_7" />
 
     <ImageView
         android:id="@+id/computerBtn"
-        android:layout_width="100dp"
-        android:layout_height="88dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        app:layout_constraintEnd_toStartOf="@+id/healthBtn"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_width="102dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@+id/homeLivingBtn"
         app:layout_constraintTop_toBottomOf="@+id/mensClothesBtn"
         app:srcCompat="@drawable/ic_cat_6" />
 
     <ImageView
-        android:id="@+id/healthBtn"
-        android:layout_width="101dp"
-        android:layout_height="88dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/mangoImageView"
-        app:layout_constraintEnd_toStartOf="@+id/toysBtn"
-        app:layout_constraintStart_toEndOf="@+id/computerBtn"
-        app:layout_constraintTop_toBottomOf="@+id/sportsBtn"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_cat_7" />
-
-    <ImageView
         android:id="@+id/toysBtn"
-        android:layout_width="99dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="103dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/healthBtn"
         app:layout_constraintTop_toBottomOf="@+id/foodBtn"
         app:srcCompat="@drawable/ic_cat_8" />
+
+    <ImageView
+        android:id="@+id/homeLivingBtn"
+        android:layout_width="103dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/womensClothesBtn"
+        app:srcCompat="@drawable/ic_cat_5" />
 
     <TextView
         android:id="@+id/filterSearchBtn"
@@ -229,11 +223,12 @@
         android:layout_height="23dp"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:text="Filter"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/searchBar"
         app:layout_constraintTop_toTopOf="parent" />
 

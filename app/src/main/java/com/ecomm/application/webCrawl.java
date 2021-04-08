@@ -14,12 +14,18 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class webCrawl {
+    //@Test
+    public void testSearch() throws InterruptedException, MalformedURLException, URISyntaxException {
 
+        testLazadaSearch("chicken");
+
+    }
     @Test
-    //public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
-    public void testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+    public ArrayList<Product> testLazadaSearch(String query) throws InterruptedException, URISyntaxException, MalformedURLException {
+    //public void testLazadaSearch(String query) throws InterruptedException, URISyntaxException, MalformedURLException {
         // Optional. If not specified, WebDriver searches the PATH for chromedriver.
         System.out.println(System.getProperty("user.dir"));
         System.out.println(System.getProperty("os.name"));
@@ -46,7 +52,7 @@ public class webCrawl {
 
         //find searchbar and send query
         WebElement searchBox = driver.findElement(By.name("q"));
-        searchBox.sendKeys("milo");
+        searchBox.sendKeys(query);
         searchBox.submit();
 
 
@@ -102,11 +108,13 @@ public class webCrawl {
             URL url = uri.toURL();
             Product p = new Product(titles_list[m], price, url, "Lazada");
             productList.add(p);
-            System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
+            //System.out.println(p.getPrice());
+            //System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }
-        //return productList;
+        return productList;
 
     }
+
 
     @Test
     public void productCrawl() {

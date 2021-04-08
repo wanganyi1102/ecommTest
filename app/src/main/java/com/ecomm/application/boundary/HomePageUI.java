@@ -60,6 +60,7 @@ public class HomePageUI extends AppCompatActivity {
                 if(query.isEmpty()){
                     System.out.println("Please enter search item");
                 }
+
                 Intent searchIntent = new Intent(getApplicationContext(), SearchResultsUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
                 startActivity(searchIntent);
@@ -70,6 +71,8 @@ public class HomePageUI extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 return false;
             }
+
+
         });
 
         // fake product to test other UIs
