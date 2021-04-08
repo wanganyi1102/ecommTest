@@ -15,9 +15,14 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 
 import com.ecomm.application.R;
 
+import org.junit.Test;
+
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class SearchResultsUI extends AppCompatActivity {
@@ -39,9 +44,14 @@ public class SearchResultsUI extends AppCompatActivity {
             }
         });
     }
+    @Test
+    protected void lazadaresults() throws InterruptedException, MalformedURLException, URISyntaxException {
+        HomePageUI search = new HomePageUI();
+        SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
+        String q = (String) SearchBar.getQuery();
+        crawler.testLazadaSearch(q);
+    }
 
-
-    crawler.testLazadaSearch("milo");
 
 
 

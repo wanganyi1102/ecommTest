@@ -17,7 +17,7 @@ import java.util.List;
 
 public class webCrawl {
 
-    @Test
+    //@Test
     public ArrayList<Product> testLazadaSearch(String query) throws InterruptedException, URISyntaxException, MalformedURLException {
     //public void testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
         // Optional. If not specified, WebDriver searches the PATH for chromedriver.
@@ -102,13 +102,10 @@ public class webCrawl {
             productList.add(p);
             System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }
-        //return productList;
+        return productList;
 
     }
 
-    public String getSearchTerm(){
-
-    }
 
     @Test
     public void productCrawl() {
