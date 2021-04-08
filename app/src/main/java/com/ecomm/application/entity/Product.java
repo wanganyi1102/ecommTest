@@ -2,7 +2,6 @@ package com.ecomm.application.entity;
 
 import java.net.URL;
 import java.util.Comparator;
-import com.ecomm.application.entity.Product;
 
 public class Product implements Comparable{
     private String name;
@@ -21,6 +20,12 @@ public class Product implements Comparable{
     public float getPrice(){
         return this.price;
     }
+
+    public String getName() { return this.name; }
+
+    public URL getURL() { return this.url; }
+
+    public String getecommerceSite() { return this.ecommerceSite; }
 
 
     @Override
