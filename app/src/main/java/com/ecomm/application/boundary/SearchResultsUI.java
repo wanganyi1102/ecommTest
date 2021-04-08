@@ -22,7 +22,6 @@ import java.util.ArrayList;
 public class SearchResultsUI extends AppCompatActivity {
 
     Button backHome;
-    @SuppressLint("MissingSuperCall")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
