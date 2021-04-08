@@ -18,8 +18,7 @@
         <activity android:name=".boundary.RegisterUI" />
         <activity android:name=".boundary.PaymentUI" />
         <activity android:name=".boundary.ShoppingCartUI" />
-        <activity android:name=".boundary.HomePageUI">
-            //app starts from this UI
+        <activity android:name=".boundary.HomePageUI"> //app starts from this UI
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
