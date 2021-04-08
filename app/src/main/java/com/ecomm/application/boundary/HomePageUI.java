@@ -62,7 +62,7 @@ public class HomePageUI extends AppCompatActivity {
                     System.out.println("Please enter search item");
                 }
 
-                Intent searchIntent = new Intent(getApplicationContext(), SearchResultsUI.class);
+                Intent searchIntent = new Intent(getApplicationContext(), SearchUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
                 startActivity(searchIntent);
                 return false;
@@ -110,7 +110,7 @@ public class HomePageUI extends AppCompatActivity {
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openSearchIntent = new Intent(getApplicationContext(), SearchResultsUI.class);
+                Intent openSearchIntent = new Intent(getApplicationContext(), SearchUI.class);
                 startActivity(openSearchIntent);
             }
         });
