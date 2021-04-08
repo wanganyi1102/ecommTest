@@ -16,6 +16,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.net.MalformedURLException;
@@ -47,7 +49,7 @@ public class SearchUI extends AppCompatActivity {
         });
 
         //initialise all textViews
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
+        EditText textView2 = (TextView) findViewById(R.id.textView2);
         TextView textView3 = (TextView) findViewById(R.id.textView3);
         TextView textView4 = (TextView) findViewById(R.id.textView4);
         TextView textView5 = (TextView) findViewById(R.id.textView5);
@@ -56,11 +58,27 @@ public class SearchUI extends AppCompatActivity {
         TextView textView8 = (TextView) findViewById(R.id.textView8);
         TextView textView9 = (TextView) findViewById(R.id.textView9);
 
+        SearchView searchView = (SearchView) findViewById(R.id.searchBar);
         /*
         ArrayList<Product> productList = new ArrayList<Product>();
 
+        webCrawl crawler = new webCrawl();
         try {
-            productList = this.lazadaresults();
+            productList = crawler.testLazadaSearch((String) searchView.getQuery());
+            textView2.setText(productList.get(1).getName());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+
+        ArrayList<Product> productList = new ArrayList<Product>();
+
+        try {
+            productList = this.lazadaresults((String) searchView.getQuery());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
@@ -71,30 +89,37 @@ public class SearchUI extends AppCompatActivity {
 
         textView2.setText(productList.get(1).getName());
 
+
+        //@Test
+        //public void lazadaresults() throws InterruptedException, MalformedURLException, URISyntaxException {
+        webCrawl crawler = new webCrawl();
+        public ArrayList<Product> lazadaresults(String q) throws InterruptedException, MalformedURLException, URISyntaxException {
+            //HomePageUI search = new HomePageUI();
+            //SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
+            //String q = (String) SearchBar.getQuery();
+            //String q = "orange";
+
+            ArrayList<Product> productList = new ArrayList<Product>();
+            productList = crawler.testLazadaSearch(q);
+
+            System.out.println(productList.get(1).getPrice());
+            System.out.println(productList.get(1).getName());
+            System.out.println(productList.get(1).getUrl());
+            System.out.println(productList.get(1).getEcommerceSite());
+
+            return productList;
+        }
+
          */
 
+
+
+
+
     }
 
-    /*
-    //@Test
-    //public void lazadaresults() throws InterruptedException, MalformedURLException, URISyntaxException {
-    webCrawl crawler = new webCrawl();
-    public ArrayList<Product> lazadaresults() throws InterruptedException, MalformedURLException, URISyntaxException {
-        //HomePageUI search = new HomePageUI();
-        //SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
-        //String q = (String) SearchBar.getQuery();
-        String q = "orange";
 
-        ArrayList<Product> productList = new ArrayList<Product>();
-        productList = crawler.testLazadaSearch(q);
 
-        System.out.println(productList.get(1).getPrice());
-        System.out.println(productList.get(1).getName());
-        System.out.println(productList.get(1).getUrl());
-        System.out.println(productList.get(1).getEcommerceSite());
 
-        return productList;
-    }
-    */
 
 }
