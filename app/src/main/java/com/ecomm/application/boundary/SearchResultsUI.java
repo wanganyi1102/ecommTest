@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.ecomm.application.webCrawl;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 public class SearchResultsUI extends AppCompatActivity {
 
     Button backHome;
+    webCrawl crawler = new webCrawl();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,6 +39,10 @@ public class SearchResultsUI extends AppCompatActivity {
             }
         });
     }
+
+
+    crawler.testLazadaSearch("milo");
+
 
 
 }

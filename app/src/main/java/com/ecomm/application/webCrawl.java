@@ -18,8 +18,8 @@ import java.util.List;
 public class webCrawl {
 
     @Test
-    //public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
-    public void testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+    public ArrayList<Product> testLazadaSearch(String query) throws InterruptedException, URISyntaxException, MalformedURLException {
+    //public void testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
         // Optional. If not specified, WebDriver searches the PATH for chromedriver.
         System.out.println(System.getProperty("user.dir"));
         System.out.println(System.getProperty("os.name"));
@@ -46,7 +46,7 @@ public class webCrawl {
 
         //find searchbar and send query
         WebElement searchBox = driver.findElement(By.name("q"));
-        searchBox.sendKeys("milo");
+        searchBox.sendKeys(query);
         searchBox.submit();
 
 
@@ -103,6 +103,10 @@ public class webCrawl {
             System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }
         //return productList;
+
+    }
+
+    public String getSearchTerm(){
 
     }
 
