@@ -49,7 +49,7 @@ public class SearchUI extends AppCompatActivity {
         });
 
         //initialise all textViews
-        EditText textView2 = (TextView) findViewById(R.id.textView2);
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
         TextView textView3 = (TextView) findViewById(R.id.textView3);
         TextView textView4 = (TextView) findViewById(R.id.textView4);
         TextView textView5 = (TextView) findViewById(R.id.textView5);
