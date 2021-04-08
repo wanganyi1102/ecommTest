@@ -54,7 +54,7 @@ public class webCrawl {
         List<WebElement> item_titles = driver.findElements(By.className("c16H9d"));
         List<WebElement> item_prices = driver.findElements(By.className("c13VH6"));
         List<WebElement> item_urls = driver.findElements(By.className("c16H9d"));
-        List<WebElement> item_imgs = driver.findElements(By.className("c1ZEkM"));
+        List<WebElement> item_imgs = driver.findElements(By.className("cRjKsc")); //c1ZEkM
 
         String [] titles_list =new String[item_titles.size()];
         String [] prices_list =new String[item_prices.size()];
@@ -79,8 +79,10 @@ public class webCrawl {
         }
 
         for(WebElement a: item_imgs) {    //convert to string []
-            img_list[l]=a.getAttribute("src");
+            //img_list[l]=a.getAttribute("src");
             System.out.println(a.getAttribute("src"));
+            img_list[l]=a.findElement(By.cssSelector("a")).getAttribute("src");
+            //System.out.println(a.findElement(By.cssSelector("a")).findElement(By.className("c1ZEkM")).getText());
             l++;
         }
 
@@ -98,7 +100,7 @@ public class webCrawl {
             float price = Float.parseFloat(prices_list[m].substring(1));
             URI uri = new URI(urls_list[m]);
             URL url = uri.toURL();
-            Product p = new Product(titles_list[m], price, url, "Shopee");
+            Product p = new Product(titles_list[m], price, url, "Lazada");
             productList.add(p);
             System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }

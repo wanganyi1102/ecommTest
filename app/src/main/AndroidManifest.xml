@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomePageTest">
-        <activity android:name=".boundary.ProductDisplayUI"></activity>
+        <activity android:name=".boundary.ProductDisplayUI" />
         <activity
             android:name=".boundary.SearchResultsUI"
             android:label="@string/title_activity_search_results_u_i"
@@ -17,7 +17,8 @@
         <activity android:name=".boundary.FilterUI" />
         <activity android:name=".boundary.RegisterUI" />
         <activity android:name=".boundary.ShoppingCartUI" />
-        <activity android:name=".boundary.HomePageUI"> //app starts from this UI
+        <activity android:name=".boundary.HomePageUI">
+            //app starts from this UI
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
