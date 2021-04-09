@@ -75,6 +75,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BackBtn" />
 
+    <org.florescu.android.rangeseekbar.RangeSeekBar
+        android:id="@+id/rangeSeekBar"
+        android:layout_width="366dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceAscending"
+        app:textAboveThumbsColor="#000000" />
+
     <com.google.android.material.chip.Chip
         android:id="@+id/priceAscending"
         android:layout_width="107dp"
@@ -298,17 +307,5 @@
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/salesFilterText" />
-
-    <SeekBar
-        android:id="@+id/priceSeekBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="262dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="81dp"
-        android:max="10"
-        android:progress="3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filterTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

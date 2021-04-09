@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
 import com.example.homepagetest.ShoppingCart;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.io.Serializable;
@@ -55,7 +56,18 @@ public class ProductDisplayUI extends AppCompatActivity {
         //set image to product image
         String imageURL = product.getImageURL();
         ImageView productImage = (ImageView) findViewById(R.id.productImage);
-        productImage.setImageDrawable(LoadImageFromWebOperations(imageURL));
+        //productImage.setImageDrawable(LoadImageFromWebOperations(imageURL));
+        Picasso.with(ProductDisplayUI.this).load(imageURL).into(productImage);
+
+        //set site icon
+        ImageView siteIcon = (ImageView) findViewById(R.id.siteIcon);
+        String site = product.getEcommerceSite();
+        if(site.compareTo("Lazada") == 0){
+            siteIcon.setImageDrawable(getResources().getDrawable(R.drawable.lazada));
+        }
+        else{
+            siteIcon.setImageDrawable(getResources().getDrawable(R.drawable.qoo10));
+        }
 
         //click gotoecommersewebsite button
         Button externalSiteBtn = (Button) findViewById(R.id.externalSiteBtn);

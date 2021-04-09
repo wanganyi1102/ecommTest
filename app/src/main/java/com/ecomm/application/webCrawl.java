@@ -75,7 +75,7 @@ public class webCrawl {
         List<WebElement> item_titles = driver.findElements(By.className("c16H9d"));
         List<WebElement> item_prices = driver.findElements(By.className("c13VH6"));
         List<WebElement> item_urls = driver.findElements(By.className("c16H9d"));
-        List<WebElement> item_imgs = driver.findElements(By.className("cRjKsc")); //c1ZEkM
+        List<WebElement> item_imgs = driver.findElements(By.xpath("c1ZEkM"));
 
         String [] titles_list =new String[item_titles.size()];
         String [] prices_list =new String[item_prices.size()];
@@ -102,7 +102,7 @@ public class webCrawl {
         for(WebElement a: item_imgs) {    //convert to string []
             //img_list[l]=a.getAttribute("src");
             System.out.println(a.getAttribute("src"));
-            img_list[l]=a.findElement(By.cssSelector("a")).getAttribute("src");
+            //img_list[l]=a.findElement(By.cssSelector("a")).getAttribute("src");
             //System.out.println(a.findElement(By.cssSelector("a")).findElement(By.className("c1ZEkM")).getText());
             l++;
         }
@@ -144,13 +144,19 @@ public class webCrawl {
         options.addArguments("disable-extensions", "--disable-popup-blocking", "headless");  //delete headless to see/open chrome browser
         WebDriver driver = new ChromeDriver(options);
 
-        driver.get("https://www.lazada.sg/products/pink-rocket-original-topokki-cup-120g-triple-pack-product-of-korea-i1342040075-s5635222259.html?spm=a2o42.searchlist.list.11.45f541f9lsGk5E&search=1&freeshipping=1");
+        driver.get("https://www.lazada.sg/products/milo-active-go-lower-in-sugar-gao-siew-dai-i303334245-s536676188.html?spm=a2o42.searchlistbrand.list.1.70854041BnOLQm&search=1");
+        //gets product image url (works)
+//        WebElement item_image = driver.findElement(By.xpath("//*[@id=\"module_item_gallery_1\"]/div/div[1]/div/img"));
+//        System.out.println(item_image.getAttribute("src"));
 
+        ////*[@id="module_product_detail"]/div/div/div/div/div[1]/div[2]/div   <div class="pdp-mod-spec-item-text"
+        WebElement HeaderTxtElem = driver.findElement(By.xpath("//div[contains(text(),'Great chocolatey malt')]"));
+        System.out.println(HeaderTxtElem.getAttribute("innerHTML"));
         //WebElement item_rating = driver.findElement(By.cssSelector());
         //WebElement item_rating = driver.findElement(By.xpath("//*[contains(concat( \" \", @class, \" \" ), concat( \" \", \"score-average\", \" \" ))]"));
-        WebElement item_rating = driver.findElement(By.xpath("/html/body/div[4]/div/div[9]/div[1]/div[2]/div/div/div/div[1]/div[2]/div/div/div[1]/div[1]/span[1]"));
+        //WebElement item_rating = driver.findElement(By.xpath("/html/body/div[4]/div/div[9]/div[1]/div[2]/div/div/div/div[1]/div[2]/div/div/div[1]/div[1]/span[1]"));
         //WebElement item_rating = driver.findElement(By.className("span"));
-        System.out.println(item_rating.getText());
+        //System.out.println(item_rating.getText());
 
         driver.quit();
 
