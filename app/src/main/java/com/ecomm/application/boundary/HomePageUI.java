@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
@@ -61,7 +62,7 @@ public class HomePageUI extends AppCompatActivity {
                     System.out.println("Please enter search item");
                 }
 
-                Intent searchIntent = new Intent(getApplicationContext(), SearchResultsUI.class);
+                Intent searchIntent = new Intent(getApplicationContext(), SearchUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
                 startActivity(searchIntent);
                 return false;
@@ -101,6 +102,16 @@ public class HomePageUI extends AppCompatActivity {
                 Intent displayProductDetail = new Intent(getApplicationContext(), ProductDisplayUI.class);
                 displayProductDetail.putExtra("com.ecomm.application.PRODUCT_INFO", mango);
                 startActivity(displayProductDetail);
+            }
+        });
+
+        // test to check if button can open search xml
+        Button test = (Button) findViewById(R.id.test);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openSearchIntent = new Intent(getApplicationContext(), SearchUI.class);
+                startActivity(openSearchIntent);
             }
         });
 
