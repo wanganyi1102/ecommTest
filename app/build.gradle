@@ -45,8 +45,8 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    implementation files('libs/client-combined-3.141.59.jar')
-    implementation files('libs/client-combined-3.141.59-sources.jar')
+    implementation files('libs/client-combined-3.141.59.jar') //selenium
+    implementation files('libs/client-combined-3.141.59-sources.jar') //selenium
 //    implementation files('libs/elemental2-promise-1.1.0.jar')
 //    implementation files('libs/error_prone_annotations-2.5.1.jar')
 //    implementation files('libs/failureaccess-1.0.1.jar')
@@ -71,6 +71,10 @@ dependencies {
     implementation files('libs/junit-4.13.2.jar')
     implementation files('libs\\guava-gwt-30.1.1-jre.jar')
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation files('libs/selenium-android-driver.jar')
+//    implementation files('libs/selenium-api-4.0.0-beta-2.jar')
+//    implementation files('libs/selenium-api-2.50.1-javadoc.jar.jar')
+//    implementation files('libs/selenium-api-2.4.0.jar')
 //    implementation files('libs/kotlin-stdlib-1.4.21.jar')
 //    implementation files('libs/okhttp-5.0.0-alpha.2.jar')
 //    implementation files('libs/base-1.0.0.jar')
