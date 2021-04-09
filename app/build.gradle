@@ -70,8 +70,7 @@ dependencies {
 //    implementation files('libs/jsoup-1.13.1.jar')
     implementation files('libs/junit-4.13.2.jar')
     implementation files('libs\\guava-gwt-30.1.1-jre.jar')
-    implementation 'androidx.navigation:navigation-fragment:2.3.4'
-    implementation 'androidx.navigation:navigation-ui:2.3.4'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
 //    implementation files('libs/kotlin-stdlib-1.4.21.jar')
 //    implementation files('libs/okhttp-5.0.0-alpha.2.jar')
 //    implementation files('libs/base-1.0.0.jar')
