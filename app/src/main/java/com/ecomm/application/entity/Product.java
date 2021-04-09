@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.Comparator;
 import com.ecomm.application.entity.Product;
+import java.lang.Math;
 
 public class Product implements Comparable, Serializable {
     private String name;
@@ -39,7 +40,7 @@ public class Product implements Comparable, Serializable {
     }
 
     public double getPrice(){
-        return this.price;
+        return price = (double) Math.round(this.price * 100) / 100;
     }
 
     public URL getUrl(){

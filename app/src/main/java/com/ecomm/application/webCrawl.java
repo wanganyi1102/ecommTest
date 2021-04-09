@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class webCrawl {
     @Test
     public void testSearch() throws InterruptedException, MalformedURLException, URISyntaxException {
@@ -29,9 +30,10 @@ public class webCrawl {
 
         //with argument
         productList1 = testLazadaSearch("milo");
-        System.out.println("hello");
-        System.out.println(productList1.get(0).getName());
-        System.out.println("hello1");
+        System.out.println(productList1.get(1).getName());
+        System.out.println(productList1.get(1).getPrice());
+        System.out.println(productList1.get(1).getUrl());
+        System.out.println(productList1.get(1).getEcommerceSite());
 
 
     }
@@ -122,7 +124,7 @@ public class webCrawl {
             Product p = new Product(titles_list[m], price, url, "Lazada");
             productList.add(p);
             //System.out.println(p.getPrice());
-            System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
+            //System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }
 
         return productList;
