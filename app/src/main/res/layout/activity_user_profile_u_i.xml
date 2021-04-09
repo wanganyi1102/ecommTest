@@ -11,7 +11,7 @@
         android:id="@+id/changePassBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:text="Change Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,21 +21,22 @@
         android:id="@+id/confirmChangePass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="328dp"
         android:text="Confirm"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/changePassBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/changePassBtn" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
 
     <EditText
         android:id="@+id/newPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="New Password"
         android:inputType="textPersonName"
-        android:text="New Password"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/oldPass"
@@ -46,9 +47,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Confirm Password"
         android:inputType="textPersonName"
-        android:text="Confirm Password"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,29 +62,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:ems="10"
+        android:hint="Old Password"
         android:inputType="textPersonName"
-        android:text="Old Password"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changePassBtn"
+        app:layout_constraintTop_toBottomOf="@+id/confirmChangePass"
         tools:visibility="gone" />
 
     <!--    <TextView-->
     <!--        android:id="@+id/textview1"-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="wrap_content"/>-->
-
-    <ImageButton
-        android:id="@+id/userBackBtn"
-        android:layout_width="48dp"
-        android:layout_height="50dp"
-        android:background="#00FFFFFF"
-        android:contentDescription="backButton"
-        android:scaleType="fitXY"
-        android:tint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -96,27 +86,16 @@
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_person_24"
         tools:srcCompat="@drawable/ic_baseline_person_24" />
-
-    <TextView
-        android:id="@+id/userProfileText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Profile"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/strUserName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="284dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toEndOf="@+id/StrUserName"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -139,6 +118,30 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/userBackBtn"
+        android:layout_width="48dp"
+        android:layout_height="50dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/backbutton"
+        android:scaleType="fitXY"
+        android:tint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/userProfileText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_profile"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

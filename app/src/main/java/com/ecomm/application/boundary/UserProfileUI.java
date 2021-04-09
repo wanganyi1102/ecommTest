@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +22,12 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class UserProfileUI extends AppCompatActivity {
 
@@ -50,6 +59,10 @@ public class UserProfileUI extends AppCompatActivity {
         TextView username;
         username = findViewById(R.id.strUserName2);
         username.setText(userEmail);
+
+
+        ImageView i = (ImageView)findViewById(R.id.imageView4);
+        Picasso.with(UserProfileUI.this).load("https://sg-test-11.slatic.net/p/04be23fdeb4f6f9455d40d9d71c32c13.jpg_200x200q90.jpg_.webp").into(i);
 
 
         //click button to change password, show the textboxes

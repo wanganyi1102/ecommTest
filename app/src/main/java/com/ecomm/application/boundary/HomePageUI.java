@@ -44,6 +44,15 @@ public class HomePageUI extends AppCompatActivity {
             }
         });
 
+        ImageButton profileBtn = (ImageButton) findViewById(R.id.profileBtn);
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profileIntent = new Intent(getApplicationContext(), UserProfileUI.class);
+                startActivity(profileIntent);
+            }
+        });
+
         //(test filter) click on filter button
         TextView filterSearchBtn = (TextView) findViewById(R.id.filterSearchBtn);
         filterSearchBtn.setOnClickListener(new View.OnClickListener() {
