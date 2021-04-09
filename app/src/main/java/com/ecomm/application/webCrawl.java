@@ -20,16 +20,25 @@ public class webCrawl {
     public void testSearch() throws InterruptedException, MalformedURLException, URISyntaxException {
 
         ArrayList<Product> productList1 = new ArrayList<Product>();
-        //productList1 = testLazadaSearch("chicken");
-        productList1 = testLazadaSearch();
+
+//        //no argument
+//        productList1 = testLazadaSearch();
+//        System.out.println("hello");
+//        System.out.println(productList1.get(0).getName());
+//        System.out.println("hello1");
+
+        //with argument
+        productList1 = testLazadaSearch("milo");
         System.out.println("hello");
         System.out.println(productList1.get(0).getName());
         System.out.println("hello1");
 
+
     }
     //@Test
     //public ArrayList<Product> testLazadaSearch(String query) throws InterruptedException, URISyntaxException, MalformedURLException {
-    public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+    //public ArrayList<Product> testLazadaSearch() throws InterruptedException, URISyntaxException, MalformedURLException {
+    public ArrayList<Product> testLazadaSearch(String query) throws InterruptedException, URISyntaxException, MalformedURLException {
         // Optional. If not specified, WebDriver searches the PATH for chromedriver.
         System.out.println(System.getProperty("user.dir"));
         System.out.println(System.getProperty("os.name"));
@@ -56,7 +65,7 @@ public class webCrawl {
 
         //find searchbar and send query
         WebElement searchBox = driver.findElement(By.name("q"));
-        searchBox.sendKeys("chicken");
+        searchBox.sendKeys((CharSequence) query);
         searchBox.submit();
 
 
