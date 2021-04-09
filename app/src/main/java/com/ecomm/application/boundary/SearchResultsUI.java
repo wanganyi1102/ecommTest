@@ -38,7 +38,7 @@ public class SearchResultsUI extends AppCompatActivity {
 
         //Set back button to activity
         super.onCreate(savedInstanceState);
-        backHome = findViewById(R.id.backHome);
+        backHome = findViewById(R.id.toHome);
         backHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
