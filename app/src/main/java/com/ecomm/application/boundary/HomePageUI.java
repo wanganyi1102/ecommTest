@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
+import com.ecomm.application.webCrawl;
 
 
 import java.net.MalformedURLException;
@@ -63,12 +64,26 @@ public class HomePageUI extends AppCompatActivity {
             }
         });
 
+
+
         SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
         SearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if(query.isEmpty()){
                     System.out.println("Please enter search item");
+                }
+
+                webCrawl crawler = new webCrawl();
+                //String s = (String) searchView.getQuery();
+                try {
+                    crawler.testSearch();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
                 }
 
                 Intent searchIntent = new Intent(getApplicationContext(), SearchUI.class);
@@ -84,6 +99,10 @@ public class HomePageUI extends AppCompatActivity {
 
 
         });
+
+        //set textVIew in search as query
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
+
 
         // fake product to test other UIs
         ImageView mangoImageView = (ImageView) findViewById(R.id.mangoImageView);

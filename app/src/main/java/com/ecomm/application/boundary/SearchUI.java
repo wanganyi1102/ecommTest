@@ -53,16 +53,15 @@ public class SearchUI extends AppCompatActivity {
         TextView textView3 = (TextView) findViewById(R.id.textView3);
         TextView textView4 = (TextView) findViewById(R.id.textView4);
         TextView textView5 = (TextView) findViewById(R.id.textView5);
-        TextView textView6 = (TextView) findViewById(R.id.textView6);
-        TextView textView7 = (TextView) findViewById(R.id.textView7);
-        TextView textView8 = (TextView) findViewById(R.id.textView8);
-        TextView textView9 = (TextView) findViewById(R.id.textView9);
+
 
         SearchView searchView = (SearchView) findViewById(R.id.searchBar);
+
+        //textView2.setText(searchView.getQuery());
         /*
         ArrayList<Product> productList = new ArrayList<Product>();
 
-        webCrawl crawler = new webCrawl();
+
         try {
             productList = crawler.testLazadaSearch((String) searchView.getQuery());
             textView2.setText(productList.get(1).getName());
@@ -117,9 +116,5 @@ public class SearchUI extends AppCompatActivity {
 
 
     }
-
-
-
-
 
 }

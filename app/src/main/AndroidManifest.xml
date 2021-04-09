@@ -15,10 +15,10 @@
             android:label="@string/title_activity_search_u_i"
             android:theme="@style/Theme.HomePageTest.NoActionBar"></activity>
         <activity android:name=".boundary.ProductDisplayUI" />
-<!--        <activity-->
-<!--            android:name=".boundary.SearchResultsUI"-->
-<!--            android:label="@string/title_activity_search_results_u_i"-->
-<!--            android:theme="@style/Theme.HomePageTest.NoActionBar" />-->
+        <!--        <activity-->
+        <!--            android:name=".boundary.SearchResultsUI"-->
+        <!--            android:label="@string/title_activity_search_results_u_i"-->
+        <!--            android:theme="@style/Theme.HomePageTest.NoActionBar" />-->
         <activity android:name=".boundary.FilterUI" />
         <activity android:name=".boundary.RegisterUI" />
         <activity android:name=".boundary.PaymentUI" />

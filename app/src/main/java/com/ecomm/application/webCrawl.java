@@ -55,9 +55,9 @@ public class webCrawl {
 
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-extensions","--disable-popup-blocking","headless");  //delete headless to see/open chrome browser
+        final ChromeOptions headless = options.addArguments("disable-extensions", "--disable-popup-blocking", "headless");//delete headless to see/open chrome browser
         WebDriver driver = new ChromeDriver(options);
-//         WebDriver driver = new ChromeDriver();
+        /* WebDriver driver = new ChromeDriver(); */
         driver.get("https://www.lazada.sg");
 //        Thread.sleep(5000);  // Let the user actually see something!
 
