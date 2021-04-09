@@ -78,8 +78,8 @@ public class SearchResultsUI extends AppCompatActivity {
 
         System.out.println(productList.get(1).getPrice());
         System.out.println(productList.get(1).getName());
-        System.out.println(productList.get(1).getURL());
-        System.out.println(productList.get(1).getecommerceSite());
+        System.out.println(productList.get(1).getUrl());
+        System.out.println(productList.get(1).getEcommerceSite());
 
 
         //System.out.println(Arrays.toString(productList.toArray()));
