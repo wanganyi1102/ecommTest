@@ -16,6 +16,8 @@ import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
 
 
+import org.junit.Test;
+
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -24,10 +26,14 @@ import java.util.ArrayList;
 
 public class HomePageUI extends AppCompatActivity {
 
+    public static String s;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        s = "pudding";
 
         //get intent passed from loginUI
         if (getIntent().hasExtra("com.example.ACCOUNT")){
