@@ -10,6 +10,7 @@ import com.ecomm.application.webCrawl;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -56,6 +58,9 @@ public class SearchUI extends AppCompatActivity {
 
 
         SearchView searchView = (SearchView) findViewById(R.id.searchBar);
+
+        ImageView i = (ImageView)findViewById(R.id.imageView6);
+        Picasso.with(SearchUI.this).load("//laz-img-sg.alicdn.com/p/b3f0c6c404c45095ee74e8863b89b0db.jpg_720x720q80.jpg_.webp").into(i);
 
         //textView2.setText(searchView.getQuery());
         /*
