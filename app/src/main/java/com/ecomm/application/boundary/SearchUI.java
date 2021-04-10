@@ -55,14 +55,36 @@ public class SearchUI extends AppCompatActivity {
         TextView textView3 = (TextView) findViewById(R.id.textView3);
         TextView textView4 = (TextView) findViewById(R.id.textView4);
         TextView textView5 = (TextView) findViewById(R.id.textView5);
+        TextView textView6 = (TextView) findViewById(R.id.textView6);
+        TextView textView9 = (TextView) findViewById(R.id.textView9);
+        TextView textView10 = (TextView) findViewById(R.id.textView10);
+        TextView textView11 = (TextView) findViewById(R.id.textView11);
 
 
-        SearchView searchView = (SearchView) findViewById(R.id.searchBar);
+        textView2.setText("(2 Pack Bundle) MILO® Instant 3in1 ACTIV-GO 18 Sachets x 27g (Expires May 2022)");
+        textView3.setText("$13.00");
+        textView4.setText(" MILO Australian Recipe Powder Tin 1.25KG");
+        textView5.setText("$17.90");
+        textView6.setText("MILO Instant 3in1 ACTIVGO Sachet 18x27G (Expires May 2022)");
+        textView9.setText("$6.50");
+        textView10.setText("(Bundle of 2) MILO Australian Recipe Powder Refill 900G (Expires Feb 2022)");
+        textView11.setText("$25.00");
 
-        ImageView i = (ImageView)findViewById(R.id.imageView6);
-        Picasso.with(SearchUI.this).load("//laz-img-sg.alicdn.com/p/b3f0c6c404c45095ee74e8863b89b0db.jpg_720x720q80.jpg_.webp").into(i);
 
-        //textView2.setText(searchView.getQuery());
+
+
+        ImageView imageView6 = (ImageView)findViewById(R.id.imageView6);
+        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/514d199bc6acc8eceb1ce3ae992599ce.jpg_400x400q90.jpg_.webp").into(imageView6);
+
+        ImageView imageView7 = (ImageView)findViewById(R.id.imageView7);
+        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/067c568c3897e5b972963a421716e1e5.jpg_400x400q90.jpg_.webp").into(imageView6);
+
+        ImageView imageView8 = (ImageView)findViewById(R.id.imageView8);
+        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/c640737f7fb5b9fe309e006928e220cc.jpg_400x400q90.jpg_.webp").into(imageView6);
+
+        ImageView imageView9 = (ImageView)findViewById(R.id.imageView9);
+        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/3b4286a37cd08cf8de06215800ca8fc4.jpg_400x400q90.jpg_.webp").into(imageView6);
+
         /*
         ArrayList<Product> productList = new ArrayList<Product>();
 

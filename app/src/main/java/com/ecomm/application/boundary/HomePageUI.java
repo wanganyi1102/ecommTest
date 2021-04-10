@@ -74,17 +74,6 @@ public class HomePageUI extends AppCompatActivity {
                     System.out.println("Please enter search item");
                 }
 
-                webCrawl crawler = new webCrawl();
-                //String s = (String) searchView.getQuery();
-                try {
-                    crawler.testSearch();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
 
                 Intent searchIntent = new Intent(getApplicationContext(), SearchUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
@@ -104,7 +93,7 @@ public class HomePageUI extends AppCompatActivity {
         TextView textView2 = (TextView) findViewById(R.id.textView2);
 
 
-        // fake product to test other UIs
+            // fake product to test other UIs
         ImageView mangoImageView = (ImageView) findViewById(R.id.mangoImageView);
         mangoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
