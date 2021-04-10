@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Filter;
 import com.google.android.material.chip.Chip;
+
+import org.florescu.android.rangeseekbar.RangeSeekBar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,6 +63,22 @@ public class FilterUI extends AppCompatActivity {
             });
         }
 
+        //price seek bar
+        RangeSeekBar rangeSeekBar = (RangeSeekBar) findViewById(R.id.rangeSeekBar);
+        rangeSeekBar.setSelectedMaxValue(100);
+        rangeSeekBar.setSelectedMinValue(0);
+        rangeSeekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener() {
+            @Override
+            public void onRangeSeekBarValuesChanged(RangeSeekBar bar, Object minValue, Object maxValue) {
+                Number min_value = bar.getSelectedMinValue();
+                Number max_value = bar.getSelectedMaxValue();
+
+                int min = (int) min_value;
+                int max = (int) max_value;
+                Toast.makeText(getApplicationContext(), "Min="+min+"\n"+"Max="+max, Toast.LENGTH_LONG).show();
+            }
+        });
+
         //click reset button
         Button resetFilterBtn = (Button) findViewById(R.id.resetFilterBtn);
         resetFilterBtn.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +87,8 @@ public class FilterUI extends AppCompatActivity {
                 for(Chip chip : allChips){
                     chip.setChipBackgroundColorResource(R.color.grey); //changes all colours back to original
                     filterBy.clear();
+                    rangeSeekBar.setSelectedMinValue(0);
+                    rangeSeekBar.setSelectedMaxValue(100);
                 }
             }
         });
