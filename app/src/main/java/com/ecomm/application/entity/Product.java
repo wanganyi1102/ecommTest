@@ -13,8 +13,10 @@ public class Product implements Comparable, Serializable {
     private String description;
     private String ecommerceSite;
     private double rating;
+    private int sales;
     private double shippingFee;
     private String imageURL;
+    private String shipFrom;
 
     public Product(String name, float price, URL url, String ecommerceSite){
         this.name = name;
@@ -59,6 +61,8 @@ public class Product implements Comparable, Serializable {
         return this.rating;
     }
 
+    public int getSales(){ return sales;}
+
     public double getShippingFee() {
         return this.shippingFee;
     }
@@ -66,6 +70,8 @@ public class Product implements Comparable, Serializable {
     public String getImageURL() {
         return imageURL;
     }
+
+    public String getShipFrom(){ return shipFrom; }
 
     @Override
     public int compareTo(Object o) {
