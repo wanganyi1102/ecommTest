@@ -56,7 +56,7 @@ public class androiddrive extends AppCompatActivity {
 //        capabilities.setCapability("appActivity", "com.ecomm.application.boundary.HomePageUI");
         //        capabilities.setCapability("noReset", true);
 //        capabilities.setCapability("browserName", "chrome");
-        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities); //http://127.0.0.1:4723/wd/hub
 //        driver.get("https://www.amazon.com");
 //        driver.findElement(By.id("btn_setup")).click();
 //        Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -134,7 +134,6 @@ public class androiddrive extends AppCompatActivity {
 //        driver.get("http://www.google.co.in");
 
 //        WebElement element = driver.findElement(By.name("q"));
-
 
 //        element.sendKeys("Welcome");
 //
