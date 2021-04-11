@@ -87,8 +87,9 @@ public class ProductDisplayUI extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // not sure if this is the right code to pass the product object to shopping cart ui
-                Intent addItemToCart = new Intent(ProductDisplayUI.this, ProductDisplayUI.class);
-                addItemToCart.putExtra("price", product.getPrice());
+                //Intent addItemToCart = new Intent(getApplicationContext(), ProductDisplayUI.class);
+                Intent addItemToCart = new Intent(getApplicationContext(), ShoppingCartUI.class);
+                addItemToCart.putExtra("price", product);
                 startActivity(addItemToCart);
             }
         });

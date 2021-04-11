@@ -6,12 +6,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.ecomm.application.R;
 import com.ecomm.application.control.CartListAdapter;
+import com.ecomm.application.entity.Product;
+
+import java.util.ArrayList;
 
 public class ShoppingCartUI extends AppCompatActivity {
 
@@ -20,11 +24,24 @@ public class ShoppingCartUI extends AppCompatActivity {
     CartListAdapter cartListAdapter;
     public static int total=0;
     String jsonCartList;
+    public static final ArrayList<Product> productsInCart = new ArrayList<Product>();
+    ArrayList<String> titles = new ArrayList<>();
+    ArrayList<String> imageURLs = new ArrayList<>();
+    ArrayList<String> ratings = new ArrayList<>();
+    ArrayList<String> prices = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart_u_i);
+
+        if(getIntent().hasExtra("price")){
+            Product product = (Product) getIntent().getSerializableExtra("price");
+            productsInCart.add(product);
+            System.out.println(product.getName());
+        }
+
+        initImageBitmaps();
 
         //Set button to payment
         Button paymentBtn = (Button) findViewById(R.id.btn_check_out);
@@ -112,5 +129,22 @@ public class ShoppingCartUI extends AppCompatActivity {
 //
 //
 //    }
+
+    private void initImageBitmaps(){
+        for(Product p : productsInCart){
+            titles.add(p.getName());
+            imageURLs.add(p.getImageURL());
+            ratings.add(p.getRating()+"");
+            prices.add(p.getPrice()+"");
+        }
+        initRecyclerView();
+    }
+
+    private void initRecyclerView(){
+        RecyclerView cartRecyclerView = findViewById(R.id.cartRecyclerView);
+        CartListAdapter adapter = new CartListAdapter(titles, imageURLs, ratings, prices, this);
+        cartRecyclerView.setAdapter(adapter);
+        cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
 
 }
