@@ -24,7 +24,6 @@
         android:id="@+id/backToHome2"
         android:layout_width="54dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/layout_total"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="4dp"
@@ -63,13 +62,13 @@
         tools:visibility="visible" />
 
     <ScrollView
-        android:layout_width="516dp"
-        android:layout_height="738dp"
+        android:layout_width="410dp"
+        android:layout_height="670dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout

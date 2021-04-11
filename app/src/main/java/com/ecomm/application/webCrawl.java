@@ -5,6 +5,7 @@ import com.ecomm.application.entity.Product;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.android.AndroidDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.*;
 
@@ -51,13 +52,15 @@ public class webCrawl {
             System.setProperty("webdriver.chrome.driver", "src/main/java/com/ecomm/application/chromedriver");
         } else if (OS.indexOf("win") >= 0){
             System.setProperty("webdriver.chrome.driver", "C:\\Users\\Anyi\\WebCrawl\\src\\chromedriver.exe"); //change path
+        } else if (OS.contains("nix") || OS.contains("nux")){
+            System.setProperty("webdriver.chrome.driver", "src/main/java/com/ecomm/application/chromedriver");
         }
 
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-extensions","--disable-popup-blocking","headless");  //delete headless to see/open chrome browser
+        final ChromeOptions headless = options.addArguments("disable-extensions", "--disable-popup-blocking", "headless");//delete headless to see/open chrome browser
         WebDriver driver = new ChromeDriver(options);
-//         WebDriver driver = new ChromeDriver();
+        /* WebDriver driver = new ChromeDriver(); */
         driver.get("https://www.lazada.sg");
 //        Thread.sleep(5000);  // Let the user actually see something!
 
@@ -75,7 +78,9 @@ public class webCrawl {
         List<WebElement> item_titles = driver.findElements(By.className("c16H9d"));
         List<WebElement> item_prices = driver.findElements(By.className("c13VH6"));
         List<WebElement> item_urls = driver.findElements(By.className("c16H9d"));
-        List<WebElement> item_imgs = driver.findElements(By.xpath("c1ZEkM"));
+//        List<WebElement> item_imgs = driver.findElements(By.className("cRjKsc")); //c1ZEkM
+        List<WebElement> item_imgs = driver.findElements(By.className("c1ZEkM")); //c1ZEkM
+        List<WebElement> links=driver.findElements(By.tagName("img"));
 
         String [] titles_list =new String[item_titles.size()];
         String [] prices_list =new String[item_prices.size()];
@@ -99,11 +104,13 @@ public class webCrawl {
             k++;
         }
 
-        for(WebElement a: item_imgs) {    //convert to string []
-            //img_list[l]=a.getAttribute("src");
+//        for(WebElement a: item_imgs) {    //convert to string []
+        for(WebElement a: links) {    //convert to string []
+            img_list[l]=a.getAttribute("src");
             System.out.println(a.getAttribute("src"));
-            //img_list[l]=a.findElement(By.cssSelector("a")).getAttribute("src");
+//            img_list[l]=a.findElement(By.cssSelector("a")).getAttribute("src");
             //System.out.println(a.findElement(By.cssSelector("a")).findElement(By.className("c1ZEkM")).getText());
+            System.out.println(img_list[l]);
             l++;
         }
 

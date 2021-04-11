@@ -14,7 +14,10 @@ import android.widget.TextView;
 
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
+import com.ecomm.application.webCrawl;
 
+
+import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -24,10 +27,14 @@ import java.util.ArrayList;
 
 public class HomePageUI extends AppCompatActivity {
 
+    public static String s;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        s = "pudding";
 
         //get intent passed from loginUI
         if (getIntent().hasExtra("com.example.ACCOUNT")){
@@ -63,6 +70,8 @@ public class HomePageUI extends AppCompatActivity {
             }
         });
 
+
+
         SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
         SearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -70,6 +79,7 @@ public class HomePageUI extends AppCompatActivity {
                 if(query.isEmpty()){
                     System.out.println("Please enter search item");
                 }
+
 
                 Intent searchIntent = new Intent(getApplicationContext(), SearchUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
@@ -85,7 +95,11 @@ public class HomePageUI extends AppCompatActivity {
 
         });
 
-        // fake product to test other UIs
+        //set textVIew in search as query
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
+
+
+            // fake product to test other UIs
         ImageView mangoImageView = (ImageView) findViewById(R.id.mangoImageView);
         mangoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
