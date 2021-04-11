@@ -77,13 +77,13 @@ public class SearchUI extends AppCompatActivity {
         Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/514d199bc6acc8eceb1ce3ae992599ce.jpg_400x400q90.jpg_.webp").into(imageView6);
 
         ImageView imageView7 = (ImageView)findViewById(R.id.imageView7);
-        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/067c568c3897e5b972963a421716e1e5.jpg_400x400q90.jpg_.webp").into(imageView6);
+        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/067c568c3897e5b972963a421716e1e5.jpg_400x400q90.jpg_.webp").into(imageView7);
 
         ImageView imageView8 = (ImageView)findViewById(R.id.imageView8);
-        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/c640737f7fb5b9fe309e006928e220cc.jpg_400x400q90.jpg_.webp").into(imageView6);
+        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/c640737f7fb5b9fe309e006928e220cc.jpg_400x400q90.jpg_.webp").into(imageView8);
 
         ImageView imageView9 = (ImageView)findViewById(R.id.imageView9);
-        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/3b4286a37cd08cf8de06215800ca8fc4.jpg_400x400q90.jpg_.webp").into(imageView6);
+        Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/3b4286a37cd08cf8de06215800ca8fc4.jpg_400x400q90.jpg_.webp").into(imageView9);
 
         /*
         ArrayList<Product> productList = new ArrayList<Product>();
