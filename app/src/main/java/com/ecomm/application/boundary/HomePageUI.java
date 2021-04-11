@@ -106,7 +106,7 @@ public class HomePageUI extends AppCompatActivity {
 
                 Product mango = new Product("mango", 2.50, mangoURL,
                         "Keo Romeat mango from Cambodia which is also known as the Goldstar mango locally, have a golden yellow color peel when ripen. It as a balanced sweet flavor with a bright orange flesh that consist of minimum fiber allowing it to have a smooth texture.",
-                        "Lazada", 4.3, 3.9, "https://sg-test-11.slatic.net/p/b8375ca4a12d1937e2954a31955881ba.jpg_100x100q90.jpg_.webp"); //_400x400q90.jpg_.webp
+                        "Lazada", 4.4, 3.9, "https://sg-test-11.slatic.net/p/b8375ca4a12d1937e2954a31955881ba.jpg_100x100q90.jpg_.webp"); //_400x400q90.jpg_.webp
 
                 Intent displayProductDetail = new Intent(getApplicationContext(), ProductDisplayUI.class);
                 displayProductDetail.putExtra("com.ecomm.application.PRODUCT_INFO", mango);

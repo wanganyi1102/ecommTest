@@ -16,6 +16,8 @@ import com.ecomm.application.entity.Product;
 import com.example.homepagetest.ShoppingCart;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.io.InputStream;
 import java.io.Serializable;
 import java.net.URL;
@@ -24,16 +26,6 @@ import java.util.ArrayList;
 public class ProductDisplayUI extends AppCompatActivity {
 
     private Product product;
-
-    public static Drawable LoadImageFromWebOperations(String url) {
-        try {
-            InputStream is = (InputStream) new URL(url).getContent();
-            Drawable d = Drawable.createFromStream(is, "src name");
-            return d;
-        } catch (Exception e) {
-            return null;
-        }
-    }
 
 
     @Override
@@ -45,9 +37,13 @@ public class ProductDisplayUI extends AppCompatActivity {
             product = (Product) getIntent().getSerializableExtra("com.ecomm.application.PRODUCT_INFO");  //Extras("com.ecomm.application.PRODUCT_INFO", mango);
         }
 
+        //set title to product title
+        TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
+        titleTextView.setText(product.getName());
+
         //set description to product description
         TextView descriptionTextView = (TextView) findViewById(R.id.descriptionTextView);
-        descriptionTextView.setText("Product description: " + "\n \n" + product.getDescription());
+        descriptionTextView.setText(product.getDescription());
 
         //set price to product price
         TextView priceTextView = (TextView) findViewById(R.id.priceTextView);
@@ -58,6 +54,10 @@ public class ProductDisplayUI extends AppCompatActivity {
         ImageView productImage = (ImageView) findViewById(R.id.productImage);
         //productImage.setImageDrawable(LoadImageFromWebOperations(imageURL));
         Picasso.with(ProductDisplayUI.this).load(imageURL).into(productImage);
+
+        //set rating to product rating
+        TextView rating = (TextView) findViewById(R.id.rating);
+        rating.setText(product.getRating()+ "");
 
         //set site icon
         ImageView siteIcon = (ImageView) findViewById(R.id.siteIcon);
