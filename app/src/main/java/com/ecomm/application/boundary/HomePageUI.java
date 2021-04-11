@@ -71,7 +71,8 @@ public class HomePageUI extends AppCompatActivity {
         });
 
 
-
+        webCrawl wc = new webCrawl();
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
         SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
         SearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -80,12 +81,12 @@ public class HomePageUI extends AppCompatActivity {
                     System.out.println("Please enter search item");
                 }
 
-
                 Intent searchIntent = new Intent(getApplicationContext(), SearchUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
                 startActivity(searchIntent);
                 return false;
             }
+
 
             @Override
             public boolean onQueryTextChange(String newText) {
@@ -95,8 +96,6 @@ public class HomePageUI extends AppCompatActivity {
 
         });
 
-        //set textVIew in search as query
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
 
 
             // fake product to test other UIs
