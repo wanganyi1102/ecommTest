@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
 import com.ecomm.application.R;
+import com.ecomm.application.entity.Product;
 
 public class PaymentUI extends AppCompatActivity implements OnItemSelectedListener {
 
@@ -40,6 +43,15 @@ public class PaymentUI extends AppCompatActivity implements OnItemSelectedListen
             }
         });
 
+        Button btn = (Button) findViewById(R.id.button5);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backHomeIntent = new Intent(getApplicationContext(), HomePageUI.class);
+                startActivity(backHomeIntent);
+            }
+        });
+
         //get the spinner from the xml.
         Spinner dropdown = findViewById(R.id.spinner);
 //create a list of items for the spinner.
@@ -54,6 +66,22 @@ public class PaymentUI extends AppCompatActivity implements OnItemSelectedListen
         String[] items2 = new String[]{"Address 1", "Address 2", "Address 3"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items2);
         dropdown2.setAdapter(adapter2);
+
+        String text = "Item    Quantity    Price\n";
+        double total = 0;
+        for(Product p : ShoppingCartUI.selectedProducts){
+            text=text+p.getName()+"      "+p.getQuantity()+"        "+p.getPrice()+"\n";
+            total += p.getPrice();
+        }
+            text+="\n\nTotal: "+total;
+        TextView tv1 = (TextView)findViewById(R.id.textView15);
+        tv1.setText(text);
+
+
+
+
+
+
     }
 
 }

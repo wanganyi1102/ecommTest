@@ -60,7 +60,6 @@
                         android:layout_height="26dp"
                         android:layout_weight="0"
                         android:background="#00FFFFFF"
-                        android:onClick="decrease"
                         card_view:srcCompat="@drawable/ic_minus" />
 
                     <TextView
@@ -81,7 +80,6 @@
                         android:layout_height="26dp"
                         android:layout_weight="0"
                         android:background="#00FFFFFF"
-                        android:onClick="increase"
                         card_view:srcCompat="@drawable/ic_plus" />
 
                     <TextView

@@ -109,6 +109,7 @@ public class HomePageUI extends AppCompatActivity {
                 }
 
                 q = SearchBar.getQuery().toString();
+                System.out.println(q);
                 Intent searchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
                 searchIntent.putExtra("com.ecomm.application.PRODUCT_LIST", productsToDisplay);
