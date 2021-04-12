@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="422dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="2"
+            tools:itemCount="8"
             tools:listitem="@layout/search_item_1" />
 
 

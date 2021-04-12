@@ -131,7 +131,7 @@ public class webCrawl {
             Product p = new Product(titles_list[m], price, url, "Lazada");
             productList.add(p);
             //System.out.println(p.getPrice());
-            //System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
+            System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }
 
         return productList;
