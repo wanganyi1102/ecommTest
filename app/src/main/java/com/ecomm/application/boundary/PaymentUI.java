@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
+import com.ecomm.application.PaymentComplete;
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
 
@@ -44,11 +45,11 @@ public class PaymentUI extends AppCompatActivity implements OnItemSelectedListen
         });
 
         Button btn = (Button) findViewById(R.id.button5);
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backHomeIntent = new Intent(getApplicationContext(), HomePageUI.class);
-                startActivity(backHomeIntent);
+                Intent proceedIntent = new Intent(getApplicationContext(), PaymentComplete.class);
+                startActivity(proceedIntent);
             }
         });
 

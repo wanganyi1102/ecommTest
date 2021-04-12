@@ -114,4 +114,5 @@
     <string name="backbutton">backButton</string>
     <string name="user_profile">User Profile</string>
     <string name="title_activity_search_test_u_i">SearchTestUI</string>
+    <string name="title_activity_payment_complete">PaymentComplete</string>
 </resources>
