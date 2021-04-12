@@ -19,6 +19,12 @@
             android:text="Filter"
             android:layout_margin="8dp" />
 
+        <Button
+            android:id="@+id/fakeBtn"
+            android:layout_width="75dp"
+            android:layout_height="23dp"
+            android:text="Button" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchRecyclerView"
             android:layout_width="match_parent"

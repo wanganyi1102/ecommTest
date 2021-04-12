@@ -148,8 +148,8 @@ public class ShoppingCartUI extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView cartRecyclerView = findViewById(R.id.cartRecyclerView);
-        CartListAdapter adapter = new CartListAdapter(titles, imageURLs, prices, this);
-        cartRecyclerView.setAdapter(adapter);
+        //CartListAdapter adapter = new CartListAdapter(titles, imageURLs, prices, this);
+        //cartRecyclerView.setAdapter(adapter);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     };
 

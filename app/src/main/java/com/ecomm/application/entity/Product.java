@@ -38,6 +38,17 @@ public class Product implements Comparable, Serializable {
         this.quantity = quantity;
     }
 
+    public Product(String name, double price, URL url, String description, String ecommerceSite, double rating, double shippingFee, String imageURL){
+        this.name = name;
+        this.price = price;
+        this.url = url;
+        this.description = description;
+        this.ecommerceSite = ecommerceSite;
+        this.rating = rating;
+        this.shippingFee = shippingFee;
+        this.imageURL = imageURL;
+    }
+
     //getters
     public String getName(){
         return this.name;

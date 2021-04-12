@@ -32,6 +32,11 @@ public class FilterUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_u_i);
 
+        //pass in arraylist to be displayed
+        if(getIntent().hasExtra("productlist")){
+            prodList = (ArrayList<Product>) getIntent().getSerializableExtra("productlist");
+        }
+
         //click on back button
         Button backBtn = (Button) findViewById(R.id.BackBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -115,8 +120,14 @@ public class FilterUI extends AppCompatActivity {
 //                    System.out.println(s);
 //                }
                 filter.setFilterBy(filterBy); //pass selected filters to filter control
-                prodList = filter.filterPriceRange(prodList);
+                //prodList = filter.filterPriceRange(prodList);
                 prodList = filter.performFilter(filterBy, prodList);
+                for(Product p: prodList){
+                    System.out.println(p.getPrice()+"");
+                }
+                Intent displayFilteredResults = new Intent(getApplicationContext(), SearchTestUI.class);
+                displayFilteredResults.putExtra("com.ecomm.application.PRODUCT_LIST", prodList);
+                startActivity(displayFilteredResults);
             }
         });
 

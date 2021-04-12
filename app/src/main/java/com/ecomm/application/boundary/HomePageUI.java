@@ -91,10 +91,10 @@ public class HomePageUI extends AppCompatActivity {
         filterSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent testListView = new Intent(getApplicationContext(), SearchTestUI.class);
-                startActivity(testListView);
-//                Intent filterIntent = new Intent(getApplicationContext(), FilterUI.class);
-//                startActivity(filterIntent);
+//                Intent testListView = new Intent(getApplicationContext(), SearchTestUI.class);
+//                startActivity(testListView);
+                Intent filterIntent = new Intent(getApplicationContext(), FilterUI.class);
+                startActivity(filterIntent);
             }
         });
 
@@ -124,7 +124,6 @@ public class HomePageUI extends AppCompatActivity {
 
 
         });
-
 
 
             // fake product to test other UIs

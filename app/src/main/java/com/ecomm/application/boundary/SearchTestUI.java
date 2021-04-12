@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -59,7 +60,6 @@ public class SearchTestUI extends AppCompatActivity {
         startActivity(displayProduct);
     }
 
-    TextView Filter = (TextView) findViewById(R.id.filterText);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +81,25 @@ public class SearchTestUI extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        TextView filterText = (TextView) findViewById(R.id.filterText);
+        filterText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent filterIntent = new Intent(getApplicationContext(), FilterUI.class);
+                filterIntent.putExtra("productlist", productsToDisplay);
+                startActivity(filterIntent);
+            }
+        });
+
+        Button fakeButton = (Button) findViewById(R.id.fakeBtn);
+        fakeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent displayFake = new Intent(getApplicationContext(), ProductDisplayUI.class);
+                displayFake.putExtra("com.ecomm.application.PRODUCT_INFO", productsToDisplay.get(0));
+                startActivity(displayFake);
+            }
+        });
 //        URI uri = null;
 //        try {
 //            uri = new URI("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
