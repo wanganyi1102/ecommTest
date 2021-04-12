@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class HomePageUI extends AppCompatActivity {
 
     public static String s;
+    public static String q = new String();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class HomePageUI extends AppCompatActivity {
         });
 
 
-        webCrawl wc = new webCrawl();
+
         TextView textView2 = (TextView) findViewById(R.id.textView2);
         SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
         SearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -83,7 +84,8 @@ public class HomePageUI extends AppCompatActivity {
                     System.out.println("Please enter search item");
                 }
 
-                Intent searchIntent = new Intent(getApplicationContext(), SearchUI.class);
+                q = SearchBar.getQuery().toString();
+                Intent searchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
                 startActivity(searchIntent);
                 return false;
@@ -164,7 +166,7 @@ public class HomePageUI extends AppCompatActivity {
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openSearchIntent = new Intent(getApplicationContext(), SearchUI.class);
+                Intent openSearchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
                 startActivity(openSearchIntent);
             }
         });

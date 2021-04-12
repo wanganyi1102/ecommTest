@@ -17,9 +17,13 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.ecomm.application.R;
 
+import org.junit.Test;
+
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -27,17 +31,35 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import static com.ecomm.application.boundary.HomePageUI.q;
+
 public class SearchTestUI extends AppCompatActivity {
 
     private ArrayList<String> pTitles = new ArrayList<>();
     private ArrayList<String> pImages = new ArrayList<>();
     private ArrayList<String> pPrices = new ArrayList<>();
 
+    public static ArrayList<Product> productList = new ArrayList<Product>();
+    androiddrive2 ad = new androiddrive2();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_test_u_i);
-        initImageBitmaps();
+        try {
+            initImageBitmaps();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+
+
+
 //        URI uri = null;
 //        try {
 //            uri = new URI("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
@@ -75,18 +97,32 @@ public class SearchTestUI extends AppCompatActivity {
 //        itemsRecycler.setAdapter(itemAdapter);
     }
 
-    private void initImageBitmaps(){
-        pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
-        pTitles.add("mango");
-        pPrices.add("$2.50");
 
-        pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
-        pTitles.add("apple");
-        pPrices.add("$2.10");
+    public void initImageBitmaps() throws InterruptedException, IOException, URISyntaxException {
+
+        productList = ad.goingqoo(q);
+        System.out.println(productList.get(1));
+
+        for(Product p : productList){
+
+            pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
+            pTitles.add(p.getName());
+            pPrices.add(p.getPrice()+"");
+//            ratings.add(p.getRating()+"");
+//            prices.add(p.getPrice()+"");
+        }
+//        pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
+//        pTitles.add("mango");
+//        pPrices.add("$2.50");
+//
+//        pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
+//        pTitles.add("apple");
+//        pPrices.add("$2.10");
 
         initRecyclerView();
     }
-    
+
+
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.searchRecyclerView);
         ItemAdapter adapter = new ItemAdapter(pImages, pTitles, pPrices, this);

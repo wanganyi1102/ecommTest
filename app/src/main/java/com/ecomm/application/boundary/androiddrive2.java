@@ -40,6 +40,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class androiddrive2 extends AppCompatActivity {
     //    static WebDriver driver;
     @Test
+    public void testSearch() throws InterruptedException, IOException, URISyntaxException {
+
+        ArrayList<Product> productList1 = new ArrayList<Product>();
+
+        //with argument
+        productList1 = goingqoo("chicken");
+
+
+    }
+
+    @Test
 //    public static void main(String arr[]) throws MalformedURLException, InterruptedException
     public void going() throws InterruptedException, IOException, URISyntaxException
     {
@@ -164,8 +175,9 @@ public class androiddrive2 extends AppCompatActivity {
 //        driver.quit();
     }
 
-    @Test
-    public void goingqoo() throws InterruptedException, IOException, URISyntaxException {
+    //@Test
+    public ArrayList<Product> goingqoo(String q) throws InterruptedException, IOException, URISyntaxException {
+    //public void goingqoo() throws InterruptedException, IOException, URISyntaxException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "emulator-5554");
@@ -188,8 +200,8 @@ public class androiddrive2 extends AppCompatActivity {
 //        }
 
 
-        String query = "chicken";
-        String url_qoo = "https://www.qoo10.sg/s/" + query + "?keyword=" + query + "&keyword_auto_change=";
+        //String query = "chicken";
+        String url_qoo = "https://www.qoo10.sg/s/" + q + "?keyword=" + q + "&keyword_auto_change=";
         System.out.println(url_qoo);
 
 
@@ -269,7 +281,7 @@ public class androiddrive2 extends AppCompatActivity {
 
         ArrayList<Product> productList = new ArrayList<Product>();
 
-        for (int m = 0; m < item_titles.size(); m++) {
+        for (int m = 0; m < 8; m++) {
 
             float price = Float.parseFloat(prices_list[m].substring(2));
             URI uri = new URI(urls_list[m]);
@@ -277,11 +289,14 @@ public class androiddrive2 extends AppCompatActivity {
             Product p = new Product(titles_list[m], price, url, "qoo10");
             productList.add(p);
             //System.out.println(p.getPrice());
-            System.out.println(titles_list[m] + "\t" + price + "\t" + urls_list[m]);
+            //System.out.println(titles_list[m] + "\t" + price + "\t" + urls_list[m]);
         }
 
-
         driver.quit();
+        return productList;
+
 
     }
+
+
 }
