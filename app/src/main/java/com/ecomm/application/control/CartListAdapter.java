@@ -51,7 +51,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 //        this.ratings = ratings;
         this.prices = prices;
         this.context = context;
-    }
+}
 
     @NonNull
     @Override
