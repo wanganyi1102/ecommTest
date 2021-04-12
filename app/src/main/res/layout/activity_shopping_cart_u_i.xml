@@ -7,7 +7,6 @@
 
         <LinearLayout
             android:orientation="vertical"
-            tools:context=".views.CartFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -39,6 +38,7 @@
                 android:layout_margin="8dp"
                 android:text="Total: $ "
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
             <Button
                 android:id="@+id/btn_check_out"
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"

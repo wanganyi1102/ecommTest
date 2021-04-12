@@ -1,32 +1,22 @@
 package com.ecomm.application.control;
 
 import android.app.Activity;
-import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.ecomm.application.R;
-import com.ecomm.application.boundary.ItemAdapter;
-import com.ecomm.application.boundary.ProductDisplayUI;
-import com.ecomm.application.entity.Item;
-import com.ecomm.application.entity.Product;
-import com.google.android.gms.common.internal.ConnectionTelemetryConfiguration;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHolder> {
 
@@ -38,7 +28,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 
     ArrayList<String> titles = new ArrayList<>();
     ArrayList<String> imageURLs = new ArrayList<>();
-    ArrayList<String> ratings = new ArrayList<>();
+//    ArrayList<String> ratings = new ArrayList<>();
     ArrayList<String> prices = new ArrayList<>();
 
     public CartListAdapter(Activity context, List callListResponses)
@@ -49,10 +39,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     }
 
     //anyi
-    public CartListAdapter(ArrayList<String> titles, ArrayList<String> imageURLs, ArrayList<String> ratings, ArrayList<String> prices, Context context){
+    public CartListAdapter(ArrayList<String> titles, ArrayList<String> imageURLs, ArrayList<String> prices, Context context){
         this.titles = titles;
         this.imageURLs = imageURLs;
-        this.ratings = ratings;
+//        this.ratings = ratings;
         this.prices = prices;
         this.context = context;
     }
@@ -74,7 +64,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 
         Picasso.with(context).load(imageURLs.get(position)).into(holder.productImageView);
         holder.tv_name.setText(titles.get(position));
-        holder.tv_rate.setText(ratings.get(position));
+//        holder.tv_rate.setText(ratings.get(position));
         holder.tv_total.setText(prices.get(position));
     }
 
@@ -86,7 +76,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView productImageView;
         TextView tv_name;
-        TextView tv_rate;
+//        TextView tv_rate;
         TextView tv_total;
         LinearLayout parentLayout;
 
@@ -94,7 +84,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             super(itemView);
             productImageView = itemView.findViewById(R.id.productImageView);
             tv_name = itemView.findViewById(R.id.tv_name);
-            tv_rate = itemView.findViewById(R.id.tv_rate);
+//            tv_rate = itemView.findViewById(R.id.tv_rate);
             tv_total = itemView.findViewById(R.id.tv_total);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
@@ -157,6 +147,5 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 //
 //        }
 //    }
-
 
 }
