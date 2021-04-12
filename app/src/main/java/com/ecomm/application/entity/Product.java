@@ -3,7 +3,6 @@ package com.ecomm.application.entity;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.Comparator;
-import com.ecomm.application.entity.Product;
 import java.lang.Math;
 
 public class Product implements Comparable, Serializable {
@@ -17,15 +16,17 @@ public class Product implements Comparable, Serializable {
     private double shippingFee;
     private String imageURL;
     private String shipFrom;
+    private int quantity;
 
     public Product(String name, float price, URL url, String ecommerceSite){
         this.name = name;
         this.price = price;
         this.url = url;
         this.ecommerceSite = ecommerceSite;
+        this.quantity = 1;
     }
 
-    public Product(String name, double price, URL url, String description, String ecommerceSite, double rating, double shippingFee, String imageURL){
+    public Product(String name, double price, URL url, String description, String ecommerceSite, double rating, double shippingFee, String imageURL, int quantity){
         this.name = name;
         this.price = price;
         this.url = url;
@@ -34,6 +35,7 @@ public class Product implements Comparable, Serializable {
         this.rating = rating;
         this.shippingFee = shippingFee;
         this.imageURL = imageURL;
+        this.quantity = quantity;
     }
 
     //getters
@@ -72,6 +74,12 @@ public class Product implements Comparable, Serializable {
     }
 
     public String getShipFrom(){ return shipFrom; }
+
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
+    public int getQuantity(){return this.quantity;}
+
 
     @Override
     public int compareTo(Object o) {

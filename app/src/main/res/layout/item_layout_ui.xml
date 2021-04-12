@@ -64,7 +64,7 @@
                         card_view:srcCompat="@drawable/ic_minus" />
 
                     <TextView
-                        android:id="@+id/tv_rate"
+                        android:id="@+id/tv_qty"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.4"
