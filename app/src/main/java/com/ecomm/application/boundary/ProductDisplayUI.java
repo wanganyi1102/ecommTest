@@ -3,7 +3,6 @@ package com.ecomm.application.boundary;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,15 +12,7 @@ import android.widget.TextView;
 
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
-import com.example.homepagetest.ShoppingCart;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
-
-import java.io.InputStream;
-import java.io.Serializable;
-import java.net.URL;
-import java.util.ArrayList;
 
 public class ProductDisplayUI extends AppCompatActivity {
 
@@ -95,7 +86,7 @@ public class ProductDisplayUI extends AppCompatActivity {
         });
 
         //click on back button
-        Button backBtn = (Button) findViewById(R.id.backBtn);
+        Button backBtn = (Button) findViewById(R.id.backToHome);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

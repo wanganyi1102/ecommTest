@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ecomm.application.R;
@@ -50,6 +51,15 @@ public class ShoppingCartUI extends AppCompatActivity {
 
         orderTotalTextView =  (TextView) findViewById(R.id.orderTotalTextView);
 
+        //Set back button to activity
+        ImageButton backBtn = (ImageButton) findViewById(R.id.backToHome);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backHomeIntent = new Intent(getApplicationContext(), HomePageUI.class);
+                startActivity(backHomeIntent);
+            }
+        });
 
         //Set button to payment
         Button paymentBtn = (Button) findViewById(R.id.btn_check_out);
@@ -76,15 +86,7 @@ public class ShoppingCartUI extends AppCompatActivity {
 //
 //        calculateTotal();
     }
-//        //Set back button to activity
-//        ImageButton backBtn = (ImageButton) findViewById(R.id.backToHome);
-//        backBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent backHomeIntent = new Intent(getApplicationContext(), HomePageUI.class);
-//                startActivity(backHomeIntent);
-//            }
-//        });
+
 
 
 //    private void getIntentData(){
