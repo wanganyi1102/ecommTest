@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ecomm.application.R;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     ArrayList<String> imageURLs = new ArrayList<>();
 //    ArrayList<String> ratings = new ArrayList<>();
     ArrayList<String> prices = new ArrayList<>();
+    ArrayList<Integer> quantity = new ArrayList<>();
 
     public CartListAdapter(Activity context, List callListResponses)
     {
@@ -39,12 +41,13 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     }
 
     //anyi
-    public CartListAdapter(ArrayList<String> titles, ArrayList<String> imageURLs, ArrayList<String> prices, Context context){
+    public CartListAdapter(ArrayList<String> titles, ArrayList<String> imageURLs, ArrayList<String> prices, ArrayList<Integer> quantity, Context context){
         this.titles = titles;
         this.imageURLs = imageURLs;
 //        this.ratings = ratings;
         this.prices = prices;
         this.context = context;
+        this.quantity = quantity;
     }
 
     @NonNull
@@ -66,6 +69,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         holder.tv_name.setText(titles.get(position));
 //        holder.tv_rate.setText(ratings.get(position));
         holder.tv_total.setText(prices.get(position));
+        holder.tv_qty.setText(quantity.get(position).toString());
     }
 
     @Override
@@ -79,6 +83,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 //        TextView tv_rate;
         TextView tv_total;
         LinearLayout parentLayout;
+        TextView tv_qty;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,6 +92,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 //            tv_rate = itemView.findViewById(R.id.tv_rate);
             tv_total = itemView.findViewById(R.id.tv_total);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+            tv_qty = itemView.findViewById(R.id.tv_qty);
         }
     }
 
