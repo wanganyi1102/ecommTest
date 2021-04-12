@@ -72,7 +72,6 @@ public class SearchUI extends AppCompatActivity {
 
 
 
-
         ImageView imageView6 = (ImageView)findViewById(R.id.imageView6);
         Picasso.with(SearchUI.this).load("https://sg-test-11.slatic.net/p/514d199bc6acc8eceb1ce3ae992599ce.jpg_400x400q90.jpg_.webp").into(imageView6);
 

@@ -5,13 +5,17 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HomePageTest">
+        android:theme="@style/Theme.HomePageTest"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".PaymentComplete"
+            android:label="@string/title_activity_payment_complete"
+            android:theme="@style/Theme.HomePageTest.NoActionBar"></activity>
         <activity
             android:name=".boundary.SearchTestUI"
             android:label="@string/title_activity_search_test_u_i"

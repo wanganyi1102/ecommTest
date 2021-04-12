@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ecomm.application.R;
@@ -31,7 +30,6 @@ public class ShoppingCartUI extends AppCompatActivity {
     ArrayList<String> imageURLs = new ArrayList<>();
 //    ArrayList<String> ratings = new ArrayList<>();
     ArrayList<String> prices = new ArrayList<>();
-    ArrayList<Integer> quantity = new ArrayList<>();
     public static TextView orderTotalTextView;
     public static double total = 0.0;
 
@@ -50,16 +48,6 @@ public class ShoppingCartUI extends AppCompatActivity {
         initImageBitmaps();
 
         orderTotalTextView =  (TextView) findViewById(R.id.orderTotalTextView);
-
-        //Set back button to activity
-        ImageButton backBtn = (ImageButton) findViewById(R.id.backToHome);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent backHomeIntent = new Intent(getApplicationContext(), HomePageUI.class);
-                startActivity(backHomeIntent);
-            }
-        });
 
         //Set button to payment
         Button paymentBtn = (Button) findViewById(R.id.btn_check_out);
@@ -86,7 +74,15 @@ public class ShoppingCartUI extends AppCompatActivity {
 //
 //        calculateTotal();
     }
-
+//        //Set back button to activity
+//        ImageButton backBtn = (ImageButton) findViewById(R.id.backToHome);
+//        backBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent backHomeIntent = new Intent(getApplicationContext(), HomePageUI.class);
+//                startActivity(backHomeIntent);
+//            }
+//        });
 
 
 //    private void getIntentData(){
@@ -146,16 +142,14 @@ public class ShoppingCartUI extends AppCompatActivity {
             imageURLs.add(p.getImageURL());
 //            ratings.add(p.getRating()+"");
             prices.add(p.getPrice()+"");
-            quantity.add(p.getQuantity());
-
         }
         initRecyclerView();
     }
 
     private void initRecyclerView(){
         RecyclerView cartRecyclerView = findViewById(R.id.cartRecyclerView);
-        CartListAdapter adapter = new CartListAdapter(titles, imageURLs, prices, quantity, this);
-        cartRecyclerView.setAdapter(adapter);
+        //CartListAdapter adapter = new CartListAdapter(titles, imageURLs, prices, this);
+        //cartRecyclerView.setAdapter(adapter);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     };
 

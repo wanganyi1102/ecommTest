@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
 import com.ecomm.application.webCrawl;
+import com.squareup.picasso.Picasso;
 
 
 import org.junit.Test;
@@ -66,18 +67,41 @@ public class HomePageUI extends AppCompatActivity {
             }
         });
 
+        URI uri = null;
+        try {
+            uri = new URI("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        URL miloURL = null;
+        try {
+            miloURL = uri.toURL();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        //create fake products
+        Product milo1 = new Product("(2 Pack Bundle) MILO® Instant 3in1 ACTIV-GO 18 Sachets x 27g (Expires May 2022)", 13.0,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 2.0  , "https://sg-test-11.slatic.net/p/514d199bc6acc8eceb1ce3ae992599ce.jpg_100x100q90.jpg_.webp");
+        Product milo2 = new Product(" MILO Australian Recipe Powder Tin 1.25KG", 17.9,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 2.0 , "https://sg-test-11.slatic.net/p/067c568c3897e5b972963a421716e1e5.jpg_100x100q90.jpg_.webp");
+        Product milo3 = new Product("MILO Instant 3in1 ACTIVGO Sachet 18x27G (Expires May 2022)", 6.5,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 2.0 ,"https://sg-test-11.slatic.net/p/c640737f7fb5b9fe309e006928e220cc.jpg_100x100q90.jpg_.webp");
+        Product milo4 = new Product("(Bundle of 2) MILO Australian Recipe Powder Refill 900G (Expires Feb 2022)", 25.0,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 2.0 ,"https://sg-test-11.slatic.net/p/3b4286a37cd08cf8de06215800ca8fc4.jpg_100x100q90.jpg_.webp");
+        ArrayList<Product> productsToDisplay = new ArrayList<Product>();
+        productsToDisplay.add(milo1);
+        productsToDisplay.add(milo2);
+        productsToDisplay.add(milo3);
+        productsToDisplay.add(milo4);
+
         //(test filter) click on filter button
         TextView filterSearchBtn = (TextView) findViewById(R.id.filterSearchBtn);
         filterSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent testListView = new Intent(getApplicationContext(), SearchTestUI.class);
-                startActivity(testListView);
-//                Intent filterIntent = new Intent(getApplicationContext(), FilterUI.class);
-//                startActivity(filterIntent);
+//                Intent testListView = new Intent(getApplicationContext(), SearchTestUI.class);
+//                startActivity(testListView);
+                Intent filterIntent = new Intent(getApplicationContext(), FilterUI.class);
+                startActivity(filterIntent);
             }
         });
-
 
 
         TextView textView2 = (TextView) findViewById(R.id.textView2);
@@ -125,6 +149,7 @@ public class HomePageUI extends AppCompatActivity {
 
                 Intent searchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
+                searchIntent.putExtra("com.ecomm.application.PRODUCT_LIST", productsToDisplay);
                 startActivity(searchIntent);
                 return false;
             }
@@ -137,7 +162,6 @@ public class HomePageUI extends AppCompatActivity {
 
 
         });
-
 
 
             // fake product to test other UIs

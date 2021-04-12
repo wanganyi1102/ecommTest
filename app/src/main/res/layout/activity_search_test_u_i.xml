@@ -8,26 +8,30 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:id="@+id/filterText"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:text="Filter"
+            android:layout_margin="8dp" />
 
         <Button
-            android:id="@+id/buttonprod"
-            android:layout_width="259dp"
-            android:layout_height="wrap_content"
-            android:background="#000000"
-            android:text="Product Display"
-            android:textColor="#000000"
-            app:backgroundTint="#FFFFFF" />
+            android:id="@+id/fakeBtn"
+            android:layout_width="75dp"
+            android:layout_height="23dp"
+            android:text="Button" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="747dp"
+            android:layout_height="656dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="8"
             tools:listitem="@layout/search_item_1" />
-
-
 
 
     </LinearLayout>
