@@ -29,16 +29,14 @@ import java.util.ArrayList;
 
 public class SearchTestUI extends AppCompatActivity {
 
-    private static final String TAG = "SearchTestUI";
-
-    private ArrayList<String> mTitles = new ArrayList<>();
-    private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<String> pTitles = new ArrayList<>();
+    private ArrayList<String> pImages = new ArrayList<>();
+    private ArrayList<String> pPrices = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_test_u_i);
-        Log.d(TAG, "onCreate: started.");
         initImageBitmaps();
 //        URI uri = null;
 //        try {
@@ -78,20 +76,20 @@ public class SearchTestUI extends AppCompatActivity {
     }
 
     private void initImageBitmaps(){
-        Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
-        mImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
-        mTitles.add("mango");
+        pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
+        pTitles.add("mango");
+        pPrices.add("$2.50");
 
-        mImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
-        mTitles.add("apple");
+        pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
+        pTitles.add("apple");
+        pPrices.add("$2.10");
 
         initRecyclerView();
     }
     
     private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: initRecycler.");
-        RecyclerView recyclerView = findViewById(R.id.recyclerv_view);
-        ItemAdapter adapter = new ItemAdapter(mTitles, mImages, this);
+        RecyclerView recyclerView = findViewById(R.id.searchRecyclerView);
+        ItemAdapter adapter = new ItemAdapter(pImages, pTitles, pPrices, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

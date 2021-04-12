@@ -145,6 +145,6 @@ public class ShoppingCartUI extends AppCompatActivity {
         CartListAdapter adapter = new CartListAdapter(titles, imageURLs, ratings, prices, this);
         cartRecyclerView.setAdapter(adapter);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
+    };
 
 }
