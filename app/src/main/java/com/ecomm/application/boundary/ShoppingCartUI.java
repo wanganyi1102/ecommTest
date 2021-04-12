@@ -21,17 +21,17 @@ import java.util.ArrayList;
 public class ShoppingCartUI extends AppCompatActivity {
 
     RecyclerView recycler_itemlist;
-    public static TextView tv_total;
     CartListAdapter cartListAdapter;
-    public static int total=0;
     String jsonCartList;
 //    CheckBox itemCheckBox = (CheckBox)findViewById(R.id.chk_selectitem);
     public static final ArrayList<Product> productsInCart = new ArrayList<Product>();
+    public static final ArrayList<Product> selectedProducts = new ArrayList<Product>();
     ArrayList<String> titles = new ArrayList<>();
     ArrayList<String> imageURLs = new ArrayList<>();
 //    ArrayList<String> ratings = new ArrayList<>();
     ArrayList<String> prices = new ArrayList<>();
-    ArrayList<Integer> quantity = new ArrayList<>();
+    public static TextView orderTotalTextView;
+    public static double total = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,11 @@ public class ShoppingCartUI extends AppCompatActivity {
             System.out.println(product.getName());
         }
 
+        total = 0.0;
         initImageBitmaps();
+
+        orderTotalTextView =  (TextView) findViewById(R.id.orderTotalTextView);
+
 
         //Set button to payment
         Button paymentBtn = (Button) findViewById(R.id.btn_check_out);
@@ -55,8 +59,6 @@ public class ShoppingCartUI extends AppCompatActivity {
                 startActivity(paymentIntent);
             }
         });
-
-
 
 //        tv_total =(TextView) findViewById(R.id.orderTotalTextView);
 //
@@ -134,24 +136,23 @@ public class ShoppingCartUI extends AppCompatActivity {
 //
 //    }
 
+    //put product info into lists
     private void initImageBitmaps(){
         for(Product p : productsInCart){
             titles.add(p.getName());
             imageURLs.add(p.getImageURL());
 //            ratings.add(p.getRating()+"");
             prices.add(p.getPrice()+"");
-            quantity.add(p.getQuantity());
         }
         initRecyclerView();
     }
 
     private void initRecyclerView(){
         RecyclerView cartRecyclerView = findViewById(R.id.cartRecyclerView);
-        CartListAdapter adapter = new CartListAdapter(titles, imageURLs, prices, quantity, this);
+        CartListAdapter adapter = new CartListAdapter(titles, imageURLs, prices, this);
         cartRecyclerView.setAdapter(adapter);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     };
-
 
 
 }
