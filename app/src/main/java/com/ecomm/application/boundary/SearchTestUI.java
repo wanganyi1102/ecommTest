@@ -1,5 +1,6 @@
 package com.ecomm.application.boundary;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.ecomm.application.entity.Product;
@@ -18,6 +19,7 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.ecomm.application.R;
 
@@ -35,18 +37,40 @@ import static com.ecomm.application.boundary.HomePageUI.q;
 
 public class SearchTestUI extends AppCompatActivity {
 
+    private ArrayList<Product> productsToDisplay = new ArrayList<Product>();
     private ArrayList<String> pTitles = new ArrayList<>();
     private ArrayList<String> pImages = new ArrayList<>();
     private ArrayList<String> pPrices = new ArrayList<>();
 
     public static ArrayList<Product> productList = new ArrayList<Product>();
-    androiddrive2 ad = new androiddrive2();
+    public static int clickedposition;
+//    androiddrive2 ad = new androiddrive2();
 
+
+    public void setClickedposition(int clickedposition) {
+        SearchTestUI.clickedposition = clickedposition;
+        displayProductDet(clickedposition);
+    }
+
+    public void displayProductDet(int clickedposition){
+        Product productToOpen = productsToDisplay.get(clickedposition);
+        Intent displayProduct = new Intent(getApplicationContext(), ProductDisplayUI.class);
+        displayProduct.putExtra("productdeets", productToOpen);
+        startActivity(displayProduct);
+    }
+
+    TextView Filter = (TextView) findViewById(R.id.filterText);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_test_u_i);
+
+        //pass in arraylist to be displayed
+        if(getIntent().hasExtra("com.ecomm.application.PRODUCT_LIST")){
+            productsToDisplay = (ArrayList<Product>) getIntent().getSerializableExtra("com.ecomm.application.PRODUCT_LIST");
+        }
+
         try {
             initImageBitmaps();
         } catch (InterruptedException e) {
@@ -56,9 +80,6 @@ public class SearchTestUI extends AppCompatActivity {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-
-
-
 
 //        URI uri = null;
 //        try {
@@ -97,15 +118,13 @@ public class SearchTestUI extends AppCompatActivity {
 //        itemsRecycler.setAdapter(itemAdapter);
     }
 
-
     public void initImageBitmaps() throws InterruptedException, IOException, URISyntaxException {
 
-        productList = ad.goingqoo(q);
-        System.out.println(productList.get(1));
+//        productList = ad.goingqoo(q);
+//        System.out.println(productList.get(1));
 
-        for(Product p : productList){
-
-            pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
+        for(Product p : productsToDisplay){
+            pImages.add(p.getImageURL());
             pTitles.add(p.getName());
             pPrices.add(p.getPrice()+"");
 //            ratings.add(p.getRating()+"");

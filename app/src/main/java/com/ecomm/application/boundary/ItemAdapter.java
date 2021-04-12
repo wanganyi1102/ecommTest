@@ -1,6 +1,7 @@
 package com.ecomm.application.boundary;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,6 +66,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         Picasso.with(context).load(pImage.get(position)).into(holder.pImage);
         holder.pTitle.setText(pTitles.get(position));
         holder.pPrice.setText(pPrice.get(position));
+        holder.pImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //SearchTestUI.setClickedposition(position);
+            }
+        });
     }
 
     @Override

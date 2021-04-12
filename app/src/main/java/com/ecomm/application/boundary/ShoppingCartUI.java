@@ -49,7 +49,6 @@ public class ShoppingCartUI extends AppCompatActivity {
 
         orderTotalTextView =  (TextView) findViewById(R.id.orderTotalTextView);
 
-
         //Set button to payment
         Button paymentBtn = (Button) findViewById(R.id.btn_check_out);
         paymentBtn.setOnClickListener(new View.OnClickListener() {
