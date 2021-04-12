@@ -56,7 +56,7 @@ public class androiddrive extends AppCompatActivity {
 
 
         String url_lazada = "https://www.lazada.sg/catalog/?q=";
-        String query = "paper bag";
+        String query = "chicken";
         String replace = query.split(" ")[0];
         for(String a : query.split(" ")){
             if (a!=query.split(" ")[0]){
@@ -104,13 +104,14 @@ public class androiddrive extends AppCompatActivity {
 
         for(WebElement a: item_prices) {    //convert to string []
             prices_list[j]=a.getText();
+//            System.out.println(a.getText());
             j++;
         }
 
-        for(WebElement a: item_titles) {    //convert to string []
+        for(WebElement a: item_urls) {    //convert to string []
 //            urls_list[k]=a.getAttribute("href");
             urls_list[k]=a.findElement(By.cssSelector("a")).getAttribute("href");
-            System.out.println(k + urls_list[k]);
+//            System.out.println(k + urls_list[k]);
             k++;
         }
 
