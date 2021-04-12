@@ -10,13 +10,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <Button
+            android:id="@+id/buttonprod"
+            android:layout_width="259dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:text="Product Display"
+            android:textColor="#000000"
+            app:backgroundTint="#FFFFFF" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="422dp"
+            android:layout_height="747dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="8"
             tools:listitem="@layout/search_item_1" />
+
+
 
 
     </LinearLayout>
