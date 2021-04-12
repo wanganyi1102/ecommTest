@@ -113,4 +113,5 @@
     <string name="title_activity_search_u_i">ScrollingActivity</string>
     <string name="backbutton">backButton</string>
     <string name="user_profile">User Profile</string>
+    <string name="title_activity_search_test_u_i">SearchTestUI</string>
 </resources>

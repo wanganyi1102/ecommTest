@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Filter;
+import com.ecomm.application.entity.Product;
 import com.google.android.material.chip.Chip;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
@@ -18,7 +19,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FilterUI extends AppCompatActivity {
-    private ArrayList<String> filterBy = new ArrayList<>();
+    private Filter filter = new Filter();
+    private ArrayList<String> filterBy = new ArrayList<String>();
+    private ArrayList<Product> prodList = new ArrayList<Product>();
+
+    public void setProdList(ArrayList<Product> prodList){
+        this.prodList = prodList;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +51,17 @@ public class FilterUI extends AppCompatActivity {
         Chip relevanceAscending = (Chip) findViewById(R.id.relevanceAscending);
         Chip salesAscending = (Chip) findViewById(R.id.salesAscending);
         Chip salesDescending = (Chip) findViewById(R.id.salesDescending);
-        Chip shippingDomestic = (Chip) findViewById(R.id.shippingDomestic);
+        Chip shippingDomestic = (Chip) findViewById(R.id.shippingDomestic2);
         Chip shippingOverseas = (Chip) findViewById(R.id.shippingOverseas);
         Chip shippingFree = (Chip) findViewById(R.id.shippingFree);
+        Chip websiteLazada = (Chip) findViewById(R.id.Lazada);
+        Chip websiteQoo10 = (Chip) findViewById(R.id.qoo10);
+        Chip websiteOthers = (Chip) findViewById(R.id.others);
 
         ArrayList<Chip> allChips = new ArrayList<Chip>(Arrays.asList(priceAscending, priceDescending, ratingsAscending, ratingsDescending,
-                relevanceAscending, relevanceDescending, salesAscending, salesDescending, shippingDomestic, shippingOverseas, shippingFree));
+                relevanceAscending, relevanceDescending, salesAscending, salesDescending, shippingDomestic, shippingOverseas, shippingFree,
+                websiteLazada, websiteQoo10, websiteOthers));
+
         for(Chip chip : allChips){
             chip.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,9 +84,10 @@ public class FilterUI extends AppCompatActivity {
             public void onRangeSeekBarValuesChanged(RangeSeekBar bar, Object minValue, Object maxValue) {
                 Number min_value = bar.getSelectedMinValue();
                 Number max_value = bar.getSelectedMaxValue();
-
                 int min = (int) min_value;
                 int max = (int) max_value;
+                filter.setMinPrice(min);
+                filter.setMaxPrice(max);
                 Toast.makeText(getApplicationContext(), "Min="+min+"\n"+"Max="+max, Toast.LENGTH_LONG).show();
             }
         });
@@ -98,8 +111,12 @@ public class FilterUI extends AppCompatActivity {
         applyFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Filter filter = new Filter();
-                filter.setFilterBy(filterBy);//pass selected filters to filter control
+//                for(String s : filterBy){
+//                    System.out.println(s);
+//                }
+                filter.setFilterBy(filterBy); //pass selected filters to filter control
+                prodList = filter.filterPriceRange(prodList);
+                prodList = filter.performFilter(filterBy, prodList);
             }
         });
 

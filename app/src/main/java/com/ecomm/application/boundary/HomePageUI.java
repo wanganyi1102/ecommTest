@@ -65,6 +65,8 @@ public class HomePageUI extends AppCompatActivity {
         filterSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Intent testListView = new Intent(getApplicationContext(), SearchTestUI.class);
+//                startActivity(testListView);
                 Intent filterIntent = new Intent(getApplicationContext(), FilterUI.class);
                 startActivity(filterIntent);
             }
@@ -119,13 +121,43 @@ public class HomePageUI extends AppCompatActivity {
 
                 Product mango = new Product("mango", 2.50, mangoURL,
                         "Keo Romeat mango from Cambodia which is also known as the Goldstar mango locally, have a golden yellow color peel when ripen. It as a balanced sweet flavor with a bright orange flesh that consist of minimum fiber allowing it to have a smooth texture.",
-                        "Lazada", 4.3, 3.9, "https://sg-test-11.slatic.net/p/b8375ca4a12d1937e2954a31955881ba.jpg_100x100q90.jpg_.webp"); //_400x400q90.jpg_.webp
+                        "Lazada", 4.4, 3.9, "https://sg-test-11.slatic.net/p/b8375ca4a12d1937e2954a31955881ba.jpg_100x100q90.jpg_.webp");
 
                 Intent displayProductDetail = new Intent(getApplicationContext(), ProductDisplayUI.class);
                 displayProductDetail.putExtra("com.ecomm.application.PRODUCT_INFO", mango);
                 startActivity(displayProductDetail);
             }
         });
+
+
+            //another fake product
+            ImageView phone = (ImageView) findViewById(R.id.phone);
+            phone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    URI uri = null;
+                    try {
+                        uri = new URI("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
+                        //https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+                    URL mangoURL = null;
+                    try {
+                        mangoURL = uri.toURL();
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+
+                    Product phone = new Product("phone", 8.90, mangoURL,
+                            "Iphone 12 from Singtel. No charger included, no ipods included.",
+                            "Qoo10", 3.9, 10.5, "https://sg-test-11.slatic.net/p/e9592d365dbdaaaa27aa39edba680960.jpg_100x100q90.jpg_.webp");
+
+                    Intent displayProductDetail = new Intent(getApplicationContext(), ProductDisplayUI.class);
+                    displayProductDetail.putExtra("com.ecomm.application.PRODUCT_INFO", phone);
+                    startActivity(displayProductDetail);
+                }
+            });
 
         // test to check if button can open search xml
         Button test = (Button) findViewById(R.id.test);
