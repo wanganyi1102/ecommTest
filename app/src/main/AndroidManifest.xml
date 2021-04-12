@@ -14,7 +14,7 @@
         <activity
             android:name=".boundary.SearchTestUI"
             android:label="@string/title_activity_search_test_u_i"
-            android:theme="@style/Theme.HomePageTest.NoActionBar"></activity>
+            android:theme="@style/Theme.HomePageTest.NoActionBar" />
         <activity
             android:name=".boundary.SearchUI"
             android:label="@string/title_activity_search_u_i"
