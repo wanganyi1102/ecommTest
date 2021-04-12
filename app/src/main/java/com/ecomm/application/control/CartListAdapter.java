@@ -56,8 +56,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 }
 
 
-
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -73,7 +71,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 //        holder.tv_rate.setText(ratings.get(position));
         holder.tv_total.setText(prices.get(position));
         holder.tv_qty.setText(quantity.get(position).toString());
-
 
         holder.chk_selectitem.setOnClickListener(new View.OnClickListener() {
             @Override
