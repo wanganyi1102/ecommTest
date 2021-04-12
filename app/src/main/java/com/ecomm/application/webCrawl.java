@@ -76,10 +76,13 @@ public class webCrawl {
 
         // Thread.sleep(5000);  // Let the user actually see something!
         List<WebElement> item_titles = driver.findElements(By.className("c16H9d"));
-        List<WebElement> item_prices = driver.findElements(By.className("c13VH6"));
+//        List<WebElement> item_prices = driver.findElements(By.className("c13VH6"));
+        List<WebElement> item_prices = driver.findElements(By.cssSelector("span[class='c13VH6']"));
+//        List<WebElement> item_prices = driver.findElements(By.cssSelector("div[class='c3gUW0']"));
         List<WebElement> item_urls = driver.findElements(By.className("c16H9d"));
 //        List<WebElement> item_imgs = driver.findElements(By.className("cRjKsc")); //c1ZEkM
-        List<WebElement> item_imgs = driver.findElements(By.className("c1ZEkM")); //c1ZEkM
+//        List<WebElement> item_imgs = driver.findElements(By.className("c1ZEkM")); //c1ZEkM
+        List<WebElement> item_imgs = driver.findElements(By.cssSelector("img[class='c1ZEkM']")); //c1ZEkM
         List<WebElement> links=driver.findElements(By.tagName("img"));
 
         String [] titles_list =new String[item_titles.size()];
@@ -93,8 +96,10 @@ public class webCrawl {
             i++;
         }
 
+
         for(WebElement a: item_prices) {    //convert to string []
             prices_list[j]=a.getText();
+//            System.out.println(a.getText() + j );
             j++;
         }
 
@@ -104,13 +109,15 @@ public class webCrawl {
             k++;
         }
 
-//        for(WebElement a: item_imgs) {    //convert to string []
-        for(WebElement a: links) {    //convert to string []
+        System.out.println(item_imgs.size());
+        System.out.println(links.size());
+        for(WebElement a: item_imgs) {    //convert to string []
+//        for(WebElement a: links) {    //convert to string []
             img_list[l]=a.getAttribute("src");
             System.out.println(a.getAttribute("src"));
 //            img_list[l]=a.findElement(By.cssSelector("a")).getAttribute("src");
             //System.out.println(a.findElement(By.cssSelector("a")).findElement(By.className("c1ZEkM")).getText());
-            System.out.println(img_list[l]);
+//            System.out.println(img_list[l]);
             l++;
         }
 
