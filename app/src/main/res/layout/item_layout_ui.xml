@@ -54,16 +54,41 @@
                         android:textSize="13dp"
                         />
 
+                    <ImageButton
+                        android:id="@+id/minusBtn"
+                        android:layout_width="24dp"
+                        android:layout_height="26dp"
+                        android:layout_weight="0"
+                        android:background="#00FFFFFF"
+                        android:onClick="decrease"
+                        card_view:srcCompat="@drawable/ic_minus" />
+
                     <TextView
                         android:id="@+id/tv_rate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Rate"
+                        android:layout_weight="1.4"
+                        android:background="#D6D6D6"
+                        android:gravity="center_horizontal"
+                        android:text="1"
                         android:textAlignment="center"
-                        android:layout_weight="1.3"
-                        android:textSize="13dp"
-                        android:gravity="center_horizontal" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="13dp" />
+
+                    <ImageButton
+                        android:id="@+id/plusBtn"
+                        android:layout_width="25dp"
+                        android:layout_height="26dp"
+                        android:layout_weight="0"
+                        android:background="#00FFFFFF"
+                        android:onClick="increase"
+                        card_view:srcCompat="@drawable/ic_plus" />
+
+                    <TextView
+                        android:id="@+id/moneyTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$" />
 
                     <TextView
                         android:id="@+id/tv_total"
@@ -72,20 +97,21 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="2.5"
                         android:layout_toRightOf="@+id/tv_qty"
-                        android:textAlignment="center"
                         android:textSize="13dp"
-                        android:layout_weight="1.3"
-                        android:gravity="center_horizontal" />
+                        android:layout_weight="1.4"
+                        />
 
                     <CheckBox
                         android:id="@+id/chk_selectitem"
                         android:layout_width="309dp"
                         android:layout_height="81dp"
-                        android:layout_weight="1.2"
+                        android:layout_weight="1.1"
                         android:clickable="false" />
+
                 </LinearLayout>
 
             </LinearLayout>
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

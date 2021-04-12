@@ -20,9 +20,8 @@
         android:id="@+id/cartBtn"
         android:layout_width="102dp"
         android:layout_height="59dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/profileBtn"
         app:layout_constraintStart_toEndOf="@+id/homeBtn"
         app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
 
@@ -32,6 +31,7 @@
         android:layout_height="59dp"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/settingsBtn"
         app:layout_constraintStart_toEndOf="@+id/cartBtn"
         app:srcCompat="@drawable/ic_baseline_person_24" />
 
@@ -39,8 +39,6 @@
         android:id="@+id/settingsBtn"
         android:layout_width="103dp"
         android:layout_height="59dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -53,6 +51,7 @@
         android:layout_height="59dp"
         android:layout_marginTop="31dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cartBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="1.0"
@@ -114,8 +113,8 @@
         android:id="@+id/imageView"
         android:layout_width="134dp"
         android:layout_height="196dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
         android:layout_marginBottom="78dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,9 +123,9 @@
 
     <ImageView
         android:id="@+id/phone"
-        android:layout_width="134dp"
+        android:layout_width="0dp"
         android:layout_height="196dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="53dp"
         android:layout_marginBottom="92dp"
         app:layout_constraintBottom_toBottomOf="@+id/cartBtn"
         app:layout_constraintEnd_toStartOf="@+id/mangoImageView"
@@ -137,10 +136,8 @@
 
     <ImageView
         android:id="@+id/mangoImageView"
-        android:layout_width="134dp"
+        android:layout_width="130dp"
         android:layout_height="196dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
         android:layout_marginBottom="78dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,6 +149,7 @@
         android:layout_width="102dp"
         android:layout_height="93dp"
         android:layout_marginTop="75dp"
+        app:layout_constraintEnd_toStartOf="@+id/sportsBtn"
         app:layout_constraintStart_toEndOf="@+id/womensClothesBtn"
         app:layout_constraintTop_toBottomOf="@+id/searchBar"
         app:srcCompat="@drawable/ic_cat_2" />
@@ -161,6 +159,7 @@
         android:layout_width="103dp"
         android:layout_height="93dp"
         android:layout_marginTop="13dp"
+        app:layout_constraintEnd_toStartOf="@+id/mensClothesBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Categories"
         app:srcCompat="@drawable/ic_cat_1" />
@@ -170,15 +169,17 @@
         android:layout_width="102dp"
         android:layout_height="93dp"
         android:layout_marginTop="75dp"
+        app:layout_constraintEnd_toStartOf="@+id/foodBtn"
         app:layout_constraintStart_toEndOf="@+id/mensClothesBtn"
         app:layout_constraintTop_toBottomOf="@+id/searchBar"
         app:srcCompat="@drawable/ic_cat_3" />
 
     <ImageView
         android:id="@+id/foodBtn"
-        android:layout_width="103dp"
+        android:layout_width="105dp"
         android:layout_height="93dp"
         android:layout_marginTop="13dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sportsBtn"
         app:layout_constraintTop_toBottomOf="@+id/seeMoreCategoriesTextView"
         app:srcCompat="@drawable/ic_cat_4" />
@@ -188,6 +189,7 @@
         android:layout_width="102dp"
         android:layout_height="93dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/toysBtn"
         app:layout_constraintStart_toEndOf="@+id/computerBtn"
         app:layout_constraintTop_toBottomOf="@+id/sportsBtn"
         app:srcCompat="@drawable/ic_cat_7" />
@@ -197,15 +199,16 @@
         android:layout_width="102dp"
         android:layout_height="93dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/healthBtn"
         app:layout_constraintStart_toEndOf="@+id/homeLivingBtn"
         app:layout_constraintTop_toBottomOf="@+id/mensClothesBtn"
         app:srcCompat="@drawable/ic_cat_6" />
 
     <ImageView
         android:id="@+id/toysBtn"
-        android:layout_width="103dp"
+        android:layout_width="102dp"
         android:layout_height="93dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/healthBtn"
@@ -217,6 +220,7 @@
         android:layout_width="103dp"
         android:layout_height="93dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/computerBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/womensClothesBtn"
         app:srcCompat="@drawable/ic_cat_5" />

@@ -101,7 +101,6 @@ public class androiddrive extends AppCompatActivity {
             i++;
         }
 
-
         for(WebElement a: item_prices) {    //convert to string []
             prices_list[j]=a.getText();
 //            System.out.println(a.getText());
@@ -162,4 +161,82 @@ public class androiddrive extends AppCompatActivity {
 //        driver.findElement(By.id("password-element ")).click();
 //        driver.quit();
     }
+
+    @Test
+//    public static void main(String arr[]) throws MalformedURLException, InterruptedException
+    public void goingQoo10() throws InterruptedException, IOException, URISyntaxException{
+        DesiredCapabilities capabilities= new DesiredCapabilities();
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("deviceName", "emulator-5554");
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+        capabilities.setCapability(CapabilityType.VERSION, "10");
+        capabilities.setCapability("chromedriverUseSystemExecutable", true);
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--user-agent=Chrome/86.0.4240.198");
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+
+        String url_lazada = "https://www.qoo10.sg/s/";
+        String query = "chicken";
+        String replace = query.split(" ")[0];
+        for(String a : query.split(" ")){
+            if (a!=query.split(" ")[0]){
+                replace+="+"+a;
+            }
+        }
+
+        String combined_url = url_lazada + replace;
+        driver.get(combined_url);
+
+        Thread.sleep(20000); //10 sec
+
+        List<WebElement> item_titles = driver.findElements(By.className("div[class='sbj']")); //*[@id="g_689301886"]/td[2]/div/div[1]
+        List<WebElement> item_prices = driver.findElements(By.className("div[class='prc']"));
+        List<WebElement> item_urls = driver.findElements(By.className("div[class='sbj']"));
+//        List<WebElement> item_imgs = driver.findElements(By.className("div[class='c1ZEkM']"));
+//        List<WebElement> links=driver.findElements(By.tagName("img"));
+
+        String [] titles_list =new String[item_titles.size()];
+        String [] prices_list =new String[item_prices.size()];
+        String [] urls_list = new String[item_urls.size()];
+//        String [] img_list = new String[links.size()];
+        System.out.println(item_titles.size());
+
+        int i=0, j=0, k=0, l=0;
+        for(WebElement a: item_titles) {    //convert to string []
+            titles_list[i]=a.getText();
+            System.out.println(a.getText());
+            i++;
+        }
+
+        for(WebElement a: item_prices) {    //convert to string []
+            prices_list[j]=a.getText();
+            System.out.println(a.getText());
+            j++;
+        }
+
+        for(WebElement a: item_urls) {    //convert to string []
+//            urls_list[k]=a.getAttribute("href");
+            urls_list[k]=a.findElement(By.cssSelector("a")).getAttribute("href");
+            System.out.println(k + urls_list[k]);
+            k++;
+        }
+
+//        for(WebElement a: item_imgs) {    //convert to string []
+//        for(WebElement a: links) {    //convert to string []
+//            if (a.getAttribute("src").contains("sg-test-11")) {
+//                img_list[l] = a.getAttribute("src");
+////                System.out.println(a.getAttribute("src"));
+////            img_list[l]=a.findElement(By.cssSelector("a")).getAttribute("src");
+//                //System.out.println(a.findElement(By.cssSelector("a")).findElement(By.className("c1ZEkM")).getText());
+////            System.out.println(img_list[l]);
+//                l++;
+//            }
+//        }
+
+        driver.quit();
+        System.out.println("\n\n\n\n**********************");
+    }
+
+
 }

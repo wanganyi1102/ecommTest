@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.ecomm.application.R;
@@ -24,10 +25,11 @@ public class ShoppingCartUI extends AppCompatActivity {
     CartListAdapter cartListAdapter;
     public static int total=0;
     String jsonCartList;
+//    CheckBox itemCheckBox = (CheckBox)findViewById(R.id.chk_selectitem);
     public static final ArrayList<Product> productsInCart = new ArrayList<Product>();
     ArrayList<String> titles = new ArrayList<>();
     ArrayList<String> imageURLs = new ArrayList<>();
-    ArrayList<String> ratings = new ArrayList<>();
+//    ArrayList<String> ratings = new ArrayList<>();
     ArrayList<String> prices = new ArrayList<>();
 
     @Override
@@ -52,6 +54,7 @@ public class ShoppingCartUI extends AppCompatActivity {
                 startActivity(paymentIntent);
             }
         });
+
 
 
 //        tv_total =(TextView) findViewById(R.id.orderTotalTextView);
@@ -134,7 +137,7 @@ public class ShoppingCartUI extends AppCompatActivity {
         for(Product p : productsInCart){
             titles.add(p.getName());
             imageURLs.add(p.getImageURL());
-            ratings.add(p.getRating()+"");
+//            ratings.add(p.getRating()+"");
             prices.add(p.getPrice()+"");
         }
         initRecyclerView();
@@ -142,9 +145,11 @@ public class ShoppingCartUI extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView cartRecyclerView = findViewById(R.id.cartRecyclerView);
-        CartListAdapter adapter = new CartListAdapter(titles, imageURLs, ratings, prices, this);
+        CartListAdapter adapter = new CartListAdapter(titles, imageURLs, prices, this);
         cartRecyclerView.setAdapter(adapter);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
+    };
+
+
 
 }
