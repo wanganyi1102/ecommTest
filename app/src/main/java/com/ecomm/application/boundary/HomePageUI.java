@@ -18,6 +18,11 @@ import com.ecomm.application.webCrawl;
 
 
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -26,7 +31,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class HomePageUI extends AppCompatActivity {
-
+    public static ArrayList<Product> products;
     public static String s;
     public static String q = new String();
 
@@ -86,6 +91,38 @@ public class HomePageUI extends AppCompatActivity {
 
                 q = SearchBar.getQuery().toString();
                 System.out.println(q);
+
+                try {
+                    DesiredCapabilities capabilities= new DesiredCapabilities();
+                    capabilities.setCapability("platformName", "Android");
+                    capabilities.setCapability("deviceName", "emulator-5554");
+                    capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+                    capabilities.setCapability(CapabilityType.VERSION, "10");
+                    capabilities.setCapability("chromedriverUseSystemExecutable", true);
+                    capabilities.setCapability("automationName","UIAutomator2");
+                    capabilities.setCapability("version","10");
+                    capabilities.setCapability("adbExecTimeout", "30000");
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--user-agent=Chrome/86.0.4240.198");
+                    capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//            System.out.println("creating webdriver"); ///////////
+//            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+                    WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
+//            WebDriver driver = new RemoteWebDriver(capabilities);
+//            System.out.println("getting lazada");
+//            driver.get("https://www.lazada.sg");
+//            System.out.println("crawl");
+                    androiddrive crawl = new androiddrive();
+                    products = crawl.testLazadaSearch(driver, q);
+                    System.out.println(products.get(1).getName());
+                    System.out.println(products.get(1).getPrice());
+                    System.out.println(products.get(1).getUrl());
+                    System.out.println(products.get(1).getEcommerceSite());
+//            System.out.println("worked");
+                } catch (MalformedURLException | InterruptedException | URISyntaxException e){
+                    e.printStackTrace();
+                }
+
                 Intent searchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
                 startActivity(searchIntent);
