@@ -2,19 +2,26 @@ package com.ecomm.application.boundary;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.ecomm.application.entity.Product;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.exec.util.StringUtils;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,119 +33,120 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 //import io.appium.java_client.android.AndroidDriver;
 
 public class androiddrive extends AppCompatActivity {
-//    static WebDriver driver;
+    //    static WebDriver driver;
     @Test
 //    public static void main(String arr[]) throws MalformedURLException, InterruptedException
     public void going() throws InterruptedException, IOException, URISyntaxException
     {
-//        Map<String, String> mobileEmulation = new HashMap<>();
-//        mobileEmulation.put("deviceName", "Nexus 5");
-//        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
-//        chromeOptions.setCapability("androidPackage","com.android.chrome");
         DesiredCapabilities capabilities= new DesiredCapabilities();
-//        capabilities.setCapability("chromedriverUseSystemExecutable", "/Users/graceong/AndroidStudioProjects/ecommTest/app/src/main/java/com/ecomm/application/chromedriver");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "emulator-5554");
-//        capabilities.setCapability("androidPackage","com.android.chrome");
-//        capabilities.setCapability("version", "10");
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
         capabilities.setCapability(CapabilityType.VERSION, "10");
-//        capabilities.setCapability("appPackage", "com.google.android.apps.chrome");
-//        capabilities.setCapability("appActivity", "com.google.android.apps.chrome.Main");
         capabilities.setCapability("chromedriverUseSystemExecutable", true);
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--user-agent=Chrome/86.0.4240.198");
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
 
 
-//        capabilities.setCapability("appPackage", "com.ecomm.application");
-//        capabilities.setCapability("appActivity", "com.ecomm.application.boundary.HomePageUI");
-        //        capabilities.setCapability("noReset", true);
-//        capabilities.setCapability("browserName", "chrome");
-        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities); //http://127.0.0.1:4723/wd/hub
-//        driver.get("https://www.amazon.com");
-//        driver.findElement(By.id("btn_setup")).click();
-//        Intent intent = new Intent(Intent.ACTION_VIEW);
-//        Uri.parse("http://www.google.com");
-//        startActivity(intent);
-//        driver.get("http://www.google.com");
-//        System.out.println("Page title is: " + driver.getTitle());
-        driver.get("https://www.lazada.sg");
-//        Thread.sleep(5000);  // Let the user actually see something!
+        String url_lazada = "https://www.lazada.sg/catalog/?q=";
+        String query = "paper bag";
+        String replace = query.split(" ")[0];
+        for(String a : query.split(" ")){
+            if (a!=query.split(" ")[0]){
+                replace+="+"+a;
+            }
+        }
 
-        // String content = driver.getPageSource(); // Read page content
-        // System.out.println(content);  // Print the page content
+        String combined_url = url_lazada + replace;
+        driver.get(combined_url);
 
+//        WebDriverWait wait = new WebDriverWait(driver, 10);
+//        WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.name("q")));
+//        try {
+//            WebElement searchBox = driver.findElement(By.name("q"));
+//            searchBox.sendKeys("noodles" + Keys.ENTER);
+//            searchBox.submit();
+//        } catch (Exception e) {
+//            WebElement searchBox = null;
+//        }
 
-        //find searchbar and send query
-//        WebElement searchBox = driver.findElement(By.cssSelector("#q"));
-
-        WebElement searchBox = driver.findElement(By.cssSelector("#root > div > div.ant-row.c10-Cg > div.ant-col-24 > div > div.ant-col-20.ant-col-push-4.c1z9Ut > div.c1_t2i > div:nth-child(1) > div > div > div.c3KeDq > div.c16H9d"));
-        searchBox.sendKeys("noodles");
-        searchBox.submit();
-
+        Thread.sleep(20000); //10 sec
 
         // Thread.sleep(5000);  // Let the user actually see something!
-        List<WebElement> item_titles = driver.findElements(By.cssSelector("#root > div > div.c1Pean > div > div.c2bxk7.c1pRUd.c2CJAA > div:nth-child(1) > div:nth-child(1) > a > div.c2988Q > div.c1ZOjf"));
+//        List<WebElement> item_titles = driver.findElements(By.cssSelector("#root > div > div.ant-row.c10-Cg > div.ant-col-24 > div > div.ant-col-20.ant-col-push-4.c1z9Ut > div.c1_t2i > div:nth-child(1) > div > div > div.c3KeDq > div.c16H9d"));
+        List<WebElement> item_titles = driver.findElements(By.cssSelector("div[class='c16H9d']"));
+        List<WebElement> item_prices = driver.findElements(By.className("div[class='c13VH6']"));
+        List<WebElement> item_urls = driver.findElements(By.className("div[class='c16H9d']"));
+//        List<WebElement> item_imgs = driver.findElements(By.className("cRjKsc")); //c1ZEkM
+        List<WebElement> item_imgs = driver.findElements(By.className("div[class='c1ZEkM']")); //c1ZEkM
+        List<WebElement> links=driver.findElements(By.tagName("img"));
+//        List<WebElement> item_titles = driver.findElements(By.cssSelector("#root > div > div.ant-row.c10-Cg > div.ant-col-24 > div > div.ant-col-20.ant-col-push-4.c1z9Ut > div.c1_t2i > div:nth-child(7) > div > div > div.c3KeDq > div.c16H9d"));
         String [] titles_list =new String[item_titles.size()];
+        String [] prices_list =new String[item_prices.size()];
+        String [] urls_list = new String[item_urls.size()];
+        String [] img_list = new String[links.size()];
+        System.out.println(item_titles.size());
+
         int i=0, j=0, k=0, l=0;
         for(WebElement a: item_titles) {    //convert to string []
             titles_list[i]=a.getText();
-            System.out.println(a.getText());
+//            System.out.println(a.getText());
             i++;
         }
 
-        //        DesiredCapabilities capabilities= new DesiredCapabilities();
-////        capabilities.setCapability("deviceName", "Pixel 2 API 29");
-////        capabilities.setCapability("platformVersion", "platform-version");
-////        capabilities.setCapability("platformName", "platform-name");
-////        capabilities.setCapability("testdroid_username", "ville-veikko.helppi@bitbar.com");
-////        capabilities.setCapability("testdroid_device", "Pixel 2 API 29");
-////        capabilities.setCapability("testdroid_target", "chrome");
-////        capabilities.setCapability("testdroid_project", "Appium Chrome");
-////        capabilities.setCapability("testdroid_testrun", "TestRun 1");
-//        capabilities.setCapability("platformName", "Android");
-////        capabilities.setCapability("browserName", "chrome");
-//
-//
-//        capabilities.setCapability("appPackage", "com.ecomm.application");
-//        capabilities.setCapability("chromedriverUseSystemExecutable", "true");
-////        capabilities.setCapability("app", app.getAbsolutePath());
-//        String baseURL = "http://0.0.0.0:";
-//        String minorURL = "/wd/hub";
-//        String port = "4723";
-//        String appium_URL = "http://appium.testdroid.com/wd/hub";
-//        String screenshot_path = "/Users/graceong/Downloads";
 
-//        Process process = Runtime.getRuntime().exec("export PATH=\"${JAVA_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${PATH}");
-//        ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash","-c","pwd;export PATH=\"${JAVA_HOME}/bin:${ANDROID_SDK_ROOT}/tools:${ANDROID_SDK_ROOT}/platform-tools:${PATH}");
-//        ProcessBuilder processBuilder = new ProcessBuilder("export ANDROID_SDK_ROOT=/Users/graceong/Library/Android/sdk;" +
-//                "export JAVA_HOME=$(/usr/libexec/java_home);" +
-//                "export PATH=${JAVA_HOME}/bin:$PATH;" +
-//                "export PATH=${PATH}:${ANDROID_SDK_ROOT}/tools;" +
-//                "export PATH=${PATH}:${ANDROID_SDK_ROOT}/platforms-tools;" +
-//                "export PATH=${PATH}:${ANDROID_SDK_ROOT}/build-tools/27.0.1;" +
-//                "export PATH=${PATH}:${JAVA_HOME}");
-////        processBuilder.environment().put("ANDROID_HOME", "Users/graceong/Library/Android/sdk");
-//        processBuilder.environment().put("ANDROID_HOME", "/Applications/ADT/sdk");
-//        processBuilder.environment().put("PATH", "$PATH:$ANDROID_HOME/bin");
-//        processBuilder.environment().put("ANDROID_SDK_ROOT", "Users/graceong/Library/Android/sdk");
-//        processBuilder.start();
-//        WebDriver driver = new RemoteWebDriver(new URL(appium_URL), capabilities);
-//        WebDriver driver = new RemoteWebDriver(new URL(baseURL+port+minorURL), capabilities);
-////        WebDriver driver = new AndroidDriver();
-//        driver.get("https://bitbar.com/testing");
-//        WebElement elem = driver.findElement(By.xpath("//*[@id=\"menu\"]/ul/li[1]/a"));
-//        elem.click();
-//        driver.get("http://www.google.co.in");
+        for(WebElement a: item_prices) {    //convert to string []
+            prices_list[j]=a.getText();
+            j++;
+        }
 
-//        WebElement element = driver.findElement(By.name("q"));
+        for(WebElement a: item_titles) {    //convert to string []
+//            urls_list[k]=a.getAttribute("href");
+            urls_list[k]=a.findElement(By.cssSelector("a")).getAttribute("href");
+            System.out.println(k + urls_list[k]);
+            k++;
+        }
 
-//        element.sendKeys("Welcome");
-//
-//        element.submit();
-//        System.out.println("Page title is: " + driver.getTitle());
+//        for(WebElement a: item_imgs) {    //convert to string []
+        for(WebElement a: links) {    //convert to string []
+            if (a.getAttribute("src").contains("sg-test-11")) {
+                img_list[l] = a.getAttribute("src");
+//                System.out.println(a.getAttribute("src"));
+//            img_list[l]=a.findElement(By.cssSelector("a")).getAttribute("src");
+                //System.out.println(a.findElement(By.cssSelector("a")).findElement(By.className("c1ZEkM")).getText());
+//            System.out.println(img_list[l]);
+                l++;
+            }
+        }
+
+        driver.quit();
+
+        System.out.println("\n\n\n\n**********************");
+//        System.out.println(item_titles.size());
+//        System.out.println(item_prices.size());
+//        System.out.println(urls_list.length);
+//        System.out.println(item_urls.size());
+
+        ArrayList<Product> productList = new ArrayList<Product>();
+
+        for(int m=0; m<item_titles.size(); m++){
+            float price = Float.parseFloat(prices_list[m].substring(1));
+            URI uri = new URI(urls_list[m]);
+            URL url = uri.toURL();
+            Product p = new Product(titles_list[m], price, url, "Lazada");
+            productList.add(p);
+            //System.out.println(p.getPrice());
+            System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
+        }
+
+
         driver.quit();
 //
 //        File app= new File("apk-file-path");
