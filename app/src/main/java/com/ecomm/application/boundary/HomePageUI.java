@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class HomePageUI extends AppCompatActivity {
 
     public static String s;
+    public static String q = new String();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class HomePageUI extends AppCompatActivity {
 
 
 
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
         SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
         SearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -82,12 +84,13 @@ public class HomePageUI extends AppCompatActivity {
                     System.out.println("Please enter search item");
                 }
 
-
-                Intent searchIntent = new Intent(getApplicationContext(), SearchUI.class);
+                q = SearchBar.getQuery().toString();
+                Intent searchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
                 startActivity(searchIntent);
                 return false;
             }
+
 
             @Override
             public boolean onQueryTextChange(String newText) {
@@ -97,8 +100,6 @@ public class HomePageUI extends AppCompatActivity {
 
         });
 
-        //set textVIew in search as query
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
 
 
             // fake product to test other UIs
@@ -122,7 +123,7 @@ public class HomePageUI extends AppCompatActivity {
 
                 Product mango = new Product("mango", 2.50, mangoURL,
                         "Keo Romeat mango from Cambodia which is also known as the Goldstar mango locally, have a golden yellow color peel when ripen. It as a balanced sweet flavor with a bright orange flesh that consist of minimum fiber allowing it to have a smooth texture.",
-                        "Lazada", 4.4, 3.9, "https://sg-test-11.slatic.net/p/b8375ca4a12d1937e2954a31955881ba.jpg_100x100q90.jpg_.webp");
+                        "Lazada", 4.4, 3.9, "https://sg-test-11.slatic.net/p/b8375ca4a12d1937e2954a31955881ba.jpg_100x100q90.jpg_.webp",1);
 
                 Intent displayProductDetail = new Intent(getApplicationContext(), ProductDisplayUI.class);
                 displayProductDetail.putExtra("com.ecomm.application.PRODUCT_INFO", mango);
@@ -152,7 +153,7 @@ public class HomePageUI extends AppCompatActivity {
 
                     Product phone = new Product("phone", 8.90, mangoURL,
                             "Iphone 12 from Singtel. No charger included, no ipods included.",
-                            "Qoo10", 3.9, 10.5, "https://sg-test-11.slatic.net/p/e9592d365dbdaaaa27aa39edba680960.jpg_100x100q90.jpg_.webp");
+                            "Qoo10", 3.9, 10.5, "https://sg-test-11.slatic.net/p/e9592d365dbdaaaa27aa39edba680960.jpg_100x100q90.jpg_.webp",1);
 
                     Intent displayProductDetail = new Intent(getApplicationContext(), ProductDisplayUI.class);
                     displayProductDetail.putExtra("com.ecomm.application.PRODUCT_INFO", phone);
@@ -165,7 +166,7 @@ public class HomePageUI extends AppCompatActivity {
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openSearchIntent = new Intent(getApplicationContext(), SearchUI.class);
+                Intent openSearchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
                 startActivity(openSearchIntent);
             }
         });
