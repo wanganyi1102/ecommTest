@@ -1,14 +1,20 @@
 package com.ecomm.application.boundary;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityManagerCompat;
 
 import com.ecomm.application.entity.Product;
+import com.opencsv.CSVWriter;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -41,7 +47,29 @@ public class androiddrive extends AppCompatActivity {
     //    static WebDriver driver;
 //    @Test
 //    public static void main(String arr[]) throws MalformedURLException, InterruptedException
-    public ArrayList<Product> testLazadaSearch(WebDriver driver, String q) throws InterruptedException, URISyntaxException, MalformedURLException {
+    public void another(WebDriver driver){
+        driver.get("https://www.lazada.sg");
+        driver.close();
+        System.out.println("another");
+//        ActivityManager mngr = (ActivityManager) getSystemService( ACTIVITY_SERVICE );
+//        List<ActivityManager.RunningTaskInfo> taskList = mngr.getRunningTasks(10);
+////        taskList.get(0).numActivities == 1;
+//        System.out.println(taskList.get(0).topActivity.getClassName());
+
+            //// This is last activity
+
+
+//        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.ecomm.application");
+//
+//        if (launchIntent != null) {
+//            startActivity(launchIntent);
+//        } else {
+//            Toast.makeText(androiddrive.this, "There is no package available in android", Toast.LENGTH_LONG).show();
+//        }
+
+    }
+
+    public ArrayList<Product> testLazadaSearch(WebDriver driver, String q) throws InterruptedException, URISyntaxException, IOException {
 
 //        public void going() throws InterruptedException, IOException, URISyntaxException{
 //        DesiredCapabilities capabilities= new DesiredCapabilities();
@@ -91,8 +119,6 @@ public class androiddrive extends AppCompatActivity {
 //        List<WebElement> item_titles = driver.findElements(By.cssSelector("#root > div > div.ant-row.c10-Cg > div.ant-col-24 > div > div.ant-col-20.ant-col-push-4.c1z9Ut > div.c1_t2i > div:nth-child(7) > div > div > div.c3KeDq > div.c16H9d"));
 
 
-        driver.quit();
-
         String [] titles_list =new String[item_titles.size()];
         String [] prices_list =new String[item_prices.size()];
         String [] urls_list = new String[item_urls.size()];
@@ -123,7 +149,7 @@ public class androiddrive extends AppCompatActivity {
         for(WebElement a: links) {    //convert to string []
             if (a.getAttribute("src").contains("sg-test-11")) {
                 img_list[l] = a.getAttribute("src");
-                System.out.println(a.getAttribute("src"));
+//                System.out.println(a.getAttribute("src"));
 //            img_list[l]=a.findElement(By.cssSelector("a")).getAttribute("src");
                 //System.out.println(a.findElement(By.cssSelector("a")).findElement(By.className("c1ZEkM")).getText());
 //            System.out.println(img_list[l]);
@@ -131,7 +157,20 @@ public class androiddrive extends AppCompatActivity {
             }
         }
 
-        driver.quit();
+//        driver.quit();
+        driver.close();
+
+//        Intent prodIntent = new Intent(androidx.multidex.MultiDexApplication, ProductDisplayUI.class);
+//        startActivity(prodIntent);
+//        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.ecomm.application");
+//
+//        if (launchIntent != null) {
+//            startActivity(launchIntent);
+//        } else {
+//            Toast.makeText(androiddrive.this, "There is no package available in android", Toast.LENGTH_LONG).show();
+//        }
+
+//        ((AndroidDriver) driver).s
 
         System.out.println("\n\n\n\n**********************");
 //        System.out.println(item_titles.size());
@@ -149,7 +188,23 @@ public class androiddrive extends AppCompatActivity {
             productList.add(p);
             //System.out.println(p.getPrice());
             System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
+
         }
+
+//        CSVWriter writer = null;
+//        List<String[]> data = null;
+//        for(int m=0; m<item_titles.size(); m++){
+//            writer = new CSVWriter(new FileWriter("app/src/main/java/com/ecomm/application/scrapedData.csv"));
+//
+//            data = new ArrayList<String[]>();
+//            data.add(new String[]{titles_list[m],prices_list[m],urls_list[m]});
+//
+//        }
+//        writer.writeAll(data); // data is adding to csv
+//        writer.close();
+//        System.out.println("okay");
+
+
 
         return productList;
 

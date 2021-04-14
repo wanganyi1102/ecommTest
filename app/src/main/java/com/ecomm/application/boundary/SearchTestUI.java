@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
@@ -25,6 +26,11 @@ import android.widget.TextView;
 import com.ecomm.application.R;
 
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -63,6 +69,53 @@ public class SearchTestUI extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        try {
+            DesiredCapabilities capabilities= new DesiredCapabilities();
+            capabilities.setCapability("platformName", "Android");
+            capabilities.setCapability("deviceName", "emulator-5554");
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+            capabilities.setCapability(CapabilityType.VERSION, "10");
+            capabilities.setCapability("chromedriverUseSystemExecutable", true);
+            capabilities.setCapability("automationName","UIAutomator2");
+            capabilities.setCapability("version","10");
+            capabilities.setCapability("adbExecTimeout", "30000");
+            capabilities.setCapability("headless", true);
+            capabilities.setCapability("fullReset", false);
+            capabilities.setCapability("noReset", true);
+//            capabilities.setCapability("appPackage", this.getPackageName());
+
+
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--user-agent=Chrome/86.0.4240.198");
+            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//            System.out.println("creating webdriver"); ///////////
+//            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
+//            WebDriver driver = new RemoteWebDriver(capabilities);
+//            System.out.println("getting lazada");
+//            driver.get("https://www.lazada.sg");
+//            System.out.println("crawl");
+            androiddrive crawl = new androiddrive();
+//                    crawl.another(driver);
+            TextView Categories = (TextView) findViewById(R.id.Categories);
+            productsToDisplay = crawl.testLazadaSearch(driver, HomePageUI.q);
+            Categories.setText(productsToDisplay.get(0).getName());
+
+//            System.out.println("worked");
+        } catch (MalformedURLException e){ //| InterruptedException | URISyntaxException e){
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_test_u_i);
 
