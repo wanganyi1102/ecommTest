@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -29,11 +30,17 @@ import com.squareup.picasso.Picasso;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 //import org.openqa.selenium.By;
 //import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.android.AndroidDriver;
+import org.openqa.selenium.android.AndroidDriver;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -70,35 +77,89 @@ public class UserProfileUI extends AppCompatActivity {
 //    WebElement weatherWidget = searchResults.get(0);
 //}
 //    @Test
-    public static void test(){
-        webCrawl crawl = new webCrawl();
-        try {
-            crawl.testLazadaSearch(HomePageUI.s);
-            System.out.println("did this work");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void test() throws IOException {
+////        webCrawl crawl = new webCrawl();
+//        androiddrive crawl = new androiddrive();
+//        try {
+////            crawl.testLazadaSearch(HomePageUI.s);
+//            crawl.going();
+//            System.out.println("did this work");
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    public static void main(String[] args) {
-        System.out.println("\n\nadsfjadfljalkdj");
-        webCrawl crawl = new webCrawl();
-        try {
-            products = crawl.testLazadaSearch(HomePageUI.s);
-            System.out.println("did this work");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        System.out.println("adsfjadfljalkdj\n\n");
-    }
+//    public static void main(String[] args) {
+//        System.out.println("\n\nadsfjadfljalkdj");
+//        webCrawl crawl = new webCrawl();
+//        try {
+//            products = androiddrive.going();
+//            System.out.println("did this work");
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("adsfjadfljalkdj\n\n");
+//    }
+
+//    private class MyTask extends AsyncTask<String, Integer, String> {
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected String doInBackground(String... strings) {
+//            try {
+//                DesiredCapabilities capabilities= new DesiredCapabilities();
+//                capabilities.setCapability("platformName", "Android");
+//                capabilities.setCapability("deviceName", "emulator-5554");
+//                capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+//                capabilities.setCapability(CapabilityType.VERSION, "10");
+//                capabilities.setCapability("chromedriverUseSystemExecutable", true);
+//                capabilities.setCapability("automationName","UIAutomator2");
+//                capabilities.setCapability("version","10");
+//                capabilities.setCapability("adbExecTimeout", "30000");
+//                ChromeOptions options = new ChromeOptions();
+//                options.addArguments("--user-agent=Chrome/86.0.4240.198");
+//                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+////            System.out.println("creating webdriver"); ///////////
+////            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+//                WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
+////            WebDriver driver = new RemoteWebDriver(capabilities);
+////            System.out.println("getting lazada");
+////            driver.get("https://www.lazada.sg");
+////            System.out.println("crawl");
+//                androiddrive crawl = new androiddrive();
+//                products = crawl.testLazadaSearch(driver, "noodles");
+//                System.out.println(products.get(1).getName());
+//                System.out.println(products.get(1).getPrice());
+//                System.out.println(products.get(1).getUrl());
+//                System.out.println(products.get(1).getEcommerceSite());
+////            System.out.println("worked");
+//            } catch (InterruptedException | URISyntaxException | MalformedURLException e){
+//                e.printStackTrace();
+//            }
+//            return "done yayyy";
+//        }
+//
+//        @Override
+//        protected void onProgressUpdate(Integer... values) {
+//            super.onProgressUpdate(values);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String s) {
+//            super.onPostExecute(s);
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +174,47 @@ public class UserProfileUI extends AppCompatActivity {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-//        test();
+
+//        new MyTask().execute("testing");
+
+        try {
+            DesiredCapabilities capabilities= new DesiredCapabilities();
+            capabilities.setCapability("platformName", "Android");
+            capabilities.setCapability("deviceName", "emulator-5554");
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+            capabilities.setCapability(CapabilityType.VERSION, "10");
+            capabilities.setCapability("chromedriverUseSystemExecutable", true);
+            capabilities.setCapability("automationName","UIAutomator2");
+            capabilities.setCapability("version","10");
+            capabilities.setCapability("adbExecTimeout", "30000");
+            capabilities.setCapability("headless", true);
+            capabilities.setCapability("fullReset", false);
+            capabilities.setCapability("noReset", true);
+//            capabilities.setCapability("appPackage", this.getPackageName());
+
+
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--user-agent=Chrome/86.0.4240.198");
+            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//            System.out.println("creating webdriver"); ///////////
+//            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
+//            WebDriver driver = new RemoteWebDriver(capabilities);
+//            System.out.println("getting lazada");
+//            driver.get("https://www.lazada.sg");
+//            System.out.println("crawl");
+            androiddrive crawl = new androiddrive();
+            crawl.another(driver);
+//            products = crawl.testLazadaSearch(driver, "fried rice");
+//            System.out.println(products.get(1).getName());
+//            System.out.println(products.get(1).getPrice());
+//            System.out.println(products.get(1).getUrl());
+//            System.out.println(products.get(1).getEcommerceSite());
+
+        } catch (Exception e){ //InterruptedException | URISyntaxException | MalformedURLException e){
+            e.printStackTrace();
+        }
+
 //        webCrawl crawl = new webCrawl();
 //        try {
 //            crawl.testLazadaSearch("chicken");
@@ -154,7 +255,7 @@ public class UserProfileUI extends AppCompatActivity {
         TextView username;
         username = findViewById(R.id.strUserName2);
         username.setText(userEmail);
-//        username.setText(products.size());
+//        username.setText(products.get(1).getName());
 
         ImageView i = (ImageView)findViewById(R.id.imageView4);
         Picasso.with(UserProfileUI.this).load("https://sg-test-11.slatic.net/p/04be23fdeb4f6f9455d40d9d71c32c13.jpg_200x200q90.jpg_.webp").into(i);
@@ -208,7 +309,8 @@ public class UserProfileUI extends AppCompatActivity {
                 });
             }
         });
-    }
+
+
 
 //    @Override
 //    protected void onPause() {
@@ -216,4 +318,6 @@ public class UserProfileUI extends AppCompatActivity {
 //        System.out.println("********Asdfadfadf**********");
 //        test();
 //    }
+
+    }
 }

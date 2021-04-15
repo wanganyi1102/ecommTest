@@ -194,7 +194,7 @@ public class androiddrive extends AppCompatActivity {
 //        CSVWriter writer = null;
 //        List<String[]> data = null;
 //        for(int m=0; m<item_titles.size(); m++){
-//            writer = new CSVWriter(new FileWriter("app/src/main/java/com/ecomm/application/scrapedData.csv"));
+//            writer = new CSVWriter(new FileWriter("ecommTest/app/src/main/java/com/ecomm/application/scrapedData.csv"));
 //
 //            data = new ArrayList<String[]>();
 //            data.add(new String[]{titles_list[m],prices_list[m],urls_list[m]});
