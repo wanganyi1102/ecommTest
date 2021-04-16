@@ -3,6 +3,7 @@ package com.ecomm.application.boundary;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.ecomm.application.control.ProductListAdapter;
 import com.ecomm.application.entity.Product;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -216,7 +217,7 @@ public class SearchTestUI extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.searchRecyclerView);
-        ItemAdapter adapter = new ItemAdapter(pImages, pTitles, pPrices, this);
+        ProductListAdapter adapter = new ProductListAdapter(pImages, pTitles, pPrices, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

@@ -177,43 +177,43 @@ public class UserProfileUI extends AppCompatActivity {
 
 //        new MyTask().execute("testing");
 
-        try {
-            DesiredCapabilities capabilities= new DesiredCapabilities();
-            capabilities.setCapability("platformName", "Android");
-            capabilities.setCapability("deviceName", "emulator-5554");
-            capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
-            capabilities.setCapability(CapabilityType.VERSION, "10");
-            capabilities.setCapability("chromedriverUseSystemExecutable", true);
-            capabilities.setCapability("automationName","UIAutomator2");
-            capabilities.setCapability("version","10");
-            capabilities.setCapability("adbExecTimeout", "30000");
-            capabilities.setCapability("headless", true);
-            capabilities.setCapability("fullReset", false);
-            capabilities.setCapability("noReset", true);
-//            capabilities.setCapability("appPackage", this.getPackageName());
-
-
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--user-agent=Chrome/86.0.4240.198");
-            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-//            System.out.println("creating webdriver"); ///////////
-//            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
-//            WebDriver driver = new RemoteWebDriver(capabilities);
-//            System.out.println("getting lazada");
-//            driver.get("https://www.lazada.sg");
-//            System.out.println("crawl");
-            androiddrive crawl = new androiddrive();
-            crawl.another(driver);
-//            products = crawl.testLazadaSearch(driver, "fried rice");
-//            System.out.println(products.get(1).getName());
-//            System.out.println(products.get(1).getPrice());
-//            System.out.println(products.get(1).getUrl());
-//            System.out.println(products.get(1).getEcommerceSite());
-
-        } catch (Exception e){ //InterruptedException | URISyntaxException | MalformedURLException e){
-            e.printStackTrace();
-        }
+//        try {
+//            DesiredCapabilities capabilities= new DesiredCapabilities();
+//            capabilities.setCapability("platformName", "Android");
+//            capabilities.setCapability("deviceName", "emulator-5554");
+//            capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+//            capabilities.setCapability(CapabilityType.VERSION, "10");
+//            capabilities.setCapability("chromedriverUseSystemExecutable", true);
+//            capabilities.setCapability("automationName","UIAutomator2");
+//            capabilities.setCapability("version","10");
+//            capabilities.setCapability("adbExecTimeout", "30000");
+//            capabilities.setCapability("headless", true);
+//            capabilities.setCapability("fullReset", false);
+//            capabilities.setCapability("noReset", true);
+////            capabilities.setCapability("appPackage", this.getPackageName());
+//
+//
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("--user-agent=Chrome/86.0.4240.198");
+//            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+////            System.out.println("creating webdriver"); ///////////
+////            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+//            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
+////            WebDriver driver = new RemoteWebDriver(capabilities);
+////            System.out.println("getting lazada");
+////            driver.get("https://www.lazada.sg");
+////            System.out.println("crawl");
+//            androiddrive crawl = new androiddrive();
+//            crawl.another(driver);
+////            products = crawl.testLazadaSearch(driver, "fried rice");
+////            System.out.println(products.get(1).getName());
+////            System.out.println(products.get(1).getPrice());
+////            System.out.println(products.get(1).getUrl());
+////            System.out.println(products.get(1).getEcommerceSite());
+//
+//        } catch (Exception e){ //InterruptedException | URISyntaxException | MalformedURLException e){
+//            e.printStackTrace();
+//        }
 
 //        webCrawl crawl = new webCrawl();
 //        try {

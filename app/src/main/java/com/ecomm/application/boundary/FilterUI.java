@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.ecomm.application.R;
-import com.ecomm.application.entity.Filter;
+import com.ecomm.application.control.Filter;
 import com.ecomm.application.entity.Product;
 import com.google.android.material.chip.Chip;
 
