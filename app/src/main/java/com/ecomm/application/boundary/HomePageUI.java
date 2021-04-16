@@ -215,9 +215,10 @@ public class HomePageUI extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mAuth = FirebaseAuth.getInstance();
                 mAuth.signOut();
                 Toast.makeText(HomePageUI.this, "Signing Out.", Toast.LENGTH_LONG).show();
-                Intent backToLoginIntent = new Intent(getApplicationContext(), ShoppingCartUI.class);
+                Intent backToLoginIntent = new Intent(getApplicationContext(), LoginUI.class);
                 startActivity(backToLoginIntent);
             }
         });

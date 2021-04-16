@@ -2,11 +2,6 @@ package com.ecomm.application.control;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,9 +16,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
 
-    EditText mEmail, mPhone, mEmailPhone, mPassword, mConfirmPass;
-    Button RegisterBtn;
-    TextView mLoginBtn;
     static FirebaseAuth mAuth;
 
     public void Register(Context context, String email, String password) {
