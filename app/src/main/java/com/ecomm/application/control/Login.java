@@ -26,7 +26,7 @@ public class Login  extends AppCompatActivity{
                 if (task.isSuccessful()) {
                     Transaction.setUsername(email);
                     Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(context, HomePageUI.class));
+                    context.startActivity(new Intent(context, HomePageUI.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 } else {
                     Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
