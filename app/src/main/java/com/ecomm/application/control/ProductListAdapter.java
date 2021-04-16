@@ -1,4 +1,4 @@
-package com.ecomm.application.boundary;
+package com.ecomm.application.control;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
 
     private ArrayList<String> pImage = new ArrayList<>();
     private ArrayList<String> pTitles= new ArrayList<>();
@@ -54,7 +54,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     }
 
     //constructor
-    public ItemAdapter(ArrayList<String> imageNames, ArrayList<String> titles, ArrayList<String> prices, Context context){
+    public ProductListAdapter(ArrayList<String> imageNames, ArrayList<String> titles, ArrayList<String> prices, Context context){
         pImage= imageNames;
         pTitles = titles;
         pPrice = prices;

@@ -93,7 +93,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="2.5"
                         android:layout_toRightOf="@+id/tv_qty"
                         android:textSize="13dp"
                         android:layout_weight="1.4"

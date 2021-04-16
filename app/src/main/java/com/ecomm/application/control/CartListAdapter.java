@@ -1,11 +1,13 @@
 package com.ecomm.application.control;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +24,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import kotlin.Suppress;
+
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHolder> {
 
     private List callListResponses = new ArrayList<>();
@@ -29,6 +33,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     //private Activity context;
     private Context context;
     int lastPosition=0;
+    private int count;
 
     ArrayList<String> titles = new ArrayList<>();
     ArrayList<String> imageURLs = new ArrayList<>();
@@ -56,6 +61,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 }
 
 
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -72,17 +79,49 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         holder.tv_total.setText(prices.get(position));
         holder.tv_qty.setText(quantity.get(position).toString());
 
+
+
         holder.chk_selectitem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("selected");
                 //System.out.println(ShoppingCartUI.productsInCart.get(position).getName());
                 ShoppingCartUI.selectedProducts.add(ShoppingCartUI.productsInCart.get(position));
-                ShoppingCartUI.total += Double.parseDouble(prices.get(position));
+                ShoppingCartUI.total += Double.parseDouble(prices.get(position))*count;
                 ShoppingCartUI.orderTotalTextView.setText("S$" + ShoppingCartUI.total+"" +"0");
             }
         });
+
+        holder.btnIncrease.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                count = Integer.parseInt(String.valueOf(holder.tv_qty.getText()));
+                count++;
+                holder.tv_qty.setText("" + count);
+                holder.tv_total.setText(String.format("%.2f",count*Double.parseDouble(String.valueOf(prices.get(position)))));
+            }
+        });
+
+        holder.btnDecrease.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View v){
+                count = Integer.parseInt(String.valueOf(holder.tv_qty.getText()));
+                if (count == 1) {
+                    holder.tv_qty.setText("1");
+                    holder.tv_total.setText(String.format("%.2f",count*Double.parseDouble(String.valueOf(prices.get(position)))));
+                }
+                else{
+                    count -= 1;
+                    holder.tv_qty.setText("" + count);
+                    holder.tv_total.setText(String.format("%.2f",count*Double.parseDouble(String.valueOf(prices.get(position)))));
+
+                }
+            }
+        });
     }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -92,9 +131,12 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView productImageView;
         TextView tv_name;
+//        TextView tv_rate;
         TextView tv_total;
         TextView tv_qty;
         CheckBox chk_selectitem;
+        ImageButton btnIncrease;
+        ImageButton btnDecrease;
 
         LinearLayout parentLayout;
 
@@ -102,12 +144,19 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             super(itemView);
             productImageView = itemView.findViewById(R.id.productImageView);
             tv_name = itemView.findViewById(R.id.tv_name);
+//            tv_rate = itemView.findViewById(R.id.tv_rate);
             tv_total = itemView.findViewById(R.id.tv_total);
             parentLayout = itemView.findViewById(R.id.parent_layout);
             chk_selectitem = itemView.findViewById(R.id.chk_selectitem);
             tv_qty = itemView.findViewById(R.id.tv_qty);
+            btnIncrease = itemView.findViewById(R.id.plusBtn);
+            btnDecrease = itemView.findViewById(R.id.minusBtn);
         }
     }
+
+
+
+
 
 //    @Override
 //    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

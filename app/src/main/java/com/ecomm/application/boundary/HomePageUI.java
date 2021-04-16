@@ -13,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-//import io.appium.java_client.AppiumDriver;
-
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
 import com.ecomm.application.webCrawl;
@@ -22,10 +20,7 @@ import com.squareup.picasso.Picasso;
 
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -36,17 +31,19 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomePageUI extends AppCompatActivity {
     public static ArrayList<Product> products;
     public static String s;
     public static String q = new String();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        System.out.println(getApplicationContext());
 
         s = "pudding";
 
@@ -69,11 +66,10 @@ public class HomePageUI extends AppCompatActivity {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent profileIntent = new Intent(getApplicationContext(), UserProfileUI.class);
-//                startActivity(profileIntent);
+                Intent profileIntent = new Intent(getApplicationContext(), UserProfileUI.class);
+                startActivity(profileIntent);
             }
         });
-
 
         URI uri = null;
         try {
@@ -122,11 +118,13 @@ public class HomePageUI extends AppCompatActivity {
                 }
 
                 q = SearchBar.getQuery().toString();
-                //System.out.println(q);
+                System.out.println(q);
+
+
 
                 Intent searchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
-                //searchIntent.putExtra("com.ecomm.application.PRODUCT_LIST", productsToDisplay);
+                searchIntent.putExtra("com.ecomm.application.PRODUCT_LIST", productsToDisplay);
                 startActivity(searchIntent);
                 return false;
             }
@@ -200,6 +198,18 @@ public class HomePageUI extends AppCompatActivity {
                 }
             });
 
+        // test to check if button can open search xml
+        Button test = (Button) findViewById(R.id.test);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openSearchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
+                startActivity(openSearchIntent);
+            }
+        });
 
     }
+
+
 }
+
