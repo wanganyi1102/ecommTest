@@ -12,10 +12,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
 import com.ecomm.application.webCrawl;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 
@@ -36,6 +38,7 @@ public class HomePageUI extends AppCompatActivity {
     public static ArrayList<Product> products;
     public static String s;
     public static String q = new String();
+    FirebaseAuth mAuth;
 
 
     @Override
@@ -205,6 +208,17 @@ public class HomePageUI extends AppCompatActivity {
             public void onClick(View v) {
                 Intent openSearchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
                 startActivity(openSearchIntent);
+            }
+        });
+
+        ImageView logOut = (ImageView) findViewById(R.id.logoutBtn);
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                Toast.makeText(HomePageUI.this, "Signing Out.", Toast.LENGTH_LONG).show();
+                Intent backToLoginIntent = new Intent(getApplicationContext(), ShoppingCartUI.class);
+                startActivity(backToLoginIntent);
             }
         });
 

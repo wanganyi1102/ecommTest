@@ -44,10 +44,10 @@ public class RegisterUI extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        if (mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), HomePageUI.class));
-            finish();
-        }
+//        if (mAuth.getCurrentUser() != null){
+//            startActivity(new Intent(getApplicationContext(), HomePageUI.class));
+//            finish();
+//        }
 
         RegisterBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -86,6 +86,14 @@ public class RegisterUI extends AppCompatActivity {
                     }
                 });
 
+            }
+        });
+
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent RegToLoginIntent = new Intent(getApplicationContext(), LoginUI.class);
+                startActivity(RegToLoginIntent);
             }
         });
 

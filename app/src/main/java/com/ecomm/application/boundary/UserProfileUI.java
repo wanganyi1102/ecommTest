@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ecomm.application.R;
+import com.ecomm.application.control.UserProfileManager;
 import com.ecomm.application.entity.Product;
 import com.ecomm.application.webCrawl;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -283,41 +284,36 @@ public class UserProfileUI extends AppCompatActivity {
         confirmChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseUser user;
-                user = FirebaseAuth.getInstance().getCurrentUser();
-                final String email = user.getEmail();
-                AuthCredential credential = EmailAuthProvider.getCredential(email,oldPass.getText().toString().trim());
+                UserProfileManager.changePassword(getApplicationContext(), oldPass, newPass);
+//                Toast.makeText(UserProfileUI.this, result, Toast.LENGTH_LONG).show();
 
-                user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            user.updatePassword(newPass.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(!task.isSuccessful()){
-                                        Toast.makeText(UserProfileUI.this, "Something went wrong. Please try again later", Toast.LENGTH_LONG).show();
-                                    }else {
-                                        Toast.makeText(UserProfileUI.this, "Password Successfully Modified", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
-                        }else {
-                            Toast.makeText(UserProfileUI.this, "Authentication Failed", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+//                FirebaseUser user;
+//                user = FirebaseAuth.getInstance().getCurrentUser();
+//                final String email = user.getEmail();
+//                AuthCredential credential = EmailAuthProvider.getCredential(email,oldPass.getText().toString().trim());
+//
+//                user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            user.updatePassword(newPass.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Void> task) {
+//                                    if(!task.isSuccessful()){
+//                                        Toast.makeText(UserProfileUI.this, "Something went wrong. Please try again later", Toast.LENGTH_LONG).show();
+//                                    }else {
+//                                        Toast.makeText(UserProfileUI.this, "Password Successfully Modified", Toast.LENGTH_LONG).show();
+//                                    }
+//                                }
+//                            });
+//                        }else {
+//                            Toast.makeText(UserProfileUI.this, "Authentication Failed", Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                });
             }
         });
 
-
-
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        System.out.println("********Asdfadfadf**********");
-//        test();
-//    }
 
     }
 }

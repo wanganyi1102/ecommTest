@@ -70,7 +70,8 @@ public class LoginUI extends AppCompatActivity {
         mRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), RegisterUI.class));
+                Intent LoginToRegIntent = new Intent(getApplicationContext(), RegisterUI.class);
+                startActivity(LoginToRegIntent);
             }
         });
 
