@@ -1,5 +1,6 @@
 package com.ecomm.application.control;
 
+import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,56 +24,23 @@ public class Register extends AppCompatActivity {
     EditText mEmail, mPhone, mEmailPhone, mPassword, mConfirmPass;
     Button RegisterBtn;
     TextView mLoginBtn;
-    FirebaseAuth mAuth;
+    static FirebaseAuth mAuth;
 
-    public void Register() {
+    public void Register(Context context, String email, String password) {
         mAuth = FirebaseAuth.getInstance();
 
-
-        if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), HomePageUI.class));
-            finish();
-        }
-
-        RegisterBtn.setOnClickListener(new View.OnClickListener() {
+        //register user firebase
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onClick(View view) {
-                String email = mEmail.getText().toString().trim(); //currently only works on Email
-                String password = mPassword.getText().toString().trim();
-                String confirmPass = mConfirmPass.getText().toString().trim();
-
-                if (TextUtils.isEmpty(email)) {
-                    mEmail.setError("Email is Required.");
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    mPassword.setError("Password is Required.");
-                    return;
-                }
-
-
-//                if (password.equals(confirmPass)){
-//                    mConfirmPass.setError("Password does not match");
-//                    return;
-//                }
-
-
-                //register user firebase
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "User created", Toast.LENGTH_SHORT).show();
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(context, "User created", Toast.LENGTH_SHORT).show();
 //                            Toast.makeText(RegisterUI.this, "User created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), HomePageUI.class));
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(context, HomePageUI.class));
+                } else {
+                    Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 //                            Toast.makeText(RegisterUI.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
+                }
             }
         });
 

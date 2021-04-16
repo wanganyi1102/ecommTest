@@ -66,25 +66,14 @@ public class RegisterUI extends AppCompatActivity {
                     return;
                 }
 
+                if (!password.equals(confirmPass)){
+                    mConfirmPass.setError("Password does not match");
+                    return;
+                }
 
-//                if (password.equals(confirmPass)){
-//                    mConfirmPass.setError("Password does not match");
-//                    return;
-//                }
-
-
-                //register user firebase
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(RegisterUI.this, "User created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),HomePageUI.class));
-                        }else{
-                            Toast.makeText(RegisterUI.this, "Error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                //register user firebase, calls Register Class
+                Register register = new Register();
+                register.Register(getApplicationContext(), email, password);
 
             }
         });
