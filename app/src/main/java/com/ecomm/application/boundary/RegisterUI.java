@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.ecomm.application.R;
 import com.ecomm.application.control.Register;
+import com.ecomm.application.entity.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -74,6 +75,7 @@ public class RegisterUI extends AppCompatActivity {
                 //register user firebase, calls Register Class
                 Register register = new Register();
                 register.Register(getApplicationContext(), email, password);
+                UserAccount userAccount = new UserAccount(email, mPhone.getText().toString().trim(), password);
 
             }
         });

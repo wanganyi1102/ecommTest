@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ecomm.application.boundary.HomePageUI;
 import com.ecomm.application.boundary.LoginUI;
+import com.ecomm.application.entity.Transaction;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,6 +24,7 @@ public class Login  extends AppCompatActivity{
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    Transaction.setUsername(email);
                     Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(context, HomePageUI.class));
                 } else {

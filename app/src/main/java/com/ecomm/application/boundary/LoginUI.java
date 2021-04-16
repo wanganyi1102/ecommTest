@@ -91,6 +91,8 @@ public class LoginUI extends AppCompatActivity {
             }
         });
 
+
+        //Forgot Password, get Firebase to send email to reset password
         sendPassResetEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
