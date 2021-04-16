@@ -79,5 +79,38 @@ public class LoginUI extends AppCompatActivity {
             }
         });
 
+        TextView forgotPassword = findViewById(R.id.forgotPassword);
+        Button sendPassResetEmail = findViewById(R.id.sendPassResetBtn);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPassword.setVisibility(View.GONE);
+                LoginBtn.setVisibility(View.GONE);
+                sendPassResetEmail.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        sendPassResetEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = mEmailPhone.getText().toString().trim();
+                if (TextUtils.isEmpty(email)) {
+                    mEmailPhone.setError("Email is Required.");
+                    return;
+                }
+                mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(LoginUI.this, "Email sent", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(LoginUI.this, "Not a valid account.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
     }
 }
