@@ -1,12 +1,8 @@
 package com.ecomm.application.boundary;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -14,41 +10,20 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ecomm.application.R;
+import com.ecomm.application.control.Deregister;
 import com.ecomm.application.control.UserProfileManager;
 import com.ecomm.application.entity.Product;
-import com.ecomm.application.webCrawl;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 //import org.openqa.selenium.By;
 //import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.WebElement;
-import org.openqa.selenium.android.AndroidDriver;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class UserProfileUI extends AppCompatActivity {
@@ -285,32 +260,16 @@ public class UserProfileUI extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 UserProfileManager.changePassword(getApplicationContext(), oldPass, newPass);
-//                Toast.makeText(UserProfileUI.this, result, Toast.LENGTH_LONG).show();
+            }
+        });
 
-//                FirebaseUser user;
-//                user = FirebaseAuth.getInstance().getCurrentUser();
-//                final String email = user.getEmail();
-//                AuthCredential credential = EmailAuthProvider.getCredential(email,oldPass.getText().toString().trim());
-//
-//                user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful()){
-//                            user.updatePassword(newPass.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if(!task.isSuccessful()){
-//                                        Toast.makeText(UserProfileUI.this, "Something went wrong. Please try again later", Toast.LENGTH_LONG).show();
-//                                    }else {
-//                                        Toast.makeText(UserProfileUI.this, "Password Successfully Modified", Toast.LENGTH_LONG).show();
-//                                    }
-//                                }
-//                            });
-//                        }else {
-//                            Toast.makeText(UserProfileUI.this, "Authentication Failed", Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                });
+        Button DeregisterBtn = (Button) findViewById(R.id.DeregisterBtn);
+        DeregisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Deregister.deregister(getApplicationContext());
+                Intent backLoginIntent = new Intent(getApplicationContext(), LoginUI.class);
+                startActivity(backLoginIntent);
             }
         });
 
