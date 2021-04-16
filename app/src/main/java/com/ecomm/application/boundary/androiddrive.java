@@ -26,7 +26,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.android.AndroidDriver;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
@@ -39,21 +39,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class androiddrive extends AppCompatActivity {
     //    static WebDriver driver;
-//    @Test
+    @Test
 //    public static void main(String arr[]) throws MalformedURLException, InterruptedException
-    public ArrayList<Product> testLazadaSearch(WebDriver driver, String q) throws InterruptedException, URISyntaxException, MalformedURLException {
+//    public ArrayList<Product> testLazadaSearch(WebDriver driver, String q) throws InterruptedException, URISyntaxException, MalformedURLException {
 
-//        public void going() throws InterruptedException, IOException, URISyntaxException{
-//        DesiredCapabilities capabilities= new DesiredCapabilities();
-//        capabilities.setCapability("platformName", "Android");
-//        capabilities.setCapability("deviceName", "emulator-5554");
-//        capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
-//        capabilities.setCapability(CapabilityType.VERSION, "10");
-//        capabilities.setCapability("chromedriverUseSystemExecutable", true);
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--user-agent=Chrome/86.0.4240.198");
-//        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-//        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+        public void going() throws InterruptedException, IOException, URISyntaxException{
+        DesiredCapabilities capabilities= new DesiredCapabilities();
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("deviceName", "emulator-5554");
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+        capabilities.setCapability(CapabilityType.VERSION, "10");
+        capabilities.setCapability("chromedriverUseSystemExecutable", true);
+        capabilities.setCapability("headless", true);
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--user-agent=Chrome/86.0.4240.198");
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
 
 
 //        String url_lazada = "https://www.lazada.sg/catalog/?q=";
@@ -72,7 +73,7 @@ public class androiddrive extends AppCompatActivity {
 //        WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.name("q")));
         try {
             WebElement searchBox = driver.findElement(By.name("q"));
-            searchBox.sendKeys(q + Keys.ENTER);
+            searchBox.sendKeys("chicken nuggets" + Keys.ENTER);
             searchBox.submit();
         } catch (Exception e) {
             WebElement searchBox = null;
@@ -91,7 +92,6 @@ public class androiddrive extends AppCompatActivity {
 //        List<WebElement> item_titles = driver.findElements(By.cssSelector("#root > div > div.ant-row.c10-Cg > div.ant-col-24 > div > div.ant-col-20.ant-col-push-4.c1z9Ut > div.c1_t2i > div:nth-child(7) > div > div > div.c3KeDq > div.c16H9d"));
 
 
-        driver.quit();
 
         String [] titles_list =new String[item_titles.size()];
         String [] prices_list =new String[item_prices.size()];
@@ -133,6 +133,7 @@ public class androiddrive extends AppCompatActivity {
 
         driver.quit();
 
+
         System.out.println("\n\n\n\n**********************");
 //        System.out.println(item_titles.size());
 //        System.out.println(item_prices.size());
@@ -151,7 +152,7 @@ public class androiddrive extends AppCompatActivity {
             System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }
 
-        return productList;
+//        return productList;
 
 //
 //        File app= new File("apk-file-path");

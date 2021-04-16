@@ -92,7 +92,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView productImageView;
         TextView tv_name;
-//        TextView tv_rate;
         TextView tv_total;
         TextView tv_qty;
         CheckBox chk_selectitem;
@@ -103,7 +102,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             super(itemView);
             productImageView = itemView.findViewById(R.id.productImageView);
             tv_name = itemView.findViewById(R.id.tv_name);
-//            tv_rate = itemView.findViewById(R.id.tv_rate);
             tv_total = itemView.findViewById(R.id.tv_total);
             parentLayout = itemView.findViewById(R.id.parent_layout);
             chk_selectitem = itemView.findViewById(R.id.chk_selectitem);

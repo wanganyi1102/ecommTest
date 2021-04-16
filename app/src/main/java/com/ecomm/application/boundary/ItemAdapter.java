@@ -42,6 +42,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             pTitle = itemView.findViewById(R.id.pTitle);
             pPrice= itemView.findViewById(R.id.pPrice);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+            pImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent displayProduct = new Intent(context, ProductDisplayUI.class);
+                    displayProduct.putExtra("com.ecomm.application.PRODUCTDEETS", SearchTestUI.productsToDisplay.get(getAdapterPosition()));
+                    context.startActivity(displayProduct);
+                }
+            });
         }
     }
 
@@ -66,12 +74,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         Picasso.with(context).load(pImage.get(position)).into(holder.pImage);
         holder.pTitle.setText(pTitles.get(position));
         holder.pPrice.setText(pPrice.get(position));
-        holder.pImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //SearchTestUI.setClickedposition(position);
-            }
-        });
     }
 
     @Override

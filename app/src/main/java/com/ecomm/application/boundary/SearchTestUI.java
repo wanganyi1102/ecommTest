@@ -1,6 +1,8 @@
 package com.ecomm.application.boundary;
 
+import android.content.AsyncQueryHandler;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.ecomm.application.entity.Product;
@@ -13,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
@@ -25,6 +28,14 @@ import android.widget.TextView;
 import com.ecomm.application.R;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -33,20 +44,18 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.ecomm.application.boundary.HomePageUI.q;
 
 public class SearchTestUI extends AppCompatActivity {
 
-    private ArrayList<Product> productsToDisplay = new ArrayList<Product>();
+    public static ArrayList<Product> productsToDisplay = new ArrayList<Product>();
     private ArrayList<String> pTitles = new ArrayList<>();
     private ArrayList<String> pImages = new ArrayList<>();
     private ArrayList<String> pPrices = new ArrayList<>();
 
-    public static ArrayList<Product> productList = new ArrayList<Product>();
     public static int clickedposition;
-//    androiddrive2 ad = new androiddrive2();
-
 
     public void setClickedposition(int clickedposition) {
         SearchTestUI.clickedposition = clickedposition;
@@ -60,9 +69,55 @@ public class SearchTestUI extends AppCompatActivity {
         startActivity(displayProduct);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build();
+        StrictMode.setThreadPolicy(policy);
+        try {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("platformName", "Android");
+            capabilities.setCapability("deviceName", "emulator-5554");
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+            capabilities.setCapability(CapabilityType.VERSION, "10");
+            capabilities.setCapability("chromedriverUseSystemExecutable", true);
+            capabilities.setCapability("headless", true);
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--user-agent=Chrome/86.0.4240.198");
+            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.67.175:4723/wd/hub"), capabilities);
+            driver.get("https://www.lazada.sg");
+            try {
+                WebElement searchBox = driver.findElement(By.name("q"));
+                searchBox.sendKeys("chicken" + Keys.ENTER);
+                searchBox.submit();
+            } catch (Exception e) {
+                WebElement searchBox = null;
+            }
+
+            Thread.sleep(20000); //10 sec
+
+            List<WebElement> item_titles = driver.findElements(By.cssSelector("div[class='c16H9d']"));
+            String [] titles_list =new String[item_titles.size()];
+
+            System.out.println(item_titles.size());
+
+            int i=0;
+            for(WebElement a: item_titles) {    //convert to string []
+                titles_list[i]=a.getText();
+                System.out.println(a.getText());
+                i++;
+            }
+
+        } catch (MalformedURLException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //new MyTask().execute("chicken");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_test_u_i);
 
@@ -90,6 +145,9 @@ public class SearchTestUI extends AppCompatActivity {
                 startActivity(filterIntent);
             }
         });
+
+        RecyclerView searchRecyclerView = (RecyclerView) findViewById(R.id.searchRecyclerView);
+
 
         Button fakeButton = (Button) findViewById(R.id.fakeBtn);
         fakeButton.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +195,72 @@ public class SearchTestUI extends AppCompatActivity {
 //        itemsRecycler.setAdapter(itemAdapter);
     }
 
+    /*
+    private class MyTask extends AsyncTask<String, Integer, String>{
+
+        @Override
+        protected void onPreExecute() {
+
+            System.out.println("searching chicken");
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String q = strings[0];
+
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .build();
+            StrictMode.setThreadPolicy(policy);
+            try {
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability("platformName", "Android");
+                capabilities.setCapability("deviceName", "emulator-5554");
+                capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+                capabilities.setCapability(CapabilityType.VERSION, "10");
+                capabilities.setCapability("chromedriverUseSystemExecutable", true);
+                capabilities.setCapability("headless", true);
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--user-agent=Chrome/86.0.4240.198");
+                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+                WebDriver driver = new RemoteWebDriver(new URL("http://10.27.67.175:4723/wd/hub"), capabilities);
+                driver.get("https://www.lazada.sg");
+                try {
+                    WebElement searchBox = driver.findElement(By.name("q"));
+                    searchBox.sendKeys(q + Keys.ENTER);
+                    searchBox.submit();
+                } catch (Exception e) {
+                    WebElement searchBox = null;
+                }
+
+                Thread.sleep(20000); //10 sec
+
+                List<WebElement> item_titles = driver.findElements(By.cssSelector("div[class='c16H9d']"));
+                String [] titles_list =new String[item_titles.size()];
+
+                System.out.println(item_titles.size());
+
+                int i=0;
+                for(WebElement a: item_titles) {    //convert to string []
+                    titles_list[i]=a.getText();
+                    System.out.println(a.getText());
+                    i++;
+                }
+
+            } catch (MalformedURLException | InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            System.out.println("done chicken");
+        }
+    }
+     */
+
     public void initImageBitmaps() throws InterruptedException, IOException, URISyntaxException {
 
 //        productList = ad.goingqoo(q);
@@ -166,5 +290,6 @@ public class SearchTestUI extends AppCompatActivity {
         ItemAdapter adapter = new ItemAdapter(pImages, pTitles, pPrices, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 }
