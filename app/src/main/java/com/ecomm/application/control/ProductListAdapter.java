@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProductListAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
 
     private ArrayList<String> pImage = new ArrayList<>();
     private ArrayList<String> pTitles= new ArrayList<>();
