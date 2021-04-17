@@ -9,7 +9,7 @@ public class Transaction {
     private String transactionID;
     private static double amount;
     private static String username; //which is the email
-    private static ArrayList<Product> products;
+    private static ArrayList<Product> products = new ArrayList<Product>();
 
     public Transaction(String username){
         setUsername(username);
