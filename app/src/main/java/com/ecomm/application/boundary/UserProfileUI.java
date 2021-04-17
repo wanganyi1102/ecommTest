@@ -1,12 +1,8 @@
 package com.ecomm.application.boundary;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -14,40 +10,20 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ecomm.application.R;
+import com.ecomm.application.control.Deregister;
+import com.ecomm.application.control.UserProfileManager;
 import com.ecomm.application.entity.Product;
-import com.ecomm.application.webCrawl;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 //import org.openqa.selenium.By;
 //import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.WebElement;
-import org.openqa.selenium.android.AndroidDriver;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class UserProfileUI extends AppCompatActivity {
@@ -177,43 +153,43 @@ public class UserProfileUI extends AppCompatActivity {
 
 //        new MyTask().execute("testing");
 
-        try {
-            DesiredCapabilities capabilities= new DesiredCapabilities();
-            capabilities.setCapability("platformName", "Android");
-            capabilities.setCapability("deviceName", "emulator-5554");
-            capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
-            capabilities.setCapability(CapabilityType.VERSION, "10");
-            capabilities.setCapability("chromedriverUseSystemExecutable", true);
-            capabilities.setCapability("automationName","UIAutomator2");
-            capabilities.setCapability("version","10");
-            capabilities.setCapability("adbExecTimeout", "30000");
-            capabilities.setCapability("headless", true);
-            capabilities.setCapability("fullReset", false);
-            capabilities.setCapability("noReset", true);
-//            capabilities.setCapability("appPackage", this.getPackageName());
-
-
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--user-agent=Chrome/86.0.4240.198");
-            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-//            System.out.println("creating webdriver"); ///////////
-//            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
-//            WebDriver driver = new RemoteWebDriver(capabilities);
-//            System.out.println("getting lazada");
-//            driver.get("https://www.lazada.sg");
-//            System.out.println("crawl");
-            androiddrive crawl = new androiddrive();
-            crawl.another(driver);
-//            products = crawl.testLazadaSearch(driver, "fried rice");
-//            System.out.println(products.get(1).getName());
-//            System.out.println(products.get(1).getPrice());
-//            System.out.println(products.get(1).getUrl());
-//            System.out.println(products.get(1).getEcommerceSite());
-
-        } catch (Exception e){ //InterruptedException | URISyntaxException | MalformedURLException e){
-            e.printStackTrace();
-        }
+//        try {
+//            DesiredCapabilities capabilities= new DesiredCapabilities();
+//            capabilities.setCapability("platformName", "Android");
+//            capabilities.setCapability("deviceName", "emulator-5554");
+//            capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+//            capabilities.setCapability(CapabilityType.VERSION, "10");
+//            capabilities.setCapability("chromedriverUseSystemExecutable", true);
+//            capabilities.setCapability("automationName","UIAutomator2");
+//            capabilities.setCapability("version","10");
+//            capabilities.setCapability("adbExecTimeout", "30000");
+//            capabilities.setCapability("headless", true);
+//            capabilities.setCapability("fullReset", false);
+//            capabilities.setCapability("noReset", true);
+////            capabilities.setCapability("appPackage", this.getPackageName());
+//
+//
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("--user-agent=Chrome/86.0.4240.198");
+//            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+////            System.out.println("creating webdriver"); ///////////
+////            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+//            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
+////            WebDriver driver = new RemoteWebDriver(capabilities);
+////            System.out.println("getting lazada");
+////            driver.get("https://www.lazada.sg");
+////            System.out.println("crawl");
+//            androiddrive crawl = new androiddrive();
+//            crawl.another(driver);
+////            products = crawl.testLazadaSearch(driver, "fried rice");
+////            System.out.println(products.get(1).getName());
+////            System.out.println(products.get(1).getPrice());
+////            System.out.println(products.get(1).getUrl());
+////            System.out.println(products.get(1).getEcommerceSite());
+//
+//        } catch (Exception e){ //InterruptedException | URISyntaxException | MalformedURLException e){
+//            e.printStackTrace();
+//        }
 
 //        webCrawl crawl = new webCrawl();
 //        try {
@@ -283,41 +259,20 @@ public class UserProfileUI extends AppCompatActivity {
         confirmChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseUser user;
-                user = FirebaseAuth.getInstance().getCurrentUser();
-                final String email = user.getEmail();
-                AuthCredential credential = EmailAuthProvider.getCredential(email,oldPass.getText().toString().trim());
-
-                user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            user.updatePassword(newPass.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(!task.isSuccessful()){
-                                        Toast.makeText(UserProfileUI.this, "Something went wrong. Please try again later", Toast.LENGTH_LONG).show();
-                                    }else {
-                                        Toast.makeText(UserProfileUI.this, "Password Successfully Modified", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
-                        }else {
-                            Toast.makeText(UserProfileUI.this, "Authentication Failed", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+                UserProfileManager.changePassword(getApplicationContext(), oldPass, newPass);
             }
         });
 
+        Button DeregisterBtn = (Button) findViewById(R.id.DeregisterBtn);
+        DeregisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Deregister.deregister(getApplicationContext());
+                Intent backLoginIntent = new Intent(getApplicationContext(), LoginUI.class);
+                startActivity(backLoginIntent);
+            }
+        });
 
-
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        System.out.println("********Asdfadfadf**********");
-//        test();
-//    }
 
     }
 }

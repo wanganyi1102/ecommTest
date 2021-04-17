@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
+import com.ecomm.application.entity.Transaction;
 import com.squareup.picasso.Picasso;
 
 public class ProductDisplayUI extends AppCompatActivity {
@@ -79,6 +80,7 @@ public class ProductDisplayUI extends AppCompatActivity {
                 // not sure if this is the right code to pass the product object to shopping cart ui
                 //Intent addItemToCart = new Intent(getApplicationContext(), ProductDisplayUI.class);
                 Intent addItemToCart = new Intent(getApplicationContext(), ShoppingCartUI.class);
+                Transaction.addProduct(product);
                 addItemToCart.putExtra("price", product);
                 startActivity(addItemToCart);
             }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ecomm.application.R;
+import com.ecomm.application.control.Login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -53,24 +54,63 @@ public class LoginUI extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(LoginUI.this, "Login successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), HomePageUI.class));
-                        } else {
-                            Toast.makeText(LoginUI.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                Login login = new Login();
+                login.Login(getApplicationContext(), email, password);
+
+//                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            Toast.makeText(LoginUI.this, "Login successful", Toast.LENGTH_SHORT).show();
+//                            startActivity(new Intent(getApplicationContext(), HomePageUI.class));
+//                        } else {
+//                            Toast.makeText(LoginUI.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
             }
         });
 
         mRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), RegisterUI.class));
+                Intent LoginToRegIntent = new Intent(getApplicationContext(), RegisterUI.class);
+                startActivity(LoginToRegIntent);
+            }
+        });
+
+        TextView forgotPassword = findViewById(R.id.forgotPassword);
+        Button sendPassResetEmail = findViewById(R.id.sendPassResetBtn);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPassword.setVisibility(View.GONE);
+                LoginBtn.setVisibility(View.GONE);
+                sendPassResetEmail.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+
+        //Forgot Password, get Firebase to send email to reset password
+        sendPassResetEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = mEmailPhone.getText().toString().trim();
+                if (TextUtils.isEmpty(email)) {
+                    mEmailPhone.setError("Email is Required.");
+                    return;
+                }
+                mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(LoginUI.this, "Email sent", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(LoginUI.this, "Not a valid account.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 

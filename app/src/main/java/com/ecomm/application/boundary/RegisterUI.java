@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.ecomm.application.R;
 import com.ecomm.application.control.Register;
+import com.ecomm.application.entity.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -44,10 +45,10 @@ public class RegisterUI extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        if (mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), HomePageUI.class));
-            finish();
-        }
+//        if (mAuth.getCurrentUser() != null){
+//            startActivity(new Intent(getApplicationContext(), HomePageUI.class));
+//            finish();
+//        }
 
         RegisterBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -66,26 +67,24 @@ public class RegisterUI extends AppCompatActivity {
                     return;
                 }
 
+                if (!password.equals(confirmPass)){
+                    mConfirmPass.setError("Password does not match");
+                    return;
+                }
 
-//                if (password.equals(confirmPass)){
-//                    mConfirmPass.setError("Password does not match");
-//                    return;
-//                }
+                //register user firebase, calls Register Class
+                Register register = new Register();
+                register.Register(getApplicationContext(), email, password);
+                UserAccount userAccount = new UserAccount(email, mPhone.getText().toString().trim(), password);
 
+            }
+        });
 
-                //register user firebase
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(RegisterUI.this, "User created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),HomePageUI.class));
-                        }else{
-                            Toast.makeText(RegisterUI.this, "Error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent RegToLoginIntent = new Intent(getApplicationContext(), LoginUI.class);
+                startActivity(RegToLoginIntent);
             }
         });
 
