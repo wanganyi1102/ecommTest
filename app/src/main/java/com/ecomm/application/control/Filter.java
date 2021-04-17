@@ -14,8 +14,8 @@ import kotlin.reflect.TypeOfKt;
 public class Filter {
     private ArrayList<String> filterBy;
     private ArrayList<Product> unsortedList;
-    private int minPrice;
-    private int maxPrice;
+    private int minPrice = 0;
+    private int maxPrice = 100;
 
     public void setFilterBy(ArrayList<String> filterBy) {
         this.filterBy = filterBy;
@@ -40,6 +40,7 @@ public class Filter {
     }
 
     public ArrayList<Product> performFilter(ArrayList<String> filterBy, ArrayList<Product> unsortedList){
+        unsortedList = filterPriceRange(unsortedList);
         for(String s : filterBy){
             if(s.contains("price")){
                 if (s.substring(5).compareTo("Ascending") == 0){

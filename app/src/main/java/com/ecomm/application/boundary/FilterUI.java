@@ -121,7 +121,7 @@ public class FilterUI extends AppCompatActivity {
                     System.out.println(s);
                 }
 
-                prodList = filter.filterPriceRange(prodList);
+                //prodList = filter.filterPriceRange(prodList);
                 filter.setFilterBy(filterBy); //pass selected filters to filter control
                 prodList = filter.performFilter(filterBy, prodList);
                 for(Product p: prodList){

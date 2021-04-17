@@ -24,7 +24,7 @@ public class Login  extends AppCompatActivity{
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Transaction.setUsername(email);
+                    //Transaction.setUsername(email);
                     Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show();
                     context.startActivity(new Intent(context, HomePageUI.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 } else {
