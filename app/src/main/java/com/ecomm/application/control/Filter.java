@@ -1,9 +1,15 @@
 package com.ecomm.application.control;
 
+import android.media.Rating;
+
 import com.ecomm.application.entity.Product;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+import kotlin.reflect.TypeOfKt;
 
 public class Filter {
     private ArrayList<String> filterBy;
@@ -18,7 +24,19 @@ public class Filter {
         this.minPrice = minPrice;
     }
     public void setMaxPrice(int maxPrice){
-        this.minPrice = maxPrice;
+        this.maxPrice = maxPrice;
+    }
+
+    //filter by price range
+    public ArrayList<Product> filterPriceRange(ArrayList<Product> prodList){
+        Iterator<Product> itr = prodList.iterator();
+        while (itr.hasNext()) {
+            Product p = itr.next();
+            if (p.getPrice() > maxPrice || p.getPrice() < minPrice){
+                itr.remove();
+            }
+        }
+        return prodList;
     }
 
     public ArrayList<Product> performFilter(ArrayList<String> filterBy, ArrayList<Product> unsortedList){
@@ -30,21 +48,29 @@ public class Filter {
                     unsortedList = sortByPrice(unsortedList, false);
                 }
             }
-            else if(s.contains("shipping")){
+            if(s.contains("ratings")){
+                if (s.substring(6).compareTo("Ascending") == 0){
+                    unsortedList = sortByRating(unsortedList, true);
+                }else{
+                    unsortedList = sortByRating(unsortedList, false);
+                }
+            }
+            if(s.contains("shipping")){
+                System.out.println(s.substring(8));
                 if(s.substring(8).compareTo("Overseas") == 0){
                     unsortedList = filterShippingLoc(unsortedList, "Overseas");
                 }
                 else if(s.substring(8).compareTo("Domestic") == 0){
                     unsortedList = filterShippingLoc(unsortedList, "Singapore");
                 }
-                else if(s.substring(8).compareTo("Free") == 0){
+                else if(s.substring(8).contains("Free")){
                     unsortedList = filterFreeShipping(unsortedList);
                 }
             }
-            else if(s.contains("Lazada")){
+            if(s.contains("Lazada")){
                 unsortedList = filterSite(unsortedList, "Lazada");
             }
-            else if(s.contains("Qoo10")){
+            if(s.contains("Qoo10")){
                 unsortedList = filterSite(unsortedList, "Qoo10");
             }
         }
@@ -61,21 +87,34 @@ public class Filter {
         return sortList;
     }
 
-    //filter by price range
-    public ArrayList<Product> filterPriceRange(ArrayList<Product> prodList){
-        for(Product p : prodList){
-            if(p.getPrice() < this.minPrice || p.getPrice() > this.maxPrice){
-                prodList.remove(p);
+    //sort by rating asc/desc
+    public ArrayList<Product> sortByRating(ArrayList<Product> sortList, boolean ascending){
+        //insertion sort
+        int n = sortList.size();
+        for (int i = 1; i < n; ++i) {
+            double rating = sortList.get(i).getRating();
+            int j = i - 1;
+
+            while (j >= 0 && sortList.get(j).getRating() > rating) {
+                sortList.set(j+1, sortList.get(j));
+                j = j - 1;
             }
+            sortList.set(j+1, sortList.get(i));
         }
-        return prodList;
+
+        if(ascending == true){
+            Collections.reverse(sortList);
+        }
+        return sortList;
     }
 
     //filter by shopping site
     public ArrayList<Product> filterSite(ArrayList<Product> prodList, String site){
-        for(Product p : prodList){
-            if(p.getEcommerceSite().compareTo(site) != 0){
-                prodList.remove(p);
+        Iterator<Product> itr = prodList.iterator();
+        while (itr.hasNext()) {
+            Product p = itr.next();
+            if (p.getEcommerceSite().compareTo(site) != 0){
+                itr.remove();
             }
         }
         return prodList;
@@ -83,9 +122,13 @@ public class Filter {
 
     //filter free shipping fee
     public ArrayList<Product> filterFreeShipping(ArrayList<Product> prodList){
-        for(Product p : prodList){
-            if(p.getShippingFee() > 0){
-                prodList.remove(p);
+        System.out.println("filtering by free shipping...");
+        Iterator<Product> itr = prodList.iterator();
+        while (itr.hasNext()) {
+            Product p = itr.next();
+            System.out.println(p.getShippingFee());
+            if (p.getShippingFee() > 0.0){
+                itr.remove();
             }
         }
         return prodList;
@@ -93,9 +136,11 @@ public class Filter {
 
     //filter domestic or overseas shipping
     public ArrayList<Product> filterShippingLoc(ArrayList<Product> prodList, String location){
-        for(Product p : prodList){
-            if(p.getShipFrom().compareTo(location) != 0){
-                prodList.remove(p);
+        Iterator<Product> itr = prodList.iterator();
+        while (itr.hasNext()) {
+            Product p = itr.next();
+            if (p.getShipFrom().compareTo(location) != 0){
+                itr.remove();
             }
         }
         return prodList;

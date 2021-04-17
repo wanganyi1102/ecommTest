@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.ecomm.application.R;
+import com.ecomm.application.boundary.ProductDisplayUI;
+import com.ecomm.application.boundary.SearchTestUI;
+import com.ecomm.application.entity.Product;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -66,10 +69,16 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         Picasso.with(context).load(pImage.get(position)).into(holder.pImage);
         holder.pTitle.setText(pTitles.get(position));
         holder.pPrice.setText(pPrice.get(position));
-        holder.pImage.setOnClickListener(new View.OnClickListener() {
+
+        //click image to go into product display page
+        holder.pImage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //SearchTestUI.setClickedposition(position);
+                Intent displayProd = new Intent(context, ProductDisplayUI.class);
+                Product productDisplay = SearchTestUI.productsToDisplay.get(position);
+                displayProd.putExtra("com.ecomm.application.PRODUCT_INFO", productDisplay);
+                System.out.println(productDisplay.getName());
+                context.startActivity(displayProd);
             }
         });
     }

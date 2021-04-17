@@ -19,7 +19,6 @@ public class ProductDisplayUI extends AppCompatActivity {
 
     private Product product;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,10 +91,19 @@ public class ProductDisplayUI extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backHome = new Intent(getApplicationContext(), HomePageUI.class);
-                startActivity(backHome);
+                finish(); //goes back to previous page
             }
         });
+
+        //contact seller btn
+        TextView contactSeller = (TextView) findViewById(R.id.contactSellerTextView);
+        contactSeller.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent messageSeller = new Intent(getApplicationContext(), ContactSellerUI.class);
+                startActivity(messageSeller);
+            }
+        }));
 
     }
 }

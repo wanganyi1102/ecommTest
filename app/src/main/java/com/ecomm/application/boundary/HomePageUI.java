@@ -12,12 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
 import com.ecomm.application.webCrawl;
-import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 
@@ -38,7 +36,6 @@ public class HomePageUI extends AppCompatActivity {
     public static ArrayList<Product> products;
     public static String s;
     public static String q = new String();
-    FirebaseAuth mAuth;
 
 
     @Override
@@ -74,29 +71,6 @@ public class HomePageUI extends AppCompatActivity {
             }
         });
 
-        URI uri = null;
-        try {
-            uri = new URI("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        URL miloURL = null;
-        try {
-            miloURL = uri.toURL();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        //create fake products
-        Product milo1 = new Product("(2 Pack Bundle) MILO® Instant 3in1 ACTIV-GO 18 Sachets x 27g (Expires May 2022)", 13.0,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 2.0  , "https://sg-test-11.slatic.net/p/514d199bc6acc8eceb1ce3ae992599ce.jpg_100x100q90.jpg_.webp");
-        Product milo2 = new Product(" MILO Australian Recipe Powder Tin 1.25KG", 17.9,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 2.0 , "https://sg-test-11.slatic.net/p/067c568c3897e5b972963a421716e1e5.jpg_100x100q90.jpg_.webp");
-        Product milo3 = new Product("MILO Instant 3in1 ACTIVGO Sachet 18x27G (Expires May 2022)", 6.5,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 2.0 ,"https://sg-test-11.slatic.net/p/c640737f7fb5b9fe309e006928e220cc.jpg_100x100q90.jpg_.webp");
-        Product milo4 = new Product("(Bundle of 2) MILO Australian Recipe Powder Refill 900G (Expires Feb 2022)", 25.0,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 2.0 ,"https://sg-test-11.slatic.net/p/3b4286a37cd08cf8de06215800ca8fc4.jpg_100x100q90.jpg_.webp");
-        ArrayList<Product> productsToDisplay = new ArrayList<Product>();
-        productsToDisplay.add(milo1);
-        productsToDisplay.add(milo2);
-        productsToDisplay.add(milo3);
-        productsToDisplay.add(milo4);
 
         //(test filter) click on filter button
         TextView filterSearchBtn = (TextView) findViewById(R.id.filterSearchBtn);
@@ -111,7 +85,37 @@ public class HomePageUI extends AppCompatActivity {
         });
 
 
+        //create fake products
+        URI uri = null;
+        try {
+            uri = new URI("https://www.lazada.sg/products/milo-gao-kosong-powder-refill-pack-750g-expires-feb-2022-i266864077-s414554134.html?spm=a2o42.searchlistbrand.list.13.57dd40410SEKoO&search=1&freeshipping=1");
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        URL miloURL = null;
+        try {
+            miloURL = uri.toURL();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        Product milo1 = new Product("(2 Pack Bundle) MILO® Instant 3in1 ACTIV-GO 18 Sachets x 27g (Expires May 2022)", 13.0,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 2.0  , "https://sg-test-11.slatic.net/p/514d199bc6acc8eceb1ce3ae992599ce.jpg_100x100q90.jpg_.webp");
+        Product milo2 = new Product("MILO Australian Recipe Powder Tin 1.25KG", 17.9,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",3.9, 2.0 , "https://sg-test-11.slatic.net/p/067c568c3897e5b972963a421716e1e5.jpg_100x100q90.jpg_.webp");
+        Product milo3 = new Product("MILO Instant 3in1 ACTIVGO Sachet 18x27G (Expires May 2022)", 6.5,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Lazada",4.3, 0.0 ,"https://sg-test-11.slatic.net/p/c640737f7fb5b9fe309e006928e220cc.jpg_100x100q90.jpg_.webp");
+        Product milo4 = new Product("(Bundle of 2) MILO Australian Recipe Powder Refill 900G (Expires Feb 2022)", 25.0,miloURL, "MILO is made with the nutritious goodness of malt, milk, cocoa, essential vitamins and minerals, giving you the energy to go further.", "Qoo10",4.3, 1.0 ,"https://sg-test-11.slatic.net/p/3b4286a37cd08cf8de06215800ca8fc4.jpg_100x100q90.jpg_.webp");
+        Product milo5 = new Product("MILO GAO KOSONG Powder Refill Pack 750g (Expires Feb 2022)", 7.95,miloURL, "MILO® is specially formulated with protomalt, milk and cocoa, providing the essential vitamins and minerals of a nutritious breakfast beverage.", "Lazada",4.5, 2.0 ,"https://laz-img-sg.alicdn.com/p/8b9064d60f43db66ca00b1b18dcf42be.jpg_100x100q80.jpg_.webp");
+        Product milo6 = new Product("(48 Packets/2 Cartons) MILO UHT Chocolate Malt Packet Liquid Drink 200ml x 48", 34.0,miloURL, "Low in fatContains ACTIVGO- PROTOMALT, vitamins and minerals giving you the energy to winContains Vitamin C and Iron", "Lazada",4.7, 0.0 ,"http://laz-img-sg.alicdn.com/p/17e3734d36da7e0e18712bfeb7875de5.jpg_100x100q80.jpg_.webp");
+        ArrayList<Product> productsToDisplay = new ArrayList<Product>();
+        productsToDisplay.add(milo1);
+        productsToDisplay.add(milo2);
+        productsToDisplay.add(milo3);
+        productsToDisplay.add(milo4);
+        productsToDisplay.add(milo5);
+        productsToDisplay.add(milo6);
+
         TextView textView2 = (TextView) findViewById(R.id.textView2);
+
+        //search bar
         SearchView SearchBar = (SearchView) findViewById(R.id.searchBar);
         SearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -123,15 +127,12 @@ public class HomePageUI extends AppCompatActivity {
                 q = SearchBar.getQuery().toString();
                 System.out.println(q);
 
-
-
                 Intent searchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
 //                searchIntent.putExtra("com.ecomm.application.QUERY", query);
                 searchIntent.putExtra("com.ecomm.application.PRODUCT_LIST", productsToDisplay);
                 startActivity(searchIntent);
                 return false;
             }
-
 
             @Override
             public boolean onQueryTextChange(String newText) {
@@ -172,7 +173,7 @@ public class HomePageUI extends AppCompatActivity {
         });
 
 
-            //another fake product
+            //fake phone product
             ImageView phone = (ImageView) findViewById(R.id.phone);
             phone.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -200,28 +201,6 @@ public class HomePageUI extends AppCompatActivity {
                     startActivity(displayProductDetail);
                 }
             });
-
-        // test to check if button can open search xml
-        Button test = (Button) findViewById(R.id.test);
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openSearchIntent = new Intent(getApplicationContext(), SearchTestUI.class);
-                startActivity(openSearchIntent);
-            }
-        });
-
-        ImageView logOut = (ImageView) findViewById(R.id.logoutBtn);
-        logOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth = FirebaseAuth.getInstance();
-                mAuth.signOut();
-                Toast.makeText(HomePageUI.this, "Signing Out.", Toast.LENGTH_LONG).show();
-                Intent backToLoginIntent = new Intent(getApplicationContext(), LoginUI.class);
-                startActivity(backToLoginIntent);
-            }
-        });
 
     }
 
