@@ -6,10 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.ecomm.application.R;
-import com.ecomm.application.entity.Filter;
+import com.ecomm.application.control.Filter;
 import com.ecomm.application.entity.Product;
 import com.google.android.material.chip.Chip;
 
@@ -42,8 +41,9 @@ public class FilterUI extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backHome = new Intent(getApplicationContext(), HomePageUI.class);
-                startActivity(backHome);
+                finish();
+//                Intent backHome = new Intent(getApplicationContext(), HomePageUI.class);
+//                startActivity(backHome);
             }
         });
 
@@ -74,7 +74,7 @@ public class FilterUI extends AppCompatActivity {
                     chip.setChipBackgroundColorResource(R.color.purple_200); //changes color when selected
                     int startInd = chip.toString().indexOf("/") +1;
                     int endInd = chip.toString().indexOf("}");
-                    //System.out.println(chip.toString().substring(startInd, endInd));
+                    System.out.println(chip.toString().substring(startInd, endInd));
                     filterBy.add(chip.toString().substring(startInd, endInd));
                 }
             });
@@ -86,14 +86,14 @@ public class FilterUI extends AppCompatActivity {
         rangeSeekBar.setSelectedMinValue(0);
         rangeSeekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener() {
             @Override
-            public void onRangeSeekBarValuesChanged(RangeSeekBar bar, Object minValue, Object maxValue) {
+            public void onRangeSeekBarValuesChanged(RangeSeekBar bar, Object maxValue, Object minValue) {
                 Number min_value = bar.getSelectedMinValue();
                 Number max_value = bar.getSelectedMaxValue();
                 int min = (int) min_value;
                 int max = (int) max_value;
                 filter.setMinPrice(min);
                 filter.setMaxPrice(max);
-                Toast.makeText(getApplicationContext(), "Min="+min+"\n"+"Max="+max, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Min="+min+"\n"+"Max="+max, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -116,11 +116,13 @@ public class FilterUI extends AppCompatActivity {
         applyFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                for(String s : filterBy){
-//                    System.out.println(s);
-//                }
+
+                for(String s : filterBy){
+                    System.out.println(s);
+                }
+
+                prodList = filter.filterPriceRange(prodList);
                 filter.setFilterBy(filterBy); //pass selected filters to filter control
-                //prodList = filter.filterPriceRange(prodList);
                 prodList = filter.performFilter(filterBy, prodList);
                 for(Product p: prodList){
                     System.out.println(p.getPrice()+"");

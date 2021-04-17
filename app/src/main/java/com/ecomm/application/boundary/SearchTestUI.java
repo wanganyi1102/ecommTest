@@ -3,6 +3,7 @@ package com.ecomm.application.boundary;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.ecomm.application.control.ProductListAdapter;
 import com.ecomm.application.entity.Product;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -44,77 +45,60 @@ import static com.ecomm.application.boundary.HomePageUI.q;
 
 public class SearchTestUI extends AppCompatActivity {
 
-    private ArrayList<Product> productsToDisplay = new ArrayList<Product>();
+    public static ArrayList<Product> productsToDisplay = new ArrayList<Product>();
     private ArrayList<String> pTitles = new ArrayList<>();
     private ArrayList<String> pImages = new ArrayList<>();
     private ArrayList<String> pPrices = new ArrayList<>();
 
-    public static ArrayList<Product> productList = new ArrayList<Product>();
-    public static int clickedposition;
 //    androiddrive2 ad = new androiddrive2();
-
-
-    public void setClickedposition(int clickedposition) {
-        SearchTestUI.clickedposition = clickedposition;
-        displayProductDet(clickedposition);
-    }
-
-    public void displayProductDet(int clickedposition){
-        Product productToOpen = productsToDisplay.get(clickedposition);
-        Intent displayProduct = new Intent(getApplicationContext(), ProductDisplayUI.class);
-        displayProduct.putExtra("productdeets", productToOpen);
-        startActivity(displayProduct);
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        try {
-            DesiredCapabilities capabilities= new DesiredCapabilities();
-            capabilities.setCapability("platformName", "Android");
-            capabilities.setCapability("deviceName", "emulator-5554");
-            capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
-            capabilities.setCapability(CapabilityType.VERSION, "10");
-            capabilities.setCapability("chromedriverUseSystemExecutable", true);
-            capabilities.setCapability("automationName","UIAutomator2");
-            capabilities.setCapability("version","10");
-            capabilities.setCapability("adbExecTimeout", "30000");
-            capabilities.setCapability("headless", true);
-            capabilities.setCapability("fullReset", false);
-            capabilities.setCapability("noReset", true);
-//            capabilities.setCapability("appPackage", this.getPackageName());
-
-
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--user-agent=Chrome/86.0.4240.198");
-            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-//            System.out.println("creating webdriver"); ///////////
-//            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
-//            WebDriver driver = new RemoteWebDriver(capabilities);
-//            System.out.println("getting lazada");
-//            driver.get("https://www.lazada.sg");
-//            System.out.println("crawl");
-            androiddrive crawl = new androiddrive();
-//                    crawl.another(driver);
-            TextView Categories = (TextView) findViewById(R.id.Categories);
-            productsToDisplay = crawl.testLazadaSearch(driver, HomePageUI.q);
-            Categories.setText(productsToDisplay.get(0).getName());
-
-//            System.out.println("worked");
-        } catch (MalformedURLException e){ //| InterruptedException | URISyntaxException e){
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+//
+//        try {
+//            DesiredCapabilities capabilities= new DesiredCapabilities();
+//            capabilities.setCapability("platformName", "Android");
+//            capabilities.setCapability("deviceName", "emulator-5554");
+//            capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+//            capabilities.setCapability(CapabilityType.VERSION, "10");
+//            capabilities.setCapability("chromedriverUseSystemExecutable", true);
+//            capabilities.setCapability("automationName","UIAutomator2");
+//            capabilities.setCapability("version","10");
+//            capabilities.setCapability("adbExecTimeout", "30000");
+//            capabilities.setCapability("headless", true);
+//            capabilities.setCapability("fullReset", false);
+//            capabilities.setCapability("noReset", true);
+////            capabilities.setCapability("appPackage", this.getPackageName());
+//
+//
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("--user-agent=Chrome/86.0.4240.198");
+//            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+////            System.out.println("creating webdriver"); ///////////
+////            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+//            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
+////            WebDriver driver = new RemoteWebDriver(capabilities);
+////            System.out.println("getting lazada");
+////            driver.get("https://www.lazada.sg");
+////            System.out.println("crawl");
+//            androiddrive crawl = new androiddrive();
+////                    crawl.another(driver);
+//            TextView Categories = (TextView) findViewById(R.id.Categories);
+//            productsToDisplay = crawl.testLazadaSearch(driver, HomePageUI.q);
+//            Categories.setText(productsToDisplay.get(0).getName());
+//
+////            System.out.println("worked");
+//        } catch (MalformedURLException e){ //| InterruptedException | URISyntaxException e){
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_test_u_i);
@@ -144,15 +128,16 @@ public class SearchTestUI extends AppCompatActivity {
             }
         });
 
-        Button fakeButton = (Button) findViewById(R.id.fakeBtn);
-        fakeButton.setOnClickListener(new View.OnClickListener() {
+        //click on back button
+        Button backBtn = (Button) findViewById(R.id.BackBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent displayFake = new Intent(getApplicationContext(), ProductDisplayUI.class);
-                displayFake.putExtra("com.ecomm.application.PRODUCT_INFO", productsToDisplay.get(0));
-                startActivity(displayFake);
+                Intent backHome = new Intent(getApplicationContext(), HomePageUI.class);
+                startActivity(backHome);
             }
         });
+
 //        URI uri = null;
 //        try {
 //            uri = new URI("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
@@ -191,7 +176,6 @@ public class SearchTestUI extends AppCompatActivity {
     }
 
     public void initImageBitmaps() throws InterruptedException, IOException, URISyntaxException {
-
 //        productList = ad.goingqoo(q);
 //        System.out.println(productList.get(1));
 
@@ -199,16 +183,7 @@ public class SearchTestUI extends AppCompatActivity {
             pImages.add(p.getImageURL());
             pTitles.add(p.getName());
             pPrices.add(p.getPrice()+"");
-//            ratings.add(p.getRating()+"");
-//            prices.add(p.getPrice()+"");
         }
-//        pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
-//        pTitles.add("mango");
-//        pPrices.add("$2.50");
-//
-//        pImages.add("https://www.lazada.sg/products/cambodia-keo-romeat-mango-i395210387-s952532064.html?spm=a2o42.searchlist.list.3.e8f72f9eWNyvMi&search=1");
-//        pTitles.add("apple");
-//        pPrices.add("$2.10");
 
         initRecyclerView();
     }
@@ -216,8 +191,9 @@ public class SearchTestUI extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.searchRecyclerView);
-        ItemAdapter adapter = new ItemAdapter(pImages, pTitles, pPrices, this);
+        ProductListAdapter adapter = new ProductListAdapter(pImages, pTitles, pPrices, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
 }

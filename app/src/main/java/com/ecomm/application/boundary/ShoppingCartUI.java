@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ecomm.application.R;
@@ -41,8 +42,16 @@ public class ShoppingCartUI extends AppCompatActivity {
 
         if(getIntent().hasExtra("price")){
             Product product = (Product) getIntent().getSerializableExtra("price");
-            productsInCart.add(product);
-            System.out.println(product.getName());
+            int check = 0;
+            for(Product p :productsInCart) {
+                if (product.getName().compareTo(p.getName()) == 0) {
+                    p.setQuantity(p.getQuantity() + 1);
+                    check = 1;
+                }
+            }
+            if(check == 0){ //if none of product names are the same
+                productsInCart.add(product);
+            }
         }
 
         total = 0.0;
@@ -57,6 +66,16 @@ public class ShoppingCartUI extends AppCompatActivity {
             public void onClick(View v) {
                 Intent paymentIntent = new Intent(getApplicationContext(), PaymentUI.class);
                 startActivity(paymentIntent);
+            }
+        });
+
+        //Set back button to activity
+        ImageButton backBtn = (ImageButton) findViewById(R.id.backToHome);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backHomeIntent = new Intent(getApplicationContext(), HomePageUI.class);
+                startActivity(backHomeIntent);
             }
         });
 
@@ -75,16 +94,6 @@ public class ShoppingCartUI extends AppCompatActivity {
 //
 //        calculateTotal();
     }
-//        //Set back button to activity
-//        ImageButton backBtn = (ImageButton) findViewById(R.id.backToHome);
-//        backBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent backHomeIntent = new Intent(getApplicationContext(), HomePageUI.class);
-//                startActivity(backHomeIntent);
-//            }
-//        });
-
 
 //    private void getIntentData(){
 //        if(getIntent()!=null && getIntent().getExtras()!=null){
@@ -154,6 +163,5 @@ public class ShoppingCartUI extends AppCompatActivity {
         cartRecyclerView.setAdapter(adapter);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     };
-
 
 }

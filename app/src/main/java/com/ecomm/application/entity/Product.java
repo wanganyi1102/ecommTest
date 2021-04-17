@@ -54,6 +54,9 @@ public class Product implements Comparable, Serializable {
         return this.name;
     }
 
+//    public double getPrice(){
+//        return price = this.price;
+//    }
     public double getPrice(){
         return price = (double) Math.round(this.price * 100) / 100;
     }
@@ -100,7 +103,21 @@ public class Product implements Comparable, Serializable {
         return -1;
     }
 
+    public int compareToRating(Object o) {
+        if(this.getRating() > ((Product)o).getRating()){ //cast object o as product
+            return 1;
+        }
+        return -1;
+    }
+
     public static Comparator<Product> Price = new Comparator<Product>() {
+
+        public int compare(Product o1, Product o2) {
+            return o1.compareTo(o2);
+        }
+    };
+
+    public static Comparator<Product> Rating = new Comparator<Product>() {
 
         public int compare(Product o1, Product o2) {
             return o1.compareTo(o2);

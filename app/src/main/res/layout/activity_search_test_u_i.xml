@@ -11,26 +11,30 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
 
+        <Button
+            android:id="@+id/BackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="51dp"
+            android:layout_marginTop="8dp"
+            android:text="Back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/filterText"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_gravity="end"
             android:text="Filter"
+            android:layout_marginTop="0dp"
             android:layout_margin="8dp" />
-
-        <Button
-            android:id="@+id/fakeBtn"
-            android:layout_width="75dp"
-            android:layout_height="23dp"
-            android:text="Button" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="656dp"
+            android:layout_height="700dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="8"
+            tools:itemCount="12"
             tools:listitem="@layout/search_item_1" />
 
 
