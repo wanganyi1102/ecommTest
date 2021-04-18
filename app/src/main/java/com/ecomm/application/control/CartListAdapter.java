@@ -77,14 +77,26 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         holder.tv_total.setText(prices.get(position));
         holder.tv_qty.setText(quantity.get(position).toString());
 
+
         holder.chk_selectitem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("selected");
-                //System.out.println(ShoppingCartUI.productsInCart.get(position).getName());
-                ShoppingCartUI.selectedProducts.add(ShoppingCartUI.productsInCart.get(position));
-                ShoppingCartUI.total += Double.parseDouble(prices.get(position))*count;
+                if(holder.chk_selectitem.isChecked()){
+                    System.out.println("selected");
+                    //System.out.println(ShoppingCartUI.productsInCart.get(position).getName());
+                    ShoppingCartUI.selectedProducts.add(ShoppingCartUI.productsInCart.get(position));
+
+                }
+                else{
+                    ShoppingCartUI.selectedProducts.remove(ShoppingCartUI.productsInCart.get(position));
+                }
+                double total = 0;
+                for(Product p:ShoppingCartUI.selectedProducts){
+                    total += p.getPrice()*p.getQuantity();
+                }
+                ShoppingCartUI.total = total;
                 ShoppingCartUI.orderTotalTextView.setText("S$" + ShoppingCartUI.total+"" +"0");
+
             }
         });
 
@@ -94,6 +106,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
                 count = Integer.parseInt(String.valueOf(holder.tv_qty.getText()));
                 count++;
                 holder.tv_qty.setText("" + count);
+
                 holder.tv_total.setText(String.format("%.2f",count*Double.parseDouble(String.valueOf(prices.get(position)))));
             }
         });
