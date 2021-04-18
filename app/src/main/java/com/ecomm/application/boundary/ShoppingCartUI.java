@@ -79,6 +79,7 @@ public class ShoppingCartUI extends AppCompatActivity {
             }
         });
 
+
 //        tv_total =(TextView) findViewById(R.id.orderTotalTextView);
 //
 //        recycler_itemlist =(RecyclerView) findViewById(R.id.cartRecyclerView);

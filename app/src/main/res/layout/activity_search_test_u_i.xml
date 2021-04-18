@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="51dp"
             android:layout_marginTop="8dp"
-            android:text="Back"
+            android:text="@string/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,12 +27,12 @@
             android:layout_gravity="end"
             android:layout_margin="8dp"
             android:layout_marginTop="0dp"
-            android:text="Filter" />
+            android:text="@string/filter" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="640dp"
+            android:layout_height="550dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="15"
             tools:listitem="@layout/search_item_1" />

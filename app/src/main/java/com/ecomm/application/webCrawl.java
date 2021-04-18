@@ -175,6 +175,7 @@ public class webCrawl {
         driver.quit();
 
         System.out.println("\n\n\n\n**********************");
+
     }
 
     public ArrayList<Product> testQoo10Search() throws InterruptedException, URISyntaxException, MalformedURLException {

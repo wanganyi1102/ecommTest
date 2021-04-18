@@ -39,7 +39,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class androiddrive2 extends AppCompatActivity {
     //    static WebDriver driver;
-    @Test
+    //@Test
     public void testSearch() throws InterruptedException, IOException, URISyntaxException {
 
         ArrayList<Product> productList1 = new ArrayList<Product>();
@@ -50,7 +50,7 @@ public class androiddrive2 extends AppCompatActivity {
 
     }
 
-    @Test
+    //@Test
 //    public static void main(String arr[]) throws MalformedURLException, InterruptedException
     public void going() throws InterruptedException, IOException, URISyntaxException
     {
@@ -175,7 +175,7 @@ public class androiddrive2 extends AppCompatActivity {
 //        driver.quit();
     }
 
-    //@Test
+    @Test
     public ArrayList<Product> goingqoo(String q) throws InterruptedException, IOException, URISyntaxException {
     //public void goingqoo() throws InterruptedException, IOException, URISyntaxException {
         DesiredCapabilities capabilities = new DesiredCapabilities();

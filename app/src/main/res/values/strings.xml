@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HomePageTest</string>
+    <string name="app_name">Marketplace</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -115,4 +115,6 @@
     <string name="user_profile">User Profile</string>
     <string name="title_activity_search_test_u_i">SearchTestUI</string>
     <string name="title_activity_payment_complete">PaymentComplete</string>
+    <string name="back">Back</string>
+    <string name="filter">Filter</string>
 </resources>
