@@ -41,7 +41,7 @@ public class Product implements Comparable, Serializable {
         this.quantity = quantity;
     }
 
-    public Product(String name, double price, String url, String description, String ecommerceSite, double rating, double shippingFee, int sales, String imageURL){
+    public Product(String name, double price, String url, String description, String ecommerceSite, double rating, double shippingFee, int sales, String imageURL, int quantity){
         this.name = name;
         this.price = price;
         this.url = url;
@@ -51,6 +51,7 @@ public class Product implements Comparable, Serializable {
         this.shippingFee = shippingFee;
         this.imageURL = imageURL;
         this.sales = sales;
+        this.quantity = quantity;
     }
 
     //getters
