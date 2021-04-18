@@ -1,8 +1,9 @@
-package com.ecomm.application;
+package com.ecomm.application.boundary;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.ecomm.application.R;
 import com.ecomm.application.boundary.HomePageUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;

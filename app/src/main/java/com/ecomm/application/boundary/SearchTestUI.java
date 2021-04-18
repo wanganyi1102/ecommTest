@@ -78,7 +78,7 @@ public class SearchTestUI extends AppCompatActivity {
 //            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 ////            System.out.println("creating webdriver"); ///////////
 ////            WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-//            WebDriver driver = new RemoteWebDriver(new URL("http://10.27.41.69:4723/wd/hub"),capabilities);
+//            WebDriver driver = new RemoteWebDriver(new URL("http://192.168.3.146:4723/wd/hub"),capabilities);
 ////            WebDriver driver = new RemoteWebDriver(capabilities);
 ////            System.out.println("getting lazada");
 ////            driver.get("https://www.lazada.sg");

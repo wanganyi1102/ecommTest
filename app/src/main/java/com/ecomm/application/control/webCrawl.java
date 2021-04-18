@@ -1,21 +1,32 @@
-package com.ecomm.application.boundary;
+package com.ecomm.application.control;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityManagerCompat;
 
 import com.ecomm.application.entity.Product;
 import com.opencsv.CSVWriter;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -43,7 +54,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 //import io.appium.java_client.android.AndroidDriver;
 
-public class androiddrive extends AppCompatActivity {
+public class webCrawl extends AppCompatActivity {
+    private static final String FILENAME = "SCRAPED.csv";
     //    static WebDriver driver;
 //    @Test
 //    public static void main(String arr[]) throws MalformedURLException, InterruptedException
@@ -158,7 +170,7 @@ public class androiddrive extends AppCompatActivity {
         }
 
 //        driver.quit();
-        driver.close();
+
 
 //        Intent prodIntent = new Intent(androidx.multidex.MultiDexApplication, ProductDisplayUI.class);
 //        startActivity(prodIntent);
@@ -191,10 +203,157 @@ public class androiddrive extends AppCompatActivity {
 
         }
 
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            int REQUEST_CODE_PERMISSION_STORAGE = 100;
+            String[] permissions = {
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            };
+
+//            int permission = ActivityCompat.checkSelfPermission(androiddrive.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//
+//            if (permission != PackageManager.PERMISSION_GRANTED) {
+//                // We don't have permission so prompt the user
+//                ActivityCompat.requestPermissions(androiddrive.this, permissions, REQUEST_CODE_PERMISSION_STORAGE);
+//            }
+        }
+//
+//            for (String str : permissions) {
+////                if (this.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
+//                    this.requestPermissions(permissions, REQUEST_CODE_PERMISSION_STORAGE);
+////                    break;
+////                }
+//            }
+//        }
+
+//        java.io.File csvFile = new java.io.File(Environment
+//                .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+//                + "/TESTING.csv");
+//        org.apache.commons.io.FileUtils.copyInputStreamToFile(is, file);
+
+        List<String[]> data = null;
+        FileOutputStream fos = null;
+        for(int m=0; m<item_titles.size(); m++){
+            data = new ArrayList<String[]>();
+            data.add(new String[]{titles_list[m],prices_list[m],urls_list[m]});
+        }
+
+        File storageDir = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
+        File file = File.createTempFile(
+                "Adsfadsf",  // prefix
+                ".csv",         // suffix
+                storageDir      // directory
+        );
+        CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+        csvWrite.writeAll(data);
+        csvWrite.close();
+
+        System.out.println("yep it worked T_T");
+
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
+        if (!exportDir.exists()){
+            exportDir.mkdirs();
+        }
+        file = new File(exportDir, "teste.csv");
+        try{
+            file.createNewFile();
+            csvWrite = new CSVWriter(new FileWriter(file));
+            csvWrite.writeAll(data);
+            csvWrite.close();
+        }catch(Exception sqlEx){
+            sqlEx.printStackTrace();
+//            Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
+        }
+
+
+//        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+//        String fileName = "scraped.csv";
+//        String filePath = baseDir + File.separator + fileName;
+//        File f = new File(filePath);
+//        String csv = "test.csv";
+//        CSVWriter writer = new CSVWriter(new FileWriter(filePath));
+//
+//        writer.writeAll(data);
+//
+//        writer.close();
+//        Toast.makeText(this, "yes....? scraped.csv"+exportDir, Toast.LENGTH_LONG).show();
+
+
+
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(getApplicationContext().openFileOutput("testing.csv", Context.MODE_PRIVATE));
+            for(String[] a : data) {
+                for (String b : a) {
+                    outputStreamWriter.write(b);
+                }
+            }
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+
+
+        try {
+            fos = openFileOutput(FILENAME, MODE_PRIVATE);
+            for(String[] a : data) {
+                for (String b : a) {
+                    fos.write(b.getBytes());
+                }
+            }
+            Toast.makeText(this, "Saved to" + getFilesDir()+"/"+FILENAME,Toast.LENGTH_LONG).show();
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        } finally {
+            if (fos!=null){
+                try {
+                    fos.close();
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        driver.close();
+
+//        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+//        String fileName = "scraped.csv";
+//        String filePath = baseDir + File.separator + fileName;
+//        File f = new File(filePath);
+//        CSVWriter writer = null;
+//        List<String[]> data = null;
+//
+//        for(int m=0; m<item_titles.size(); m++){
+//            data = new ArrayList<String[]>();
+//            data.add(new String[]{titles_list[m],prices_list[m],urls_list[m]});
+//        }
+//
+//        // File exist
+//        if(f.exists()&&!f.isDirectory())
+//        {
+//            FileWriter mFileWriter = new FileWriter(filePath, true);
+//            writer = new CSVWriter(mFileWriter);
+//        }
+//        else
+//        {
+//            writer = new CSVWriter(new FileWriter(filePath));
+//        }
+//
+//        writer.writeAll(data);
+//        writer.close();
+        System.out.println("okay");
+
+
+
+
+
 //        CSVWriter writer = null;
 //        List<String[]> data = null;
 //        for(int m=0; m<item_titles.size(); m++){
-//            writer = new CSVWriter(new FileWriter("ecommTest/app/src/main/java/com/ecomm/application/scrapedData.csv"));
+//            writer = new CSVWriter(new FileWriter("scrapedData.csv"));
 //
 //            data = new ArrayList<String[]>();
 //            data.add(new String[]{titles_list[m],prices_list[m],urls_list[m]});

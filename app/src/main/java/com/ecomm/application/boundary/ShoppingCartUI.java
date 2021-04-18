@@ -94,6 +94,16 @@ public class ShoppingCartUI extends AppCompatActivity {
 //        getIntentData();
 //
 //        calculateTotal();
+
+        //Set back button to activity
+        ImageButton backkBtn = (ImageButton) findViewById(R.id.backToHome);
+        backkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backHomeIntent = new Intent(getApplicationContext(), HomePageUI.class);
+                startActivity(backHomeIntent);
+            }
+        });
     }
 
 //    private void getIntentData(){

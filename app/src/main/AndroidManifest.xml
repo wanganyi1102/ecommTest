@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".boundary.ContactSellerUI"></activity>
         <activity
-            android:name=".PaymentComplete"
+            android:name=".boundary.PaymentComplete"
             android:label="@string/title_activity_payment_complete"
             android:theme="@style/Theme.HomePageTest.NoActionBar" />
         <activity
