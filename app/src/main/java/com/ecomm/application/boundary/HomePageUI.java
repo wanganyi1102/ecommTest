@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
 import com.ecomm.application.webCrawl;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 
@@ -47,10 +49,22 @@ public class HomePageUI extends AppCompatActivity {
 
         s = "pudding";
 
+
         //get intent passed from loginUI
         if (getIntent().hasExtra("com.example.ACCOUNT")){
             String username = getIntent().getExtras().getString("com.example.ACCOUNT");
         }
+
+        Button signout = (Button) findViewById(R.id.signout);
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser mAuth;
+                FirebaseAuth.getInstance().signOut();
+                Intent login = new Intent(getApplicationContext(), LoginUI.class);
+                startActivity(login);
+            }
+        });
 
         // click on cart button
         ImageButton cartBtn = (ImageButton) findViewById(R.id.cartBtn);

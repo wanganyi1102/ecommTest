@@ -225,4 +225,13 @@
         app:layout_constraintTop_toBottomOf="@+id/womensClothesBtn"
         app:srcCompat="@drawable/ic_cat_5" />
 
+    <Button
+        android:id="@+id/signout"
+        android:layout_width="74dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:text="Sign out"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

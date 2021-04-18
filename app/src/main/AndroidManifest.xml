@@ -34,14 +34,14 @@
         <activity android:name=".boundary.PaymentUI" />
         <activity android:name=".boundary.ShoppingCartUI" />
         <activity android:name=".boundary.UserProfileUI" />
-        <activity android:name=".boundary.HomePageUI"> //app starts from this UI
+        <activity android:name=".boundary.LoginUI"> //app starts from this UI
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".boundary.LoginUI" />
+        <activity android:name=".boundary.HomePageUI" />
 
         <meta-data
             android:name="preloaded_fonts"
