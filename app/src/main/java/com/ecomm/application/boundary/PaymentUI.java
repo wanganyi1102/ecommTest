@@ -12,9 +12,7 @@ import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Toast;
 
-import com.ecomm.application.PaymentComplete;
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
 

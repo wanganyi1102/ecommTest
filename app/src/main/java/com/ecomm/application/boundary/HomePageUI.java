@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.ecomm.application.R;
 import com.ecomm.application.entity.Product;
-import com.ecomm.application.webCrawl;
+import com.ecomm.application.control.webCrawl;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
