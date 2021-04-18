@@ -165,6 +165,8 @@ public class androiddrive2 extends AppCompatActivity {
 //        File app= new File("apk-file-path");
 //        DesiredCapabilities capabilities= new DesiredCapabilities();
 //        capabilities.setCapability("deviceName", "your-device-name");
+//        DesiredCapabilities capabilities= new DesiredCapabilities();
+//        capabilities.setCapability("deviceName", "your-device-name");
 //        capabilities.setCapability("platformVersion", "platform-version");
 //        capabilities.setCapability("platformName", "platform-name");
 //        capabilities.setCapability("app", app.getAbsolutePath());
