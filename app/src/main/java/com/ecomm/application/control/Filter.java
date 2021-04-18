@@ -4,6 +4,7 @@ import android.media.Rating;
 
 import com.ecomm.application.entity.Product;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,8 +15,8 @@ import kotlin.reflect.TypeOfKt;
 public class Filter {
     private ArrayList<String> filterBy;
     private ArrayList<Product> unsortedList;
-    private int minPrice;
-    private int maxPrice;
+    private int minPrice = 0;
+    private int maxPrice = 100;
 
     public void setFilterBy(ArrayList<String> filterBy) {
         this.filterBy = filterBy;
@@ -40,6 +41,7 @@ public class Filter {
     }
 
     public ArrayList<Product> performFilter(ArrayList<String> filterBy, ArrayList<Product> unsortedList){
+        unsortedList = filterPriceRange(unsortedList);
         for(String s : filterBy){
             if(s.contains("price")){
                 if (s.substring(5).compareTo("Ascending") == 0){
@@ -49,10 +51,17 @@ public class Filter {
                 }
             }
             if(s.contains("ratings")){
-                if (s.substring(6).compareTo("Ascending") == 0){
+                if (s.substring(7).compareTo("Ascending") == 0){
                     unsortedList = sortByRating(unsortedList, true);
                 }else{
                     unsortedList = sortByRating(unsortedList, false);
+                }
+            }
+            if(s.contains("sales")){
+                if (s.substring(5).compareTo("Ascending") == 0){
+                    unsortedList = sortBySales(unsortedList, true);
+                }else{
+                    unsortedList = sortBySales(unsortedList, false);
                 }
             }
             if(s.contains("shipping")){
@@ -90,21 +99,45 @@ public class Filter {
     //sort by rating asc/desc
     public ArrayList<Product> sortByRating(ArrayList<Product> sortList, boolean ascending){
         //insertion sort
+
         int n = sortList.size();
         for (int i = 1; i < n; ++i) {
-            double rating = sortList.get(i).getRating();
+            Product currentProd = sortList.get(i);
             int j = i - 1;
 
-            while (j >= 0 && sortList.get(j).getRating() > rating) {
+            while (j >= 0 && sortList.get(j).getRating() > currentProd.getRating()) {
                 sortList.set(j+1, sortList.get(j));
                 j = j - 1;
             }
-            sortList.set(j+1, sortList.get(i));
+            sortList.set(j+1, currentProd);
         }
 
-        if(ascending == true){
+        if(ascending == false){
             Collections.reverse(sortList);
         }
+
+        return sortList;
+    }
+
+    //sorrt by sales
+    public ArrayList<Product> sortBySales(ArrayList<Product> sortList, boolean ascending){
+        //insertion sort
+        int n = sortList.size();
+        for (int i = 1; i < n; ++i) {
+            Product currentProd = sortList.get(i);
+            int j = i - 1;
+
+            while (j >= 0 && sortList.get(j).getSales() > currentProd.getSales()) {
+                sortList.set(j+1, sortList.get(j));
+                j = j - 1;
+            }
+            sortList.set(j+1, currentProd);
+        }
+
+        if(ascending == false){
+            Collections.reverse(sortList);
+        }
+
         return sortList;
     }
 

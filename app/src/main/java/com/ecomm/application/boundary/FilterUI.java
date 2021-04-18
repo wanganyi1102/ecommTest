@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,6 +26,16 @@ public class FilterUI extends AppCompatActivity {
     public void setProdList(ArrayList<Product> prodList){
         this.prodList = prodList;
     }
+
+//    @Override
+//    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+//        super.onSaveInstanceState(outState, outPersistentState);
+//    }
+//
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +132,7 @@ public class FilterUI extends AppCompatActivity {
                     System.out.println(s);
                 }
 
-                prodList = filter.filterPriceRange(prodList);
+                //prodList = filter.filterPriceRange(prodList);
                 filter.setFilterBy(filterBy); //pass selected filters to filter control
                 prodList = filter.performFilter(filterBy, prodList);
                 for(Product p: prodList){

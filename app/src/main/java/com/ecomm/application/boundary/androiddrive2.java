@@ -153,7 +153,7 @@ public class androiddrive2 extends AppCompatActivity {
             float price = Float.parseFloat(prices_list[m].substring(1));
             URI uri = new URI(urls_list[m]);
             URL url = uri.toURL();
-            Product p = new Product(titles_list[m], price, url, "Lazada");
+            Product p = new Product(titles_list[m], price, urls_list[m], "Lazada");
             productList.add(p);
             //System.out.println(p.getPrice());
             System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
@@ -286,7 +286,7 @@ public class androiddrive2 extends AppCompatActivity {
             float price = Float.parseFloat(prices_list[m].substring(2));
             URI uri = new URI(urls_list[m]);
             URL url = uri.toURL();
-            Product p = new Product(titles_list[m], price, url, "qoo10");
+            Product p = new Product(titles_list[m], price, urls_list[m], "qoo10");
             productList.add(p);
             //System.out.println(p.getPrice());
             //System.out.println(titles_list[m] + "\t" + price + "\t" + urls_list[m]);

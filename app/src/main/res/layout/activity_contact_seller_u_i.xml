@@ -13,14 +13,28 @@
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_gchannel"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/Widget.AppCompat.Toolbar"
-            app:popupTheme="@style/Theme.AppCompat.Light">
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar_gchannel"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:theme="@style/Widget.AppCompat.Toolbar"-->
+<!--            app:popupTheme="@style/Theme.AppCompat.Light">-->
 
-        </androidx.appcompat.widget.Toolbar>
+<!--        </androidx.appcompat.widget.Toolbar>-->
+        <Button
+            android:id="@+id/Backbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Back" />
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Product Seller"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -74,11 +88,12 @@
 
         <Button
             android:id="@+id/button_gchat_send"
-            android:layout_width="64dp"
+            android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:background="?attr/selectableItemBackground"
             android:text="Send"
+            android:textColor="@color/black"
             android:layout_alignParentRight="true" />
 
     </RelativeLayout>
