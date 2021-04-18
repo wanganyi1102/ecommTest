@@ -72,7 +72,7 @@ public class PaymentUI extends AppCompatActivity implements OnItemSelectedListen
         double total = 0;
         for(Product p : ShoppingCartUI.selectedProducts){
             text=text+p.getName()+"      "+p.getQuantity()+"        "+p.getPrice()+"\n";
-            total += p.getPrice();
+            total += p.getPrice()*p.getQuantity();
         }
             text+="\n\nTotal: "+total;
         TextView tv1 = (TextView)findViewById(R.id.textView15);
