@@ -48,5 +48,13 @@ public class ContactSellerUI extends AppCompatActivity {
         });
 
 
+        //back button
+        Button backButton = (Button) findViewById(R.id.Backbutton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

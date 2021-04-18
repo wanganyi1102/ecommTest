@@ -21,7 +21,11 @@
 <!--            app:popupTheme="@style/Theme.AppCompat.Light">-->
 
 <!--        </androidx.appcompat.widget.Toolbar>-->
-
+        <Button
+            android:id="@+id/Backbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Back" />
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
@@ -30,6 +34,7 @@
             android:text="Product Seller"
             android:textColor="#FFFFFF"
             android:textSize="22sp" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
