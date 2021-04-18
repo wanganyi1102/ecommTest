@@ -135,7 +135,7 @@ public class webCrawl {
             float price = Float.parseFloat(prices_list[m].substring(1));
             URI uri = new URI(urls_list[m]);
             URL url = uri.toURL();
-            Product p = new Product(titles_list[m], price, url, "Lazada");
+            Product p = new Product(titles_list[m], price, urls_list[m], "Lazada");
             productList.add(p);
             //System.out.println(p.getPrice());
             System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
@@ -255,7 +255,7 @@ public class webCrawl {
             // convert string to url
             URI uri = new URI(urls_list[m]);
             URL url = uri.toURL();
-            Product p = new Product(titles_list[m], price, url, "Qoo10");
+            Product p = new Product(titles_list[m], price, urls_list[m], "Qoo10");
             productList.add(p);
             //System.out.println(titles_list[m]+"\t"+prices_list[m]+"\t"+urls_list[m]);
         }

@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="700dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="12"
+            tools:itemCount="15"
             tools:listitem="@layout/search_item_1" />
 
 

@@ -1,6 +1,9 @@
 package com.ecomm.application.entity;
 
 import java.io.Serializable;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Comparator;
 import java.lang.Math;
@@ -8,7 +11,7 @@ import java.lang.Math;
 public class Product implements Comparable, Serializable {
     private String name;
     private double price;
-    private URL url;
+    private String url;
     private String description;
     private String ecommerceSite;
     private double rating;
@@ -18,7 +21,7 @@ public class Product implements Comparable, Serializable {
     private String shipFrom;
     private int quantity;
 
-    public Product(String name, float price, URL url, String ecommerceSite){
+    public Product(String name, float price, String url, String ecommerceSite){
         this.name = name;
         this.price = price;
         this.url = url;
@@ -26,7 +29,7 @@ public class Product implements Comparable, Serializable {
         this.quantity = 1;
     }
 
-    public Product(String name, double price, URL url, String description, String ecommerceSite, double rating, double shippingFee, String imageURL, int quantity){
+    public Product(String name, double price, String url, String description, String ecommerceSite, double rating, double shippingFee, String imageURL, int quantity){
         this.name = name;
         this.price = price;
         this.url = url;
@@ -38,7 +41,7 @@ public class Product implements Comparable, Serializable {
         this.quantity = quantity;
     }
 
-    public Product(String name, double price, URL url, String description, String ecommerceSite, double rating, double shippingFee, String imageURL){
+    public Product(String name, double price, String url, String description, String ecommerceSite, double rating, double shippingFee, int sales, String imageURL){
         this.name = name;
         this.price = price;
         this.url = url;
@@ -47,6 +50,7 @@ public class Product implements Comparable, Serializable {
         this.rating = rating;
         this.shippingFee = shippingFee;
         this.imageURL = imageURL;
+        this.sales = sales;
     }
 
     //getters
@@ -61,7 +65,20 @@ public class Product implements Comparable, Serializable {
         return price = (double) Math.round(this.price * 100) / 100;
     }
 
-    public URL getUrl(){
+    public String getUrl(){ //convert String to URL
+//        URI uri = null;
+//        try {
+//            uri = new URI(this.url);
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        }
+//        URL thisURL = null;
+//        try {
+//            thisURL = uri.toURL();
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//        return thisURL;
         return this.url;
     }
 

@@ -40,6 +40,14 @@ public class ProductDisplayUI extends AppCompatActivity {
         TextView priceTextView = (TextView) findViewById(R.id.priceTextView);
         priceTextView.setText("S$ " + String.format("%.2f", product.getPrice()));
 
+        //set shipping fee
+        TextView shippingFee = (TextView) findViewById(R.id.shippingFee);
+        shippingFee.setText("S$ " + String.format("%.2f", product.getShippingFee()));
+
+        //set sales
+        TextView salesText = (TextView) findViewById(R.id.salesText);
+        salesText.setText(product.getSales()+"");
+
         //set image to product image
         String imageURL = product.getImageURL();
         ImageView productImage = (ImageView) findViewById(R.id.productImage);
@@ -65,8 +73,8 @@ public class ProductDisplayUI extends AppCompatActivity {
         externalSiteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String urlToVisit = product.getUrl().toString();
-                Intent gotoSite = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToVisit));
+                //String urlToVisit = product.getUrl().toString();
+                Intent gotoSite = new Intent(Intent.ACTION_VIEW, Uri.parse(product.getUrl()));
                 startActivity(gotoSite);
             }
         });
