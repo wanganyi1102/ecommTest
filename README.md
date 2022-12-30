@@ -6,7 +6,7 @@
 
 - Project demonstration video can be found at [demo link](https://drive.google.com/file/d/1salTaMxJiVicIlur-AkMJxD05dMurwae/view?usp=sharing)
 
-- More details on the project (including class and sequence diagrams, UI mockups, testing etc.) can be found at [report link]()
+- More details on the project (including class and sequence diagrams, UI mockups, testing etc.) can be found at [report link](Final.docx)
 
 <img width="150" alt="image" src="https://user-images.githubusercontent.com/62319036/210047903-6fb9b2c5-fd7e-4641-b1bf-b095936d070d.png">
 <img width="150" alt="image" src="https://user-images.githubusercontent.com/62319036/210047929-fdcf528c-2b8f-48ea-84be-daa3a857b350.png">
